@@ -1,4 +1,8 @@
 test....
+<<<<<<< HEAD
 
 
 hihi
+=======
+eeeeeeeeeeeeeeeeeeeeeeeeeee inokumaw
+>>>>>>> origin/master
