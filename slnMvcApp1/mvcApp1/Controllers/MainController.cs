@@ -6,16 +6,16 @@ using System.Web.Mvc;
 
 namespace mvcApp1.Controllers
 {
-    public class patientSelectController : Controller
+    public class MainController : Controller
     {
         //
-        // GET: /patientSelect/
+        // GET: /Main/
 
-        public ActionResult patientSelect()
+        public ActionResult main() 
         {
             return View();
         }
-        
+
         public ActionResult Index()
         {
             return View();
