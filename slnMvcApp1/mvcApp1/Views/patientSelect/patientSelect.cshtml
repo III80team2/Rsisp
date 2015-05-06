@@ -36,17 +36,22 @@
 
     </style>
     <title>patientSelect</title>
-    @*<link rel="stylesheet" type="text/css" href="~/anythingSlider1.9.2/css/anythingslider.css" />
+    <link rel="stylesheet" type="text/css" href="~/anythingSlider1.9.2/css/anythingslider.css" />
     <link rel="stylesheet" href="~/anythingSlider1.9.2/css/theme-metallic.css">
-    <link rel="stylesheet" href="~/anythingSlider1.9.2/css/theme-cs-portfolio.css">*@
+    <link rel="stylesheet" href="~/anythingSlider1.9.2/css/theme-cs-portfolio.css">
+
+    <style type="text/css">    
+       #slider {  width: 900px;  height: 150px; }   /* 覆寫原始CSS*/  
+    </style>
 
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" href="../css/ui_dark/jquery-ui.css">
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
+    <script type="text/javascript" src="~/AnythingSlider1.9.2/js/jquery.anythingslider.min.js"></script>    
     <script type="text/javascript">
+
         $(function () {
             $("#right_nav").accordion();
 
@@ -77,10 +82,10 @@
                 <td></td>
                 <td>
                     <div id="slider">
-                        <div style="width:auto;height:150px;float:right;" >
-                            <img src="~/pics/ocean.jpg" style="width:900px;height:150px"/>
+                        <div>
+                            <img src="~/pics/ocean.jpg" style="width:900px;height:150px" alt="slide1"/>
                         </div>
-                        @*<div><a href="#"><img src="~/pics/line1.png" style="width:900px;height:150px"></a></div>*@
+                        <div><a href="#"><img src="~/pics/line1.png" style="width:900px;height:150px" alt="slide2"></a></div>
                     </div>
                 </td>
             </tr>
@@ -108,32 +113,46 @@
                     <div style="background-color:white;height:450px;vertical-align:top;padding:20px">
                         <br />
                         <p style="text-align:center">問卷名:
-                            <input type="text" name="qName"/>
-                        </p><br />
-                        <p style="">
-                            <table>
-                                <tr>
-                                    <td>問題一:</td>
-                                    <td><input type="text" name="qOne" /><br />
-                                        <br /></td>
-                                </tr>
-                                <tr>
-                                    <td>類型:</td>
-                                    <td><input type="text" name="qType" /><br /><br /></td>
-                                </tr>
-                                <tr>
-                                    <td>權限:</td>
-                                    <td><input type="text" name="qAuthorize" /><br /><br /></td>
-                                </tr>
-                                <tr>
-                                    <td>選項:</td>
-                                    <td><input type="text" name="qOption" /><br /><br /></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="submit" value="確定" /><br /><br /></td>
-                                </tr>
-                            </table>
+                            <input type="text" name="qName" />
                         </p>
+                        <br />
+                        <table>
+                            <tr>
+                                <td>問題一:</td>
+                                <td>
+                                    <input type="text" name="qOne" /><br />
+                                    <br />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>類型:</td>
+                                <td>
+                                    <input type="text" name="qType" /><br />
+                                    <br />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>權限:</td>
+                                <td>
+                                    <input type="text" name="qAuthorize" /><br />
+                                    <br />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>選項:</td>
+                                <td>
+                                    <input type="text" name="qOption" /><br />
+                                    <br />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="submit" value="確定" /><br />
+                                    <br />
+                                </td>
+                            </tr>
+                        </table>
+
 
                     </div>
                 </td>
