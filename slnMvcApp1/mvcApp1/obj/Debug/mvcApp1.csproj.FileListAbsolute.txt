@@ -217,3 +217,4 @@ C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\bin\zh-Hant\System.Web.Web
 C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\obj\Debug\mvcApp1.csprojResolveAssemblyReference.cache
 C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\obj\Debug\mvcApp1.dll
 C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\obj\Debug\mvcApp1.pdb
+C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\bin\mvcApp1.dll.config
