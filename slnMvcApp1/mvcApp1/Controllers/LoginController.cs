@@ -31,7 +31,7 @@ namespace mvcApp1.Controllers
         //    return RedirectToAction("ShopList", new { loginName = loginName});
         //}
 
-        public ActionResult shopList(string loginName) 
+        public ActionResult shopList(string loginName, string password) 
         {
             ViewData["name"] = loginName;
             return View();
