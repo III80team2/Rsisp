@@ -15,6 +15,27 @@ namespace mvcApp1.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Login(string loginName) 
+        {
+            return RedirectToAction("ShopList", new { loginName = loginName });
+        }
+
+        //public ActionResult Market() 
+        //{
+        //    return View();
+        //}
+        
+        //public ActionResult Market(string loginName)
+        //{
+        //    return RedirectToAction("ShopList", new { loginName = loginName});
+        //}
+
+        public ActionResult shopList(string loginName) 
+        {
+            ViewData["name"] = loginName;
+            return View();
+        }
 
         public ActionResult Index()
         {

@@ -299,6 +299,8 @@
     <Content Include="Views\Main\main.cshtml" />
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
     <Content Include="Views\Demo\DemoTest.cshtml" />
+    <Content Include="Views\Login\Market.cshtml" />
+    <Content Include="Views\Login\shopList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
