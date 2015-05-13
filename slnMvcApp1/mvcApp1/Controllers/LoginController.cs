@@ -13,7 +13,6 @@ namespace mvcApp1.Controllers
 
         public ActionResult Login(string loginName) 
         {
-            
             return View();
         }
         //[HttpPost]
@@ -24,16 +23,16 @@ namespace mvcApp1.Controllers
 
         public ActionResult shopList(string patientName) 
         {
-            if(Session["kk"]==null)
-                Session["kk"] = patientName;
+            if(Session["patientName"]==null)
+                Session["patientName"] = patientName;
 
             return View();
         }
 
         public ActionResult patientSelect(string loginName) 
         {
-            if (Session["AA"] == null)
-                Session["AA"] = loginName;
+            if (Session["loginName"] == null)
+                Session["loginName"] = loginName;
 
             return View();
         }

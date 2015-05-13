@@ -35,7 +35,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">評估表 <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu" style="font-size:medium;background-color:#4b90f7">
-                                    <li><a href="~/carousel/carouselTest">觀看病患評估表</a></li>
+                                    <li><a href="#">觀看病患評估表</a></li>
                                     <li class="divider"></li>
                                     <li><a href="#">填寫病患評估表</a></li>
                                     <li><a href="#">修改病患評估表</a></li>
@@ -44,7 +44,7 @@
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">ISP <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu" style="font-size:medium">
+                                <ul class="dropdown-menu" role="menu" style="font-size:medium;background-color:#4b90f7">
                                     <li><a href="#">觀看病患ISP</a></li>
                                     <li class="divider"></li>
                                     <li><a href="#">填寫病患ISP</a></li>
@@ -54,8 +54,8 @@
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">連結 <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu" style="font-size:medium">
-                                    <li><a href="http://www.google.com">仁愛之家</a></li>
+                                <ul class="dropdown-menu" role="menu" style="font-size:medium;background-color:#4b90f7">
+                                    <li><a href="#">仁愛之家</a></li>
                                     <li><a href="#">玫瑰園養護中心</a></li>
                                     <li><a href="#">老人養護中心</a></li>
                                 </ul>
@@ -63,9 +63,9 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">登入帳號：@Session["AA"],病患姓名:@Session["kk"]<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu" style="font-size:medium">
-                                    <li><a href="#">登出</a></li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">登入帳號：@Session["loginName"]<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu" style="font-size:medium;background-color:#4b90f7">
+                                    <li><a href="~/Login/Login">登出</a></li>
                                     <li><a href="#">註冊</a></li>
                                 </ul>
                             </li>
@@ -76,7 +76,7 @@
         </header>
 
         <footer>
-            <div class="text-center" style="background-color:#514c4c;opacity:0.99;height:80px;font-size:large;color:white;bottom:100px">
+            <div class="text-center" style=" position: absolute; bottom:0; width:100%;padding:15px; background-color:#514c4c;opacity:0.99;height:85px;font-size:large;color:white">
                 <br />
                 <p>Trafalgar Law &nbsp;&copy;&nbsp;tel:123456789&nbsp;address:Dressrosa</p>
             </div>

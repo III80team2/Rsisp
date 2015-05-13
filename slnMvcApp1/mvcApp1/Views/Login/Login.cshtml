@@ -29,36 +29,14 @@
             @Html.TextBox("password", "")<br /><br />
 
         </p>
-        
-        <input class="btn btn-default" type="submit" value="確認送出" name="btnSubmit" onsubmit="" />
+        <p style="padding:0 0 0 35px">
+            <input class="btn btn-default" type="button" value="清除重填" name="btnClear" />
+            <input class="btn btn-default" type="submit" value="確認送出" name="btnSubmit" onsubmit=""/>
+        </p>
 
 
     </div>
-
-
 }
-    
-
-
-    @*<div style="text-align:center;padding:75px;background-color:#555;height:250px">
-        <form method="post" action="~/Main/main">
-            <p style="text-align: center; color: white;font-size:medium">
-            帳號:
-            <input type="text" name="userName" /><br /><br />
-                
-            密碼:
-            <input type="password" name="password" />
-
-        </p><br />
-        
-        <p>
-            <input class="btn btn-default" type="button" value="清除重填" name="btnClear"  />
-            <input class="btn btn-default" type="submit" value="確認送出" name="btnSubmit" onsubmit=""/>
-        </p>
-        </form>
-
-    </div>*@
-     
 
     <footer>
         <div class="text-center" style="background-color:#FFF;height:80px;font-size:large;color:black">
