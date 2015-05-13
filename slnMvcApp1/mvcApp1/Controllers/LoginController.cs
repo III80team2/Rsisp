@@ -13,6 +13,7 @@ namespace mvcApp1.Controllers
 
         public ActionResult Login(string loginName) 
         {
+            Session["loginName"] = null;
             return View();
         }
         //[HttpPost]
