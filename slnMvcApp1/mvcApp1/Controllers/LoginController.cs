@@ -11,30 +11,30 @@ namespace mvcApp1.Controllers
         //
         // GET: /Login/
 
-        public ActionResult Login() 
-        {
-            return View();
-        }
-        [HttpPost]
         public ActionResult Login(string loginName) 
         {
-            return RedirectToAction("ShopList", new { loginName = loginName });
+            
+            return View();
         }
-
-        //public ActionResult Market() 
+        //[HttpPost]
+        //public ActionResult Login(string loginName) 
         //{
-        //    return View();
-        //}
-        
-        //public ActionResult Market(string loginName)
-        //{
-        //    return RedirectToAction("ShopList", new { loginName = loginName});
+        //    return RedirectToAction("ShopList", new { loginName = loginName });
         //}
 
-        public ActionResult shopList(string test) 
+        public ActionResult shopList(string patientName) 
         {
             if(Session["kk"]==null)
-                Session["kk"] = test;
+                Session["kk"] = patientName;
+
+            return View();
+        }
+
+        public ActionResult patientSelect(string loginName) 
+        {
+            if (Session["AA"] == null)
+                Session["AA"] = loginName;
+
             return View();
         }
 

@@ -208,3 +208,13 @@ C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\bin\zh-Hant\System.Web.Web
 C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\obj\Debug\mvcApp1.csprojResolveAssemblyReference.cache
 C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\obj\Debug\mvcApp1.dll
 C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\obj\Debug\mvcApp1.pdb
+C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\bin\System.Net.Http.Formatting.dll
+C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\bin\System.Web.Http.dll
+C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\bin\System.Web.Http.WebHost.dll
+C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\bin\System.Net.Http.Formatting.xml
+C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\bin\System.Web.Http.xml
+C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\bin\System.Web.Http.WebHost.xml
+C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\bin\zh-Hant\System.Net.Http.Formatting.resources.dll
+C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\bin\zh-Hant\System.Web.Http.resources.dll
+C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\bin\zh-Hant\System.Web.Http.WebHost.resources.dll
+C:\Users\iii\Documents\GitHub\test\slnMvcApp1\mvcApp1\bin\mvcApp1.dll.config
