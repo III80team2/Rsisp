@@ -14,11 +14,12 @@ public partial class login : System.Web.UI.Page
     protected void btn_submit_Click(object sender, EventArgs e)
     {
         Session["loginName"] = loginName.Text;
-        Response.Redirect("index.aspx");
+        Response.Redirect("patientSelect.aspx");
             
     }
     protected void btn_clear_Click(object sender, EventArgs e)
     {
-
+        loginName.Text = "";
+        loginPassword.Text = "";
     }
 }

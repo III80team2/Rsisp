@@ -26,7 +26,7 @@
             <br /><br />
 
             密碼:
-            <input type="text" name="loginName"/><br /><br />
+            <asp:TextBox ID="loginPassword" runat="server"></asp:TextBox><br /><br />
 
         </p>
         <p style="padding:0 0 0 35px">
