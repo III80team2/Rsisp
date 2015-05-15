@@ -11,15 +11,16 @@ public partial class login : System.Web.UI.Page
     {
         Session["loginName"] = null;
     }
-    protected void btn_submit_Click(object sender, EventArgs e)
+    protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        Session["loginName"] = loginName.Text;
+        //Session["loginName"] = loginName.Text;
+        //Response.Redirect("patientSelect.aspx");
+        Session["loginName"] = Request.Form["qq"].ToString();
         Response.Redirect("patientSelect.aspx");
-            
     }
-    protected void btn_clear_Click(object sender, EventArgs e)
+    protected void btnClear_Click(object sender, EventArgs e)
     {
-        loginName.Text = "";
-        loginPassword.Text = "";
+        //loginName.Text = "";
+        //loginPassword.Text = "";
     }
 }
