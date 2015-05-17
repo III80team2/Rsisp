@@ -249,6 +249,7 @@
     <Content Include="greefies\services.html" />
     <Content Include="greefies\style.css" />
     <Content Include="Icon.png" />
+    <Content Include="pics\forest.jpg" />
     <Content Include="pics\line1.png" />
     <Content Include="pics\line2.png" />
     <Content Include="pics\line3.png" />
@@ -258,7 +259,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="pics\ocean.jpg" />
+    <Content Include="pics\logout.png" />
+    <Content Include="pics\ocean02.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="greefies\all-free-download.com.url" />

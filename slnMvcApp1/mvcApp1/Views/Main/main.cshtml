@@ -2,4 +2,94 @@
     ViewBag.Title = "main";
 }
 
-<h2>main</h2>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Main</title>
+    <link rel="stylesheet" type="text/css" href="~/anythingSlider1.9.2/css/anythingslider.css" />
+    <link rel="stylesheet" href="~/anythingSlider1.9.2/css/theme-metallic.css">
+    <link rel="stylesheet" href="~/anythingSlider1.9.2/css/theme-cs-portfolio.css">
+    <style type="text/css">
+        #slider {
+            width: auto;
+            height: auto;
+        }
+    </style>
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet">
+
+    <link href="theme.css" rel="stylesheet">
+
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/AnythingSlider1.9.2/js/jquery.anythingslider.min.js"></script> 
+
+    <script type="text/javascript">
+
+    $(function () {
+        $("#slider").anythingSlider({ theme: 'cs-portfolio', autoPlay: true, buildArrows: false, buildNavigation: false, buildStartStop: false });
+    })
+    </script>
+
+
+
+</head>
+
+<body role="document" style="background-color:darkgray">
+
+    <header>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">評估資訊系統</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li ><a href="#">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">評估表 <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">觀看病患評估表</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">填寫病患評估表</a></li>
+                                <li><a href="#">修改病患評估表</a></li>
+                                <li><a href="#">刪除病患評估表</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">ISP <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">觀看病患ISP</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">填寫病患ISP</a></li>
+                                <li><a href="#">修改病患ISP</a></li>
+                                <li><a href="#">刪除病患ISP</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </nav>
+    </header>
+    <div id="slider" style="padding-top:50px">
+        <div>
+            <a href="#"><img src="~/pics/ocean02.jpg"/></a></div>
+        <div><a href="#"><img src="~/pics/forest.jpg"></a></div>
+    </div>
+        
+    
+</body>
+</html>
