@@ -191,6 +191,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\carousel.css" />
     <Content Include="css\style.css" />
     <Content Include="css\ui_dark\external\jquery\jquery.js" />
     <Content Include="css\ui_dark\images\ui-bg_flat_30_cccccc_40x100.png" />
@@ -250,6 +251,7 @@
     <Content Include="greefies\style.css" />
     <Content Include="Icon.png" />
     <Content Include="pics\forest.jpg" />
+    <Content Include="pics\ironMan.jpg" />
     <Content Include="pics\line1.png" />
     <Content Include="pics\line2.png" />
     <Content Include="pics\line3.png" />
@@ -261,6 +263,9 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="pics\logout.png" />
     <Content Include="pics\ocean02.jpg" />
+    <Content Include="pics\ocean03.jpg" />
+    <Content Include="pics\onePiece.jpg" />
+    <Content Include="pics\star.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="greefies\all-free-download.com.url" />
