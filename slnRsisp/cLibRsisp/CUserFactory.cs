@@ -44,5 +44,44 @@ public class CUserFactory
         return users.ToArray();
     }
 
+    public CUser getById(string id)
+    {
+        for (int i = 0; i < users.Count; i++)
+        {
+            if (users[i].id == id)            
+                return users[i];            
+        }
+        return null;
+    }
+
+    public CUser getByName(string name)
+    {
+        for (int i = 0; i < users.Count; i++)
+        {
+            if (users[i].name == name)
+                return users[i];
+        }
+        return null;
+    }
+
+    public CUser getByRole(string role)
+    {
+        for (int i = 0; i < users.Count; i++)
+        {
+            if (users[i].role == role)
+                return users[i];
+        }
+        return null;
+    }
+
+    public CUser getByAccount(string account)
+    {
+        for (int i = 0; i < users.Count; i++)
+        {
+            if (users[i].account == account)
+                return users[i];
+        }
+        return null;
+    }
 }
 
