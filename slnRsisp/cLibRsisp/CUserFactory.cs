@@ -20,9 +20,8 @@ public class CUserFactory
     {
         SqlDataSource sds = new SqlDataSource();
         sds.ConnectionString = @"Data Source=CR4-04\MSSQLSERVER2013;Initial Catalog=Rsisp;Integrated Security=True";
-        sds.SelectCommand = "SELECT * FROM Users";
-        //sds.SelectCommand = "dbo.getUsers";
-        //sds.SelectCommandType = SqlDataSourceCommandType.StoredProcedure;
+        sds.SelectCommand = "dbo.getUsers";
+        sds.SelectCommandType = SqlDataSourceCommandType.StoredProcedure;
         DataView dv = sds.Select(DataSourceSelectArguments.Empty) as DataView;
 
         if (dv.Count > 0)
@@ -84,7 +83,17 @@ public class CUserFactory
         }
         return null;
     }
-    public bool isCurrentUser(string userName,string userPassword) {
+
+    //帳號與密碼驗證
+    public bool loginCheck(string account, string password)
+    {
+        if (password.Equals(this.getByAccount(account).password))
+            return true;
+        return false;
+    }
+
+    public bool isCurrentUser(string userName,string userPassword) 
+    {
         List<string> userNameList = new List<string>();
         List<string> passwordList = new List<string>();
         bool result=true;
