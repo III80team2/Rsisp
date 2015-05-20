@@ -19,9 +19,10 @@ public class CUserFactory
     private void loadData()
     {
         SqlDataSource sds = new SqlDataSource();
-        sds.ConnectionString = @"Data Source=CR4-10\MSSQLSERVER2013;Initial Catalog=Rsisp;Integrated Security=True";
-        sds.SelectCommand = "dbo.getUsers";
-        sds.SelectCommandType = SqlDataSourceCommandType.StoredProcedure;
+        sds.ConnectionString = @"Data Source=CR4-04\MSSQLSERVER2013;Initial Catalog=Rsisp;Integrated Security=True";
+        sds.SelectCommand = "SELECT * FROM Users";
+        //sds.SelectCommand = "dbo.getUsers";
+        //sds.SelectCommandType = SqlDataSourceCommandType.StoredProcedure;
         DataView dv = sds.Select(DataSourceSelectArguments.Empty) as DataView;
 
         if (dv.Count > 0)
@@ -39,9 +40,9 @@ public class CUserFactory
         }
     }
 
-    public CUser[] getAll()
+    public List<CUser> getAll()
     {
-        return users.ToArray();
+        return users;
     }
 
     public CUser getById(string id)
@@ -82,6 +83,34 @@ public class CUserFactory
                 return users[i];
         }
         return null;
+    }
+    public bool isCurrentUser(string userName,string userPassword) {
+        List<string> userNameList = new List<string>();
+        List<string> passwordList = new List<string>();
+        bool result=true;
+        
+        for (int i = 0; i < users.Count;i++ )
+        {
+            userNameList.Add(users[i].name);
+            passwordList.Add(users[i].password);
+        }
+        for (int i = 0; i < userNameList.Count; i++)
+        {
+            if (userName.Equals(userNameList[i]))
+            {
+                if (userPassword.Equals(passwordList[i]))
+                {
+                    result = true;
+                }
+                else {
+                    result = false;
+                }
+            }
+            else {
+                result = false;
+            }
+        }
+        return result;
     }
 }
 

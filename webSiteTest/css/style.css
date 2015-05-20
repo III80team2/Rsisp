@@ -1,0 +1,32 @@
+﻿body {
+}
+
+.hidden-label {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 0px;
+  width: 0px;
+  overflow: hidden;
+  visibility: hidden;
+  }
+ .divlogin {
+  color: #800080; 
+  font-weight: 700; 
+  font-size: medium;
+  
+  }
+.login {
+    text-align: center; 
+    padding-top: 50px; 
+    background-color: #ede9e9; 
+    height: 350px; 
+    margin: 10px 500px 0 500px
+}
+.loginfooter {
+    background-color:#FFF;
+    height:80px;
+    font-size:large;
+    color:black;
+    text-align:center;
+}
