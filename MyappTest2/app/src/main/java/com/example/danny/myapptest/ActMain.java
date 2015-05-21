@@ -22,6 +22,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.KeyEvent;
 
+
 public class ActMain extends Activity {
 
     @Override
@@ -75,7 +76,7 @@ public class ActMain extends Activity {
     };
 
 
-   //----離開對話框
+    //----離開對話框
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 

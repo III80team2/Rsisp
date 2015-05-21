@@ -2,6 +2,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#99FFFF"
     >
 
     <LinearLayout
@@ -9,14 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:background="#99FFFF"
         >
-        <DigitalClock
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:textColor="#eee"/>
 
-</LinearLayout>
+        <DigitalClock
+            android:id="@+id/DigitalClock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -30,7 +33,9 @@
             android:textSize="25dp"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+
+            />
         <Button
             android:id="@+id/btn7"
             android:text="評估表"
@@ -115,7 +120,7 @@
     </LinearLayout>
 
 
-    </LinearLayout>
+</LinearLayout>
 
 
 
