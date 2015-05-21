@@ -80,46 +80,25 @@ public class CUserFactory
         {
             if (users[i].account == account)
                 return users[i];
+            
         }
         return null;
+        
+        
     }
 
     //帳號與密碼驗證
     public bool loginCheck(string account, string password)
     {
-        if (password.Equals(this.getByAccount(account).password))
-            return true;
-        return false;
+        try {
+            if (password.Equals(this.getByAccount(account).password))
+                return true;
+            return false;
+        }catch(Exception ){
+            return false;
+        }
     }
 
-    public bool isCurrentUser(string userName,string userPassword) 
-    {
-        List<string> userNameList = new List<string>();
-        List<string> passwordList = new List<string>();
-        bool result=true;
-        
-        for (int i = 0; i < users.Count;i++ )
-        {
-            userNameList.Add(users[i].name);
-            passwordList.Add(users[i].password);
-        }
-        for (int i = 0; i < userNameList.Count; i++)
-        {
-            if (userName.Equals(userNameList[i]))
-            {
-                if (userPassword.Equals(passwordList[i]))
-                {
-                    result = true;
-                }
-                else {
-                    result = false;
-                }
-            }
-            else {
-                result = false;
-            }
-        }
-        return result;
-    }
+    
 }
 

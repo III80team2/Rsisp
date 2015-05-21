@@ -13,20 +13,22 @@ public partial class login : System.Web.UI.Page
     {
         Session["loginName"] = null;
         divLog.Visible = false;
+        if (!IsPostBack) { lblMessage.Visible = false;}
+        
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
         Session["loginName"] = Request.Form["loginName"].ToString();
         loginPassword = Request.Form["Passwd"].ToString();
-
-        if (factory.isCurrentUser((string)Session["loginName"], loginPassword))
+        
+        if (factory.loginCheck(Request.Form["loginName"].ToString(), loginPassword))
         {
             Response.Redirect("index.aspx");
         }
-        else {
-            return;
+        else
+        {
+            lblMessage.Visible = true;
         }
-        
     }
     protected void iBtnGuest_Click(object sender, ImageClickEventArgs e)
     {
