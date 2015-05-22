@@ -42,7 +42,7 @@ public class CUserFactory
         }
     }
 
-    /// <summary>傳回 List<CUser> 型別的物件清單</summary>
+    /// <summary>傳回 CUser 型別物件的 List 清單</summary>
     public List<CUser> getAll()
     {
         return users;

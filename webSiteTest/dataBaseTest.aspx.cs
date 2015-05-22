@@ -7,7 +7,9 @@ using System.Web.UI.WebControls;
 
 public partial class dataBaseTest : System.Web.UI.Page
 {
-    CUserFactory factory = new CUserFactory();
+    CUserFactory userFactory = new CUserFactory();
+    CRoleFactory roleFactory = new CRoleFactory();
+    CPatientFactory patientFactory = new CPatientFactory();
 
     protected void btnRefresh_Click(object sender, EventArgs e)
     {
@@ -15,8 +17,14 @@ public partial class dataBaseTest : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {        
-        GridView1.DataSource = factory.getAll();
-        GridView1.DataBind();
+        gvUsers.DataSource = userFactory.getAll();
+        gvUsers.DataBind();
+
+        gvRoles.DataSource = roleFactory.getAll();
+        gvRoles.DataBind();
+
+        gvPatients.DataSource = patientFactory.getAll();
+        gvPatients.DataBind();
     }
     protected void btnAdd_Click(object sender, EventArgs e)
     {
@@ -26,8 +34,8 @@ public partial class dataBaseTest : System.Web.UI.Page
         user.name = tbUserName.Text;
         user.role_id = tbID_Role.Text;
         
-        factory.addUser(user);
-        lblMessage.Text = factory.message;        
+        userFactory.addUser(user);
+        lblMessage.Text = userFactory.message;        
     }
 
 }

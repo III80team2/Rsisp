@@ -10,6 +10,9 @@
         .auto-style1 {
             width: 100%;
         }
+        .auto-style4 {
+            width: 300px;
+        }
     </style>
 </head>
 <body>
@@ -18,50 +21,82 @@
     
         <table class="auto-style1">
             <tr>
-                <td>dataBaseTest<asp:Button ID="btnRefresh" runat="server" OnClick="btnRefresh_Click" Text="重新整理" />
+                <td class="auto-style4">dataBaseTest<asp:Button ID="btnRefresh" runat="server" OnClick="btnRefresh_Click" Text="重新整理" />
                 </td>
-            </tr>
-            <tr>
+                <td class="auto-style4">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
+                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style4">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style4">
+                    使用者資料表<asp:GridView ID="gvUsers" runat="server">
+                    </asp:GridView>
+                </td>
+                <td class="auto-style4">
+                    角色資料表<asp:GridView ID="gvRoles" runat="server">
+                    </asp:GridView>
+                </td>
                 <td>
-                    <asp:GridView ID="GridView1" runat="server">
+                    病患資料表<asp:GridView ID="gvPatients" runat="server">
                     </asp:GridView>
                 </td>
             </tr>
             <tr>
+                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style4">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>新增使用者</td>
+                <td class="auto-style4">新增使用者</td>
+                <td class="auto-style4">&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>帳號：<asp:TextBox ID="tbUserAccount" runat="server"></asp:TextBox>
+                <td class="auto-style4">帳號：<asp:TextBox ID="tbUserAccount" runat="server"></asp:TextBox>
                 </td>
+                <td class="auto-style4">&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>密碼：<asp:TextBox ID="tbUserPassword" runat="server"></asp:TextBox>
+                <td class="auto-style4">密碼：<asp:TextBox ID="tbUserPassword" runat="server"></asp:TextBox>
                 </td>
+                <td class="auto-style4">&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>姓名：<asp:TextBox ID="tbUserName" runat="server"></asp:TextBox>
+                <td class="auto-style4">姓名：<asp:TextBox ID="tbUserName" runat="server"></asp:TextBox>
                 </td>
+                <td class="auto-style4">&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>角色：<asp:TextBox ID="tbID_Role" runat="server"></asp:TextBox>
+                <td class="auto-style4">角色：<asp:TextBox ID="tbID_Role" runat="server"></asp:TextBox>
                 </td>
+                <td class="auto-style4">&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style4">
                     <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="新增" />
                     <asp:Label ID="lblMessage" runat="server" Text="message"></asp:Label>
                 </td>
+                <td class="auto-style4">
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
+                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style4">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
+                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style4">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
         </table>

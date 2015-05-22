@@ -40,7 +40,7 @@ public class CPatientFactory
         }
     }
 
-    /// <summary>傳回 List<CPatient> 型別的物件清單</summary>
+    /// <summary>傳回 CPatient 型別物件的 List 清單</summary>
     public List<CPatient> getAll()
     {
         return patients;

@@ -37,4 +37,10 @@ public class CRoleFactory
             }
         }
     }
+
+    /// <summary>傳回 CRole 型別物件的 List 清單</summary>
+    public List<CRole> getAll()
+    {
+        return roles;
+    }
 }
