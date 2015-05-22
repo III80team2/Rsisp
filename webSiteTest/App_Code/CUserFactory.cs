@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+/// <summary>提供一項機制，用來向 CUser 型別的物件要求資料相關的作業。</summary>
 public class CUserFactory
 {
     List<CUser> users=new List<CUser>();
     string connectionString = @"Data Source=CR4-10\MSSQLSERVER2013;Initial Catalog=Rsisp;Integrated Security=True";
     public string message;
 
+    /// <summary>初始化 CUser 型別的物件</summary>
     public CUserFactory()
     {
         loadData();
@@ -33,7 +34,7 @@ public class CUserFactory
                 CUser user = new CUser();
                 user.id = dv.Table.Rows[i]["ID_User"].ToString();
                 user.name = dv.Table.Rows[i]["UserName"].ToString();
-                user.role = dv.Table.Rows[i]["ID_Role"].ToString();
+                user.role_id = dv.Table.Rows[i]["ID_Role"].ToString();
                 user.account = dv.Table.Rows[i]["UserAccount"].ToString();
                 user.password = dv.Table.Rows[i]["UserPassword"].ToString();
                 users.Add(user);
@@ -41,11 +42,13 @@ public class CUserFactory
         }
     }
 
+    /// <summary>傳回 List<CUser> 型別的物件清單</summary>
     public List<CUser> getAll()
     {
         return users;
     }
 
+    /// <summary>傳回 CUser 型別物件的屬性 id 與參數相同的 CUser 型別物件</summary>
     public CUser getById(string id)
     {
         for (int i = 0; i < users.Count; i++)
@@ -56,6 +59,7 @@ public class CUserFactory
         return null;
     }
 
+    /// <summary>傳回 CUser 型別物件的屬性 name 與參數相同的 CUser 型別物件</summary>
     public CUser getByName(string name)
     {
         for (int i = 0; i < users.Count; i++)
@@ -66,16 +70,18 @@ public class CUserFactory
         return null;
     }
 
-    public CUser getByRole(string role)
+    /// <summary>傳回 CUser 型別物件的屬性 role_id 與參數相同的 CUser 型別物件</summary>
+    public CUser getByRoleId(string role_id)
     {
         for (int i = 0; i < users.Count; i++)
         {
-            if (users[i].role == role)
+            if (users[i].role_id == role_id)
                 return users[i];
         }
         return null;
     }
 
+    /// <summary>傳回 CUser 型別物件的屬性 account 與參數相同的 CUser 型別物件</summary>
     public CUser getByAccount(string account)
     {
         for (int i = 0; i < users.Count; i++)
@@ -87,8 +93,8 @@ public class CUserFactory
         return null;
     }
 
-    //新增使用者
-    public void addUser(string name, string id_role, string account, string password)
+    /// <summary>新增使用者到資料庫</summary>
+    public void addUser(CUser user)
     {
         try
         {
@@ -96,10 +102,10 @@ public class CUserFactory
             sds.ConnectionString = connectionString;
             sds.InsertCommand = "dbo.addUser";
             sds.InsertCommandType = SqlDataSourceCommandType.StoredProcedure;
-            sds.InsertParameters.Add(new Parameter("UserName", DbType.String, name));
-            sds.InsertParameters.Add(new Parameter("ID_Role", DbType.String, id_role));
-            sds.InsertParameters.Add(new Parameter("UserAccount", DbType.String, account));
-            sds.InsertParameters.Add(new Parameter("UserPassword", DbType.String, password));
+            sds.InsertParameters.Add(new Parameter("UserName", DbType.String, user.name));
+            sds.InsertParameters.Add(new Parameter("ID_Role", DbType.String, user.role_id));
+            sds.InsertParameters.Add(new Parameter("UserAccount", DbType.String, user.account));
+            sds.InsertParameters.Add(new Parameter("UserPassword", DbType.String, user.password));
             sds.Insert();
 
             message = "success";
@@ -110,7 +116,7 @@ public class CUserFactory
         }
     }
 
-    //帳號與密碼驗證
+    /// <summary>帳號與密碼的驗證</summary>
     public bool loginCheck(string account, string password)
     {
         if (this.getByAccount(account) != null)

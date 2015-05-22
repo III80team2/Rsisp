@@ -20,7 +20,13 @@ public partial class dataBaseTest : System.Web.UI.Page
     }
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        factory.addUser(tbUserName.Text, tbID_Role.Text, tbUserAccount.Text, tbUserPassword.Text);
+        CUser user = new CUser();
+        user.account = tbUserAccount.Text;
+        user.password = tbUserPassword.Text;
+        user.name = tbUserName.Text;
+        user.role_id = tbID_Role.Text;
+        
+        factory.addUser(user);
         lblMessage.Text = factory.message;        
     }
 
