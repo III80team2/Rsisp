@@ -87,6 +87,7 @@ public class CUserFactory
         return null;
     }
 
+    //新增使用者
     public void addUser(string name, string id_role, string account, string password)
     {
         try
