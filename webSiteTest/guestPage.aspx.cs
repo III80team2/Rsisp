@@ -12,52 +12,60 @@ public partial class guestPage : System.Web.UI.Page
     
     protected void Page_Load(object sender, EventArgs e)
     {
-        divTab.Visible = false;
-        List<CPatient> patientList = factory.getAll();
+       divTab.Visible = false;
+       List<CPatient> patientList = factory.getAll();
        isIDNull = patientID.Value == "";
        isNameNull = patientName.Value == "";
        isBirthNull = patientBirth.Value == "";
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        if ((!isIDNull && !isNameNull) || (!isNameNull && !isBirthNull) || (!isBirthNull && !isIDNull))
+         isCurrent();
+    }
+
+    private void isCurrent()
+    {
+        try
         {
-            if ((!isIDNull && !isNameNull))
+            string id = patientID.Value;
+            string name = patientName.Value;
+            string birth = patientBirth.Value;
+            if ((!isIDNull && !isNameNull) || (!isNameNull && !isBirthNull) || (!isBirthNull && !isIDNull))
             {
-                string id = patientID.Value;
-                string name = patientName.Value;
-                if ((factory.getByIdCard(id) != null) && (name.Equals(factory.getByIdCard(id).name)))
+                if ((!isIDNull && !isNameNull))
                 {
-                    divTab.Visible = true;
+                    if ((name.Equals(factory.getByIdCard(id).name)) && (id.Equals(factory.getByIdCard(id).idcard)))
+                        divTab.Visible = true;
+                    else
+                    {
+                        divTab.Visible = false;
+                        Response.Write("<script>alert('輸入錯誤')</script>");
+                    }
                 }
-                else { divTab.Visible = false; }
-            }
-            if ((!isNameNull && !isBirthNull))
-            {
-                string name = patientName.Value;
-                string birth = factory.getByName(name).birthday;
-                patientID.Value = factory.getByBirthday(birth).birthday;
-                if ((factory.getByBirthday(birth) != null) && (name == "催聖賢"))
+                if ((!isNameNull && !isBirthNull))
                 {
-                    divTab.Visible = true;
+                    if ((birth.Equals(factory.getByBirthday(birth))) && (name.Equals(factory.getByName(name).name)))
+                        divTab.Visible = true;
+                    else
+                    {
+                        divTab.Visible = false;
+                        Response.Write("<script>alert('輸入錯誤')</script>");
+                    }
                 }
-                else { divTab.Visible = false; }
-            }
-            else if ((!isBirthNull && !isIDNull))
-            {
-                string id = patientID.Value;
-                if (factory.getByIdCard(id) != null)
+                else if ((!isBirthNull && !isIDNull))
                 {
-                    divTab.Visible = true;
+                    if ((birth.Equals(factory.getByBirthday(birth))) && (id.Equals(factory.getByIdCard(id).idcard)))
+                        divTab.Visible = true;
+                    else
+                    {
+                        divTab.Visible = false;
+                        Response.Write("<script>alert('輸入錯誤')</script>");
+                    }
                 }
-                else { divTab.Visible = false; }
             }
-            
+            else{ Response.Write("<script>alert('有欄位沒輸入')</script>");  }
         }
-        else 
-        {
-            Response.Write("<script>alert('有欄位沒輸入')</script>");
-        }
+        catch (Exception) { }
         
     }
 }

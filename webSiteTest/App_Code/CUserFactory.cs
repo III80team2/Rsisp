@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 public class CUserFactory
 {
     List<CUser> users=new List<CUser>();
-    string connectionString = @"Data Source=CR4-04\MSSQLSERVER2013;Initial Catalog=Rsisp;Integrated Security=True";
+    string connectionString = @"Data Source=NTHIGH\SQLEXPRESS;Initial Catalog=Rsisp;Integrated Security=True";
     public string message;
 
     /// <summary>初始化 CUser 型別的物件</summary>

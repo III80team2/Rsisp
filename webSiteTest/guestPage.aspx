@@ -21,8 +21,8 @@
             右方的文字欄位請選擇兩項輸入:
             <label class="hidden-label">院民姓名</label>
             <input id="patientName" name="patientName" type="text" placeholder="院民姓名" style="width:180px;" runat="server"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <label class="hidden-label">院民生日</label>
-            <input id="patientBirth" name="patientBirth" type="text" placeholder="院民生日" style="width:180px;" runat="server"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label class="hidden-label">院民生日(ex:2000/1/1)</label>
+            <input id="patientBirth" name="patientBirth" type="text" placeholder="院民生日(ex:2000/1/1)" style="width:180px;" runat="server"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <label class="hidden-label">院民身分證字號</label>
             <input id="patientID" name="patientID" type="text" placeholder="院民身分證字號" style="width:180px;" runat="server"/>&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnSubmit" runat="server" Text="確認" OnClick="btnSubmit_Click" />
