@@ -17,18 +17,18 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="padding:100px">
+        <div style="padding:100px 100px 50px 100px">
             右方的文字欄位請選擇兩項輸入:
             <label class="hidden-label">院民姓名</label>
-            <input id="patientName" name="patientName" type="text" placeholder="院民姓名" style="width:180px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="patientName" name="patientName" type="text" placeholder="院民姓名" style="width:180px;" runat="server"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <label class="hidden-label">院民生日</label>
-            <input id="patientBirth" name="patientBirth" type="text" placeholder="院民生日" style="width:180px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="patientBirth" name="patientBirth" type="text" placeholder="院民生日" style="width:180px;" runat="server"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <label class="hidden-label">院民身分證字號</label>
-            <input id="patientID" name="patientID" type="text" placeholder="院民身分證字號" style="width:180px;" />&nbsp;&nbsp;&nbsp;
+            <input id="patientID" name="patientID" type="text" placeholder="院民身分證字號" style="width:180px;" runat="server"/>&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnSubmit" runat="server" Text="確認" OnClick="btnSubmit_Click" />
             
         </div>
-        <div id="div1" runat="server">
+        <div id="divTab" runat="server" style="padding-left:100px">
             <div class="tabbable tabs-left">
                 <ul class="nav nav-tabs">
                     <li><a href="#lH" data-toggle="tab">ISP</a></li>
