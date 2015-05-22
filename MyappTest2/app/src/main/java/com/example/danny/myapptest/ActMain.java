@@ -2,14 +2,15 @@ package com.example.danny.myapptest;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.Message;
-import android.text.format.Time;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -24,6 +25,9 @@ import android.view.KeyEvent;
 
 
 public class ActMain extends Activity {
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,28 @@ public class ActMain extends Activity {
 
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_act_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
 
 
@@ -68,15 +94,17 @@ public class ActMain extends Activity {
         }
     };
 
-    View.OnClickListener btnOut_click=new View.OnClickListener(){
+    View.OnClickListener btnMap_click=new View.OnClickListener(){
         public void onClick(View arg0) {
 
-
+            Uri uri = Uri.parse("geo:22.638692,120.397787,3a,75y,343.8h,71.11t");	//經緯度
+            final Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
         }
     };
 
 
-    //----離開對話框
+   //----離開對話框
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
@@ -113,10 +141,11 @@ public class ActMain extends Activity {
     private void InicialComponent()
     {
 
-        btnisp = (Button)findViewById(R.id.btnisp);
+        btnisp = (ImageButton) findViewById(R.id.btnisp);
         btnisp.setOnClickListener(btnisp_click);
 
-
+        btnMap = (ImageButton) findViewById(R.id.btnMap);
+        btnMap.setOnClickListener(btnMap_click);
 
         textTime1 = (EditText)findViewById(R.id.txtId);
 
@@ -124,8 +153,8 @@ public class ActMain extends Activity {
 
 
     EditText textTime1;
-    Button btnisp;
 
-
+    ImageButton btnMap;
+    ImageButton btnisp;
 
 }

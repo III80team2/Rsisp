@@ -16,7 +16,10 @@
         <DigitalClock
             android:id="@+id/DigitalClock"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="#99FFFF"
+
+        />
 
 
     </LinearLayout>
@@ -26,30 +29,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+
         >
-        <Button
-            android:id="@+id/btnisp"
-            android:text="ISP"
-            android:textSize="25dp"
-            android:layout_weight="1"
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-
+            android:id="@+id/btnisp"
+            android:src="@drawable/isp"
+            android:layout_weight="1"
+            android:background="#444444"
             />
-        <Button
-            android:id="@+id/btn7"
-            android:text="評估表"
-            android:textSize="25dp"
-            android:layout_weight="1"
+
+        <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-        <Button
-            android:id="@+id/btn68"
-            android:text="地圖"
-            android:textSize="25dp"
+            android:layout_height="match_parent"
+            android:id="@+id/btnMap"
+            android:src="@drawable/map"
             android:layout_weight="1"
+            android:background="#444444"
+            />
+
+        <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:id="@+id/btnNews"
+            android:src="@drawable/news"
+            android:layout_weight="1"
+            android:background="#444444"
+            />
 
     </LinearLayout>
 
@@ -61,27 +68,24 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         >
-        <Button
-            android:id="@+id/btn4"
-            android:text="連結"
-            android:textSize="25dp"
-            android:layout_weight="1"
+        <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-        <Button
-            android:id="@+id/btn5"
-            android:text="5"
-            android:textSize="25dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/btnb"
+            android:src="@drawable/map"
+            android:layout_weight="1" />
+        <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-        <Button
-            android:id="@+id/btn6"
-            android:text="6"
-            android:textSize="25dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/btnc"
+            android:src="@drawable/map"
+            android:layout_weight="1" />
+        <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:id="@+id/btnd"
+            android:src="@drawable/map"
+            android:layout_weight="1" />
 
     </LinearLayout>
 
@@ -95,32 +99,34 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         >
-        <Button
-            android:id="@+id/btn1"
-            android:text="1"
-            android:textSize="25dp"
-            android:layout_weight="1"
+        <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-        <Button
-            android:id="@+id/btn2"
-            android:text="2"
-            android:textSize="25dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/btne"
+            android:src="@drawable/map"
+            android:layout_weight="1" />
+        <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-        <Button
-            android:id="@+id/btn3"
-            android:text="3"
-            android:textSize="25dp"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:id="@+id/btnf"
+            android:src="@drawable/map"
+            android:layout_weight="1" />
+        <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/btng"
+        android:src="@drawable/map"
+        android:layout_weight="1" />
 
     </LinearLayout>
 
 
 </LinearLayout>
+
+
+
+
+
 
 
 
