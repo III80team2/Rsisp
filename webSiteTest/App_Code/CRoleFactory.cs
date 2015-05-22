@@ -43,4 +43,26 @@ public class CRoleFactory
     {
         return roles;
     }
+
+    /// <summary>傳回 CRole 型別物件的屬性 id 與參數相同的 CRole 型別物件</summary>
+    public CRole getById(string id)
+    {
+        for (int i = 0; i < roles.Count; i++)
+        {
+            if (roles[i].id == id)
+                return roles[i];
+        }
+        return null;
+    }
+
+    /// <summary>傳回 CRole 型別物件的屬性 id 與參數相同的 CRole 型別物件</summary>
+    public CRole getByName(string name)
+    {
+        for (int i = 0; i < roles.Count; i++)
+        {
+            if (roles[i].name == name)
+                return roles[i];
+        }
+        return null;
+    }
 }

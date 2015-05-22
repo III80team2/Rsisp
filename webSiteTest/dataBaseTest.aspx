@@ -74,7 +74,8 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style4">角色：<asp:TextBox ID="tbID_Role" runat="server"></asp:TextBox>
+                <td class="auto-style4">角色：<asp:DropDownList ID="ddlRole" runat="server">
+                    </asp:DropDownList>
                 </td>
                 <td class="auto-style4">&nbsp;</td>
                 <td>&nbsp;</td>

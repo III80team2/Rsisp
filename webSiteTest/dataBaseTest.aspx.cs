@@ -25,6 +25,11 @@ public partial class dataBaseTest : System.Web.UI.Page
 
         gvPatients.DataSource = patientFactory.getAll();
         gvPatients.DataBind();
+
+        foreach (CRole role in roleFactory.getAll())
+        {
+            ddlRole.Items.Add(role.name);
+        }
     }
     protected void btnAdd_Click(object sender, EventArgs e)
     {
@@ -32,7 +37,7 @@ public partial class dataBaseTest : System.Web.UI.Page
         user.account = tbUserAccount.Text;
         user.password = tbUserPassword.Text;
         user.name = tbUserName.Text;
-        user.role_id = tbID_Role.Text;
+        user.role_id = roleFactory.getByName(ddlRole.SelectedItem.Text).id;
         
         userFactory.addUser(user);
         lblMessage.Text = userFactory.message;        
