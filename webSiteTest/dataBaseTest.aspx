@@ -18,7 +18,8 @@
     
         <table class="auto-style1">
             <tr>
-                <td>&nbsp;</td>
+                <td>dataBaseTest<asp:Button ID="btnRefresh" runat="server" OnClick="btnRefresh_Click" Text="重新整理" />
+                </td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
@@ -33,22 +34,29 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
+                <td>新增使用者</td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
+                <td>帳號：<asp:TextBox ID="tbUserAccount" runat="server"></asp:TextBox>
+                </td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
+                <td>密碼：<asp:TextBox ID="tbUserPassword" runat="server"></asp:TextBox>
+                </td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
+                <td>姓名：<asp:TextBox ID="tbUserName" runat="server"></asp:TextBox>
+                </td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
+                <td>角色：<asp:TextBox ID="tbID_Role" runat="server"></asp:TextBox>
+                </td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
+                <td>
+                    <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="新增" />
+                    <asp:Label ID="lblMessage" runat="server" Text="message"></asp:Label>
+                </td>
             </tr>
             <tr>
                 <td>&nbsp;</td>

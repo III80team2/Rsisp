@@ -10,7 +10,8 @@ using System.Web.UI.WebControls;
 public class CUserFactory
 {
     List<CUser> users=new List<CUser>();
-    string connectionString = @"Data Source=CR4-04\MSSQLSERVER2013;Initial Catalog=Rsisp;Integrated Security=True";
+    string connectionString = @"Data Source=CR4-10\MSSQLSERVER2013;Initial Catalog=Rsisp;Integrated Security=True";
+    public string message;
 
     public CUserFactory()
     {
@@ -84,8 +85,28 @@ public class CUserFactory
             
         }
         return null;
-        
-        
+    }
+
+    public void addUser(string name, string id_role, string account, string password)
+    {
+        try
+        {
+            SqlDataSource sds = new SqlDataSource();
+            sds.ConnectionString = connectionString;
+            sds.InsertCommand = "dbo.addUser";
+            sds.InsertCommandType = SqlDataSourceCommandType.StoredProcedure;
+            sds.InsertParameters.Add(new Parameter("UserName", DbType.String, name));
+            sds.InsertParameters.Add(new Parameter("ID_Role", DbType.String, id_role));
+            sds.InsertParameters.Add(new Parameter("UserAccount", DbType.String, account));
+            sds.InsertParameters.Add(new Parameter("UserPassword", DbType.String, password));
+            sds.Insert();
+
+            message = "success";
+        }
+        catch (Exception ex)
+        {
+            message = ex.Message;
+        }
     }
 
     //帳號與密碼驗證
@@ -98,8 +119,6 @@ public class CUserFactory
             return false;
         }
         return false;
-    }
-
-    
+    }    
 }
 
