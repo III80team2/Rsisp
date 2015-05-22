@@ -27,6 +27,7 @@ public partial class login : System.Web.UI.Page
         }
         else
         {
+            divLog.Visible = true;
             lblMessage.Visible = true;
         }
     }

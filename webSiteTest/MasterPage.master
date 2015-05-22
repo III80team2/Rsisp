@@ -7,12 +7,13 @@
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
     <title></title>
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    
     <!-- Bootstrap theme -->
     <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
 
     <link href="css/carousel.css" rel="stylesheet" />
-    <link href="theme.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet" />
 
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -21,7 +22,8 @@
 <body role="document" style="background-color:#888">
     <div>
         <header>
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <form runat="server">
+                <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" runat="server">
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -32,9 +34,9 @@
                         </button>
                         <a class="navbar-brand" href="#">評估資訊系統</a>
                     </div>
-                    <div id="navbar" class="navbar-collapse collapse">
+                    <div id="navbar" class="navbar-collapse collapse" runat="server">
                         <ul class="nav navbar-nav">
-                            <li><a href="#">Home</a></li>
+                            <li><a href="index.aspx">Home</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">評估表 <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu" style="font-size:medium;background-color:#4b90f7">
@@ -72,26 +74,27 @@
                                     <li><a href="login.aspx">登出</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
-                                <ul class="dropdown-menu" style="padding: 12px;">
-                                    <li class="form-inline">
-                                        <input type="text"/>
-                                    </li>
-                                </ul>
+                            <li style="padding-top:12px">
+                                <label class="hidden-label" for="Passwd">請輸入院民姓名或編號</label>
+                                <input id="search" name="search" type="text" placeholder="請輸入院民姓名或編號" style="width: 200px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </li>
+                            <li style="padding-top:12px">
+                                <asp:ImageButton ID="iBtnSearch" ImageUrl="~/pics/search.png" runat="server" />
                             </li>
                         </ul>
+                        
                     </div>
                 </div>
             </nav>
+            </form>
         </header>
 
-        <form id="form1" runat="server">
+        
             <div>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
-        </form>
+        
 
 
         <footer>

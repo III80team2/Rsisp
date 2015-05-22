@@ -24,9 +24,9 @@
             </div>
             <div id="divLog" class="divlogin" runat="server">
                 <label class="hidden-label" for="loginName">帳號</label>
-                <input id="loginName" name="loginName" placeholder="帳號" spellcheck="false" style="width: 250px; font-weight: normal; font-size: medium; color: #000000;" /><br />
+                <input id="loginName" name="loginName" placeholder="帳號" spellcheck="false" style="width: 250px; font-weight: normal; font-size: medium; color: #000000;" value="iii" /><br />
                 <label class="hidden-label" for="Passwd">密碼</label>
-                <input id="Passwd" name="Passwd" type="password" placeholder="密碼" style="width: 250px; font-weight: normal; font-size: medium; color: #000000;" /><br />
+                <input id="Passwd" name="Passwd" type="password" placeholder="密碼" style="width: 250px; font-weight: normal; font-size: medium; color: #000000;"value="password4" /><br />
                 
                 <br />
                 &nbsp;<asp:Button class="btn btn-default" ID="btnSubmit" runat="server" Text="確認" OnClick="btnSubmit_Click" BackColor="#0099FF" BorderStyle="None" Width="266px" />
