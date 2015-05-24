@@ -31,7 +31,7 @@
                 <br />
                 &nbsp;<asp:Button class="btn btn-default" ID="btnSubmit" runat="server" Text="確認" OnClick="btnSubmit_Click" BackColor="#0099FF" BorderStyle="None" Width="266px" />
                 <br />
-                <asp:HyperLink ID="hLinkRegister" runat="server" Font-Size="Medium" ForeColor="#009933">建立帳戶</asp:HyperLink>
+                <asp:HyperLink ID="hLinkRegister" runat="server" Font-Size="Medium" ForeColor="#009933" NavigateUrl="~/Register.aspx">建立帳戶</asp:HyperLink>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:HyperLink ID="hLinkForgetPwd" runat="server" Font-Size="Medium" ForeColor="#009933">忘記密碼?</asp:HyperLink>
             </div>
