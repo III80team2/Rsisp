@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 public class CPatientFactory
 {
     List<CPatient> patients = new List<CPatient>();
-    string connectionString = @"Data Source=NTHIGH\SQLEXPRESS;Initial Catalog=Rsisp;Integrated Security=True";
+    string connectionString = @"Data Source=CR4-10\MSSQLSERVER2013;Initial Catalog=Rsisp;Integrated Security=True";
 
     /// <summary>初始化 CUser 型別的物件</summary>
     public CPatientFactory()
@@ -34,7 +34,7 @@ public class CPatientFactory
                 patient.id = dv.Table.Rows[i]["ID_Patient"].ToString();
                 patient.name = dv.Table.Rows[i]["PatientName"].ToString();
                 patient.idcard = dv.Table.Rows[i]["PatientIDCard"].ToString();
-                patient.birthday = dv.Table.Rows[i]["PatientBirthday"].ToString();
+                patient.birthday = DateTime.Parse(dv.Table.Rows[i]["PatientBirthday"].ToString());
                 patients.Add(patient);
             }
         }
@@ -80,29 +80,13 @@ public class CPatientFactory
     }
 
     /// <summary>傳回 CPatient 型別物件的屬性 birthday 與參數相同的 CPatient 型別物件</summary>
-    public string getByBirthday(string birthday)
+    public CPatient getByBirthday(DateTime birthday)
     {
-        string a;
         for (int i = 0; i < patients.Count; i++)
         {
-            a = getBirthString(patients[i].birthday);
-            if (birthday.Equals(a))
-                return a;
+            if (patients[i].birthday == birthday) 
+                return patients[i];
         }
         return null;
-    }
-    public string getBirthString(string birth) 
-    {
-        string result;
-        if (birth.Substring(6, 1).Equals("/"))
-        {
-            result = birth.Substring(0, 9);
-            return result;
-        }
-        else
-        {
-            result = birth.Substring(0, 10);
-            return result;
-        }
     }
 }
