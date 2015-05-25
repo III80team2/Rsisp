@@ -15,6 +15,7 @@ public partial class dataBaseTest : System.Web.UI.Page
     {
         Response.Redirect(Request.Url.ToString());
     }
+
     protected void Page_Load(object sender, EventArgs e)
     {        
         gvUsers.DataSource = userFactory.getAll();
@@ -26,11 +27,13 @@ public partial class dataBaseTest : System.Web.UI.Page
         gvPatients.DataSource = patientFactory.getAll();
         gvPatients.DataBind();
 
+        ddlRole.Items.Clear();
         foreach (CRole role in roleFactory.getAll())
         {
             ddlRole.Items.Add(role.name);
         }
     }
+
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         CUser user = new CUser();
@@ -43,4 +46,12 @@ public partial class dataBaseTest : System.Web.UI.Page
         lblMessage.Text = userFactory.message;        
     }
 
+    protected void btnGetByBirthday_Click(object sender, EventArgs e)
+    {        
+        CPatient patient = patientFactory.getByBirthday(DateTime.Parse(tbBirthday.Text));
+        lblPID.Text = patient.id;
+        lblPName.Text = patient.name;
+        lblPIDCard.Text = patient.idcard;
+        lblPBirthday.Text = patient.birthday.ToShortDateString();
+    }
 }

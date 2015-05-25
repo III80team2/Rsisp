@@ -13,5 +13,5 @@ public class CPatient
     /// <summary>取得或設定 CPatient 型別物件的屬性 idcard</summary>
     public string idcard { set; get; }
     /// <summary>取得或設定 CPatient 型別物件的屬性 birthday</summary>
-    public string birthday { set; get; }
+    public DateTime birthday { set; get; }
 }
