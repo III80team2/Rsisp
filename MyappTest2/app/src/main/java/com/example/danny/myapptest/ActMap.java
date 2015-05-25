@@ -14,7 +14,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
-public class ActMain extends ActionBarActivity {
+public class ActMap extends ActionBarActivity {
 
     static final LatLng gpsKHT = new LatLng(22.6391069,120.3977157);
 
