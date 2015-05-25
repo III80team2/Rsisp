@@ -12,7 +12,6 @@ public partial class login : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Session["loginName"] = null;
-        divLog.Visible = false;
         if (!IsPostBack) { lblMessage.Visible = false;}
         
     }
@@ -33,10 +32,10 @@ public partial class login : System.Web.UI.Page
     }
     protected void iBtnGuest_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("guestPage.aspx");
+        
     }
     protected void iBtnStuff_Click(object sender, ImageClickEventArgs e)
     {
-        divLog.Visible = true;
+        
     }
 }

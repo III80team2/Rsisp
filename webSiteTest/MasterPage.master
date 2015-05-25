@@ -83,8 +83,13 @@
                                 <label class="hidden-label" for="Passwd">請輸入院民姓名或編號</label>
                                 <input id="search" name="search" type="text" placeholder="請輸入院民姓名或編號" style="width: 200px;" runat="server"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </li>
-                            <li style="padding-top:12px">
-                                <asp:ImageButton ID="iBtnSearch" ImageUrl="~/pics/search.png" runat="server" OnClick="iBtnSearch_Click"/>
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><asp:ImageButton ID="iBtnSearch" ImageUrl="~/pics/search.png" runat="server" OnClick="iBtnSearch_Click"/><span class="caret"></span></a>
+                                
+                                <ul class="dropdown-menu" role="menu" style="font-size:medium;background-color:#4b90f7">
+                                    <li><a>搜尋目標院民</a></li>
+                                    <li><a>搜尋全部院民</a></li>
+                                </ul>
                             </li>
                         </ul>
                         

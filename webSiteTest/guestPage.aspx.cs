@@ -17,6 +17,11 @@ public partial class guestPage : System.Web.UI.Page
        isIDNull = patientID.Value == "";
        isNameNull = patientName.Value == "";
        isBirthNull = patientBirth.Value == "";
+       if (!IsPostBack) 
+       {
+           divBirth.Visible = false;
+           divID.Visible = false;
+       }
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
@@ -27,14 +32,14 @@ public partial class guestPage : System.Web.UI.Page
     {
         try
         {
-            string id = patientID.Value;
+            string idCard = patientID.Value;
             string name = patientName.Value;
             string birth = patientBirth.Value;
             if ((!isIDNull && !isNameNull) || (!isNameNull && !isBirthNull) || (!isBirthNull && !isIDNull))
             {
                 if ((!isIDNull && !isNameNull))
                 {
-                    if ((name.Equals(factory.getByIdCard(id).name)) && (id.Equals(factory.getByIdCard(id).idcard)))
+                    if ((factory.getByIdCard(idCard) != null) && (factory.getByName(name) != null))
                         divTab.Visible = true;
                     else
                     {
@@ -44,7 +49,7 @@ public partial class guestPage : System.Web.UI.Page
                 }
                 if ((!isNameNull && !isBirthNull))
                 {
-                    if ((birth.Equals(factory.getByBirthday(birth))) && (name.Equals(factory.getByName(name).name)))
+                    if ((factory.getByBirthday(DateTime.Parse(birth)) != null) && (factory.getByName(name) != null))
                         divTab.Visible = true;
                     else
                     {
@@ -54,7 +59,7 @@ public partial class guestPage : System.Web.UI.Page
                 }
                 else if ((!isBirthNull && !isIDNull))
                 {
-                    if ((birth.Equals(factory.getByBirthday(birth))) && (id.Equals(factory.getByIdCard(id).idcard)))
+                    if ((factory.getByBirthday(DateTime.Parse(birth)) != null) && (factory.getByIdCard(idCard) != null))
                         divTab.Visible = true;
                     else
                     {
@@ -67,5 +72,17 @@ public partial class guestPage : System.Web.UI.Page
         }
         catch (Exception) { }
         
+    }
+    protected void btnBirth_Click(object sender, EventArgs e)
+    {
+        if (divID.Visible == true)
+            divID.Visible = false;
+        divBirth.Visible = true;
+    }
+    protected void btnID_Click(object sender, EventArgs e)
+    {
+        if (divBirth.Visible == true)
+            divBirth.Visible = false;
+        divID.Visible = true;
     }
 }

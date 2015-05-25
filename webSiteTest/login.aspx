@@ -19,7 +19,7 @@
     </div>
         <div class="login">
             <div>
-                <asp:ImageButton ID="iBtnStuff" runat="server" ImageUrl="~/pics/doctor.png" OnClick="iBtnStuff_Click" />
+                <%--<asp:ImageButton ID="iBtnStuff" runat="server" ImageUrl="~/pics/doctor.png" OnClick="iBtnStuff_Click" />--%>
                 <asp:ImageButton ID="iBtnGuset" runat="server" ImageUrl="~/pics/guest.png" OnClick="iBtnGuest_Click" />
             </div>
             <div id="divLog" class="divlogin" runat="server">
@@ -31,9 +31,9 @@
                 <br />
                 &nbsp;<asp:Button class="btn btn-default" ID="btnSubmit" runat="server" Text="確認" OnClick="btnSubmit_Click" BackColor="#0099FF" BorderStyle="None" Width="266px" />
                 <br />
-                <asp:HyperLink ID="hLinkRegister" runat="server" Font-Size="Medium" ForeColor="#009933" NavigateUrl="~/Register.aspx">建立帳戶</asp:HyperLink>
+                <asp:HyperLink ID="hLinkRegister" runat="server" Font-Size="Medium" ForeColor="#FF9900" NavigateUrl="~/Register.aspx">建立帳戶</asp:HyperLink>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:HyperLink ID="hLinkForgetPwd" runat="server" Font-Size="Medium" ForeColor="#009933">忘記密碼?</asp:HyperLink>
+                <asp:HyperLink ID="hLinkForgetPwd" runat="server" Font-Size="Medium" ForeColor="#003300" NavigateUrl="~/guestPage.aspx">我是訪客</asp:HyperLink>
             </div>
             <asp:Label ID="lblMessage" runat="server" ForeColor="Red" Text="您輸入的帳號密碼有誤"></asp:Label>
         </div>

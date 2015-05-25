@@ -18,14 +18,19 @@
 <body>
     <form id="form1" runat="server">
         <div style="padding:100px 100px 50px 100px">
-            右方的文字欄位請選擇兩項輸入:
-            <label class="hidden-label">院民姓名</label>
-            <input id="patientName" name="patientName" type="text" placeholder="院民姓名" style="width:180px;" runat="server"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <label class="hidden-label">院民生日(ex:2000/1/1)</label>
-            <input id="patientBirth" name="patientBirth" type="text" placeholder="院民生日(ex:2000/1/1)" style="width:180px;" runat="server"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <label class="hidden-label">院民身分證字號</label>
-            <input id="patientID" name="patientID" type="text" placeholder="院民身分證字號" style="width:180px;" runat="server"/>&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnSubmit" runat="server" Text="確認" OnClick="btnSubmit_Click" />
+            <input id="patientName" name="patientName" type="text" placeholder="院民姓名" style="width:180px;" runat="server"/><br />
+            <br/>
+            <asp:Button ID="btnBirth" runat="server" Text="輸入生日" OnClick="btnBirth_Click" BorderStyle="None"/>
+            &nbsp;<asp:Button ID="btnID" runat="server" Text="輸入身分證字號" OnClick="btnID_Click" BorderStyle="None"/>
+            <br />
+            <br />
+            <span id="divBirth" runat="server">
+                <input id="patientBirth" name="patientBirth" type="text" placeholder="院民生日" style="width:180px;" runat="server"/>
+            </span>
+            <span id="divID" runat="server" >
+                <input id="patientID" name="patientID" type="text" placeholder="院民身分證字號" style="width:180px;" runat="server"/>
+            </span>      
+            <asp:Button ID="btnSubmit" runat="server" Text="確認" OnClick="btnSubmit_Click" BorderStyle="None" />
             
         </div>
         <div id="divTab" runat="server" style="padding-left:100px">
