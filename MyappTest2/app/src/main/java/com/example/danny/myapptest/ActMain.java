@@ -58,30 +58,71 @@ public class ActMain extends Activity {
         }).start();
 
     }
-
-
+    private static final int MENU_Login = Menu.FIRST;
+    private static final int MENU_Add = Menu.FIRST + 1;
+    private static final int MENU_About = Menu.FIRST + 2;
+    private static final int MENU_exit = Menu.FIRST + 3;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_act_main, menu);
-        return true;
+
+
+            menu.add(0, MENU_Login, 0, "登入");
+            menu.add(0, MENU_Add, 0,"註冊");
+            menu.add(0, MENU_About, 0, "關於我們");
+            menu.add(0, MENU_exit, 0,"離開本系統");
+
+        return super.onCreateOptionsMenu(menu);
     }
+
+
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch(item.getItemId()) {
+            case MENU_Login:
+//撰寫點選此選單要執行的功能，例如：變更標題列...
+                Intent intent = new Intent(ActMain.this,LoginMain.class);
+                startActivity(intent);
+                break;
+
+
+            case MENU_exit :
+//結束此程式
+                new AlertDialog.Builder(ActMain.this)
+                        .setTitle("離開本系統")
+                        .setMessage("是否確定?")
+
+                        .setPositiveButton("確定",
+                                new DialogInterface.OnClickListener() {
+
+                                    @Override
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+                                        finish();
+                                    }
+                                })
+                        .setNegativeButton("取消",
+                                new DialogInterface.OnClickListener() {
+
+                                    @Override
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+
+
+                                    }
+                                }).show();
+
+            default:
         }
-
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
 
 
 
@@ -111,7 +152,7 @@ public class ActMain extends Activity {
 
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             new AlertDialog.Builder(ActMain.this)
-                    .setTitle("結束程式")
+                    .setTitle("離開本系統")
                     .setMessage("是否確定?")
 
                     .setPositiveButton("確定",

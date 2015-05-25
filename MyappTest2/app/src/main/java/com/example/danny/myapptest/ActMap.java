@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -18,22 +19,26 @@ public class ActMap extends ActionBarActivity {
 
     static final LatLng gpsKHT = new LatLng(22.6391069,120.3977157);
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actmap);
 
 
+
+
         GoogleMap map = ((MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map)).getMap();
 
-        Marker markKHT = map.addMarker(new MarkerOptions()
-                .position(gpsKHT).title("高雄市").snippet("火車站"));
+        //Marker markKHT = map.addMarker(new MarkerOptions()
+                //.position(gpsKHT).title("財團法人台灣省").snippet("私立高雄仁愛之家附設玫瑰園養護所"));
 
         map.moveCamera( CameraUpdateFactory.newLatLngZoom(gpsKHT, 16) );
 
 
-
+        map.clear();
 
     }
 
@@ -59,5 +64,6 @@ public class ActMap extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
 
