@@ -24,36 +24,28 @@
 </head>
 
 <body>
-    
-
     <form id="form1" runat="server">
-    <div style="margin-top:200px">
+    <div style="margin-top:180px">
         <h1 style="text-align: center">ISP資訊系統登入畫面</h1>
     </div>
-    <div style="text-align:center;padding:75px;background-color:#555;height:250px;margin:300px">
-
-        <label class="hidden-label" for="loginName">帳號</label>
-        <input id="loginName" name="qq" placeholder="帳號"spellcheck="false" style="width:250px"/><br/>
-        <label class="hidden-label" for="Passwd">密碼</label>
-        <input id="Passwd" name="Passwd" type="password"placeholder="密碼" style="width:250px"/><br/><br/>
-        <asp:Button class="btn btn-default" ID="btnSubmit" runat="server" Text="確認" OnClick="btnSubmit_Click" />
-        <a href="guestPage.aspx">我是訪客</a>
-
-        <%--<p style="text-align: center; color: black;font-size:medium;overflow: hidden;visibility: hidden">
-            <asp:TextBox ID="aaa" runat="server" ></asp:TextBox>
-            <br /><br />
-
-            密碼:
-            <asp:TextBox ID="loginPassword" runat="server"></asp:TextBox><br /><br />
-
-        </p>
-        <p style="padding:0 0 0 35px">
-            <asp:Button class="btn btn-default" ID="btnClear" runat="server" Text="清除重填" OnClick="btnClear_Click" />
-            <asp:Button class="btn btn-default" ID="btnSubmit" runat="server" Text="確認送出" OnClick="btnSubmit_Click" /><br />
-            <a href="guestPage.aspx">我是訪客</a>
-        </p>--%>
-
-    </div>
+        <div style="text-align: center; padding-top: 50px; background-color: #ede9e9; height: 350px; margin: 10px 500px 0 500px">
+            <div>
+                <asp:ImageButton ID="iButtonStuff" runat="server" OnClick="iButtonStuff_Click" ImageUrl="~/pics/hospital.png" />
+                <asp:ImageButton ID="iButtonGuset" runat="server" ImageUrl="~/pics/guest.png" OnClick="iButtonGuset_Click" />
+            </div>
+            <div style="color: #800080; font-weight: 700; font-size: medium">
+                <label class="hidden-label" for="loginName">帳號</label>
+                <input id="loginName" name="qq" placeholder="帳號" spellcheck="false" style="width: 250px; font-weight: normal; font-size: medium; color: #000000;" /><br />
+                <label class="hidden-label" for="Passwd">密碼</label>
+                <input id="Passwd" name="Passwd" type="password" placeholder="密碼" style="width: 250px; font-weight: normal; font-size: medium; color: #000000;" /><br />
+                <br />
+                &nbsp;<asp:Button class="btn btn-default" ID="btnSubmit" runat="server" Text="確認" OnClick="btnSubmit_Click" BackColor="#0099FF" BorderStyle="None" Width="266px" />
+                <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:HyperLink ID="HyperLink1" runat="server" Font-Size="Medium" ForeColor="#990099">忘記密碼</asp:HyperLink>
+            </div>
+        </div>
+    
         
     <br /><br />
 
