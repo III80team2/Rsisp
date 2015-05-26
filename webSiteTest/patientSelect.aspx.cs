@@ -13,6 +13,12 @@ public partial class patientSelect : System.Web.UI.Page
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        Response.Redirect("index.aspx");
+        
+    }
+    protected void ibtnSearch_Click(object sender, ImageClickEventArgs e)
+    {
+        string patientName = Request.Form["tboxPatient"].ToString();
+
+        Response.Redirect("test.aspx?pid=10001");
     }
 }
