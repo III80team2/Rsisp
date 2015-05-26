@@ -10,7 +10,8 @@ using System.Web.UI.WebControls;
 public class CRoleFactory
 {
     List<CRole> roles = new List<CRole>();
-    string connectionString = @"Data Source=CR4-04\MSSQLSERVER2013;Initial Catalog=Rsisp;Integrated Security=True";
+    string connectionString = @"Data Source=CR4-10\MSSQLSERVER2013;Initial Catalog=Rsisp;Integrated Security=True";
+    public string message;
 
     /// <summary>初始化 CUser 型別的物件</summary>
 	public CRoleFactory()
@@ -64,5 +65,67 @@ public class CRoleFactory
                 return roles[i];
         }
         return null;
+    }
+
+    /// <summary>新增角色到資料庫</summary>
+    public void addUser(CRole role)
+    {
+        try
+        {
+            SqlDataSource sds = new SqlDataSource();
+            sds.ConnectionString = connectionString;
+            sds.InsertCommand = "dbo.addRole";
+            sds.InsertCommandType = SqlDataSourceCommandType.StoredProcedure;
+            sds.InsertParameters.Add(new Parameter("ID_Role", DbType.String, role.id));
+            sds.InsertParameters.Add(new Parameter("RoleName", DbType.String, role.name));            
+            sds.Insert();
+
+            message = "add success";
+        }
+        catch (Exception ex)
+        {
+            message = ex.Message;
+        }
+    }
+
+    /// <summary>刪除資料庫內的角色身分</summary>
+    public void deleteUser(CRole role)
+    {
+        try
+        {
+            SqlDataSource sds = new SqlDataSource();
+            sds.ConnectionString = connectionString;
+            sds.DeleteCommand = "dbo.deleteRoleByID";
+            sds.DeleteCommandType = SqlDataSourceCommandType.StoredProcedure;
+            sds.DeleteParameters.Add(new Parameter("ID_Role", DbType.String, role.id));
+            sds.Delete();
+
+            message = "delete success";
+        }
+        catch (Exception ex)
+        {
+            message = ex.Message;
+        }
+    }
+
+    /// <summary>更新資料庫內指定ID的角色身分資料</summary>
+    public void updateUser(CRole role)
+    {
+        try
+        {
+            SqlDataSource sds = new SqlDataSource();
+            sds.ConnectionString = connectionString;
+            sds.UpdateCommand = "dbo.updateRoleByID";
+            sds.UpdateCommandType = SqlDataSourceCommandType.StoredProcedure;
+            sds.UpdateParameters.Add(new Parameter("ID_Role", DbType.String, role.id));
+            sds.UpdateParameters.Add(new Parameter("RoleName", DbType.String, role.name)); 
+            sds.Update();
+
+            message = "update success";
+        }
+        catch (Exception ex)
+        {
+            message = ex.Message;
+        }
     }
 }

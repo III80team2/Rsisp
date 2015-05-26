@@ -12,12 +12,12 @@ public partial class dataBaseTest : System.Web.UI.Page
     CPatientFactory patientFactory = new CPatientFactory();
 
     protected void btnRefresh_Click(object sender, EventArgs e)
-    {
+    {        
         Response.Redirect(Request.Url.ToString());
     }
 
     protected void Page_Load(object sender, EventArgs e)
-    {        
+    {
         gvUsers.DataSource = userFactory.getAll();
         gvUsers.DataBind();
 
@@ -27,14 +27,24 @@ public partial class dataBaseTest : System.Web.UI.Page
         gvPatients.DataSource = patientFactory.getAll();
         gvPatients.DataBind();
 
-        ddlRole.Items.Clear();
-        foreach (CRole role in roleFactory.getAll())
+        if (ddlRole.Items.Count == 0)
         {
-            ddlRole.Items.Add(role.name);
+            foreach (CRole role in roleFactory.getAll())
+            {
+                ddlRole.Items.Add(role.name);
+            }
+        }
+
+        if (ddlUserName.Items.Count == 0)
+        {
+            foreach (CUser user in userFactory.getAll())
+            {
+                ddlUserName.Items.Add(user.name);
+            }
         }
     }
 
-    protected void btnAdd_Click(object sender, EventArgs e)
+    protected void btnAdd1_Click(object sender, EventArgs e)
     {
         CUser user = new CUser();
         user.account = tbUserAccount.Text;
@@ -43,8 +53,14 @@ public partial class dataBaseTest : System.Web.UI.Page
         user.role_id = roleFactory.getByName(ddlRole.SelectedItem.Text).id;
         
         userFactory.addUser(user);
-        lblMessage.Text = userFactory.message;        
+        lblMessage1.Text = userFactory.message;        
     }
+
+    //protected void btndelete1_Click(object sender, EventArgs e)
+    //{
+    //    CUser user = userFactory.getByName(ddlUserName.SelectedItem.Text);
+    //    userFactory.deleteUser(user);
+    //}
 
     protected void btnGetByBirthday_Click(object sender, EventArgs e)
     {        
@@ -54,4 +70,5 @@ public partial class dataBaseTest : System.Web.UI.Page
         lblPIDCard.Text = patient.idcard;
         lblPBirthday.Text = patient.birthday.ToShortDateString();
     }
+    
 }

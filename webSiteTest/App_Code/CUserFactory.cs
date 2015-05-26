@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 public class CUserFactory
 {
     List<CUser> users=new List<CUser>();
-    string connectionString = @"Data Source=CR4-04\MSSQLSERVER2013;Initial Catalog=Rsisp;Integrated Security=True";
+    string connectionString = @"Data Source=CR4-10\MSSQLSERVER2013;Initial Catalog=Rsisp;Integrated Security=True";
     public string message;
 
     /// <summary>初始化 CUser 型別的物件</summary>
@@ -108,7 +108,51 @@ public class CUserFactory
             sds.InsertParameters.Add(new Parameter("UserPassword", DbType.String, user.password));
             sds.Insert();
 
-            message = "success";
+            message = "add success";
+        }
+        catch (Exception ex)
+        {
+            message = ex.Message;
+        }
+    }
+
+    /// <summary>刪除資料庫內的使用者</summary>
+    public void deleteUser(CUser user)
+    {
+        try
+        {
+            SqlDataSource sds = new SqlDataSource();
+            sds.ConnectionString = connectionString;
+            sds.DeleteCommand = "dbo.deleteUserByID";
+            sds.DeleteCommandType = SqlDataSourceCommandType.StoredProcedure;
+            sds.DeleteParameters.Add(new Parameter("ID_User", DbType.String, user.id));
+            sds.Delete();
+
+            message = "delete success";
+        }
+        catch (Exception ex)
+        {
+            message = ex.Message;
+        }
+    }
+
+    /// <summary>更新資料庫內指定ID的使用者資料</summary>
+    public void updateUser(CUser user)
+    {
+        try
+        {
+            SqlDataSource sds = new SqlDataSource();
+            sds.ConnectionString = connectionString;
+            sds.UpdateCommand = "dbo.updateUserByID";
+            sds.UpdateCommandType = SqlDataSourceCommandType.StoredProcedure;
+            sds.UpdateParameters.Add(new Parameter("ID_User", DbType.String, user.id));
+            sds.UpdateParameters.Add(new Parameter("UserName", DbType.String, user.name));
+            sds.UpdateParameters.Add(new Parameter("ID_Role", DbType.String, user.role_id));
+            sds.UpdateParameters.Add(new Parameter("UserAccount", DbType.String, user.account));
+            sds.UpdateParameters.Add(new Parameter("UserPassword", DbType.String, user.password));
+            sds.Update();
+
+            message = "update success";
         }
         catch (Exception ex)
         {

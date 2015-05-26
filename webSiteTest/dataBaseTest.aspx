@@ -27,7 +27,9 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style4">
+                    <asp:Label ID="lblMessage1" runat="server" Text="message"></asp:Label>
+                </td>
                 <td class="auto-style4">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -89,8 +91,7 @@
             </tr>
             <tr>
                 <td class="auto-style4">
-                    <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="新增" />
-                    <asp:Label ID="lblMessage" runat="server" Text="message"></asp:Label>
+                    <asp:Button ID="btnAdd1" runat="server" OnClick="btnAdd1_Click" Text="新增" />
                 </td>
                 <td class="auto-style4">
                     &nbsp;</td>
@@ -103,7 +104,15 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
+                <td class="auto-style4">刪除使用者</td>
                 <td class="auto-style4">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style4">姓名：<asp:DropDownList ID="ddlUserName" runat="server">
+                    </asp:DropDownList>
+                    <asp:Button ID="btndelete1" runat="server" OnClick="btndelete1_Click" Text="刪除" />
+                </td>
                 <td class="auto-style4">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
