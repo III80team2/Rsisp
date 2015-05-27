@@ -22,6 +22,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.widget.Toast;
 
 
 public class ActMain extends Activity {
@@ -34,6 +35,8 @@ public class ActMain extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actmain);
         InicialComponent();
+
+
 
 
 
@@ -59,16 +62,16 @@ public class ActMain extends Activity {
 
     }
     private static final int MENU_Login = Menu.FIRST;
-    private static final int MENU_Add = Menu.FIRST + 1;
-    private static final int MENU_About = Menu.FIRST + 2;
-    private static final int MENU_exit = Menu.FIRST + 3;
+    //private static final int MENU_Add = Menu.FIRST + 1;
+    private static final int MENU_About = Menu.FIRST + 1;
+    private static final int MENU_exit = Menu.FIRST + 2;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
 
             menu.add(0, MENU_Login, 0, "登入");
-            menu.add(0, MENU_Add, 0,"註冊");
+           // menu.add(0, MENU_Add, 0,"註冊");
             menu.add(0, MENU_About, 0, "關於我們");
             menu.add(0, MENU_exit, 0,"離開本系統");
 
@@ -94,27 +97,27 @@ public class ActMain extends Activity {
                 new AlertDialog.Builder(ActMain.this)
                         .setTitle("離開本系統")
                         .setMessage("是否確定?")
+                        .setPositiveButton("確定", new DialogInterface.OnClickListener() {
 
-                        .setPositiveButton("確定",
-                                new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog,int which) {
 
-                                    @Override
-                                    public void onClick(DialogInterface dialog,
-                                                        int which) {
-                                        finish();
-                                    }
-                                })
+                                finish();
+
+                            }
+                        })
                         .setNegativeButton("取消",
                                 new DialogInterface.OnClickListener() {
 
                                     @Override
-                                    public void onClick(DialogInterface dialog,
-                                                        int which) {
-
+                                    public void onClick(DialogInterface dialog,int which)
+                                    {
 
                                     }
                                 }).show();
 
+
+                break;
             default:
         }
         return super.onOptionsItemSelected(item);
@@ -127,7 +130,7 @@ public class ActMain extends Activity {
 
 
 
-    View.OnClickListener btnisp_click=new View.OnClickListener(){
+    View.OnClickListener btnlogin_click=new View.OnClickListener(){
         public void onClick(View arg0) {
 
             Intent intent = new Intent(ActMain.this,LoginMain.class);
@@ -173,17 +176,20 @@ public class ActMain extends Activity {
 
 
                                 }
+
                             }).show();
         }
+
         return true;
+
     }
 
 
     private void InicialComponent()
     {
 
-        btnisp = (ImageButton) findViewById(R.id.btnisp);
-        btnisp.setOnClickListener(btnisp_click);
+        btnlogin = (ImageButton) findViewById(R.id.btnlogin);
+        btnlogin.setOnClickListener(btnlogin_click);
 
         btnMap = (ImageButton) findViewById(R.id.btnMap);
         btnMap.setOnClickListener(btnMap_click);
@@ -196,6 +202,6 @@ public class ActMain extends Activity {
     EditText textTime1;
 
     ImageButton btnMap;
-    ImageButton btnisp;
+    ImageButton btnlogin;
 
 }

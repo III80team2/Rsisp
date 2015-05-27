@@ -7,11 +7,12 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="ISP資訊系統登入畫面"
-        android:textSize="35dp"
+        android:text="玫瑰園資訊登入系統"
+        android:textSize="30dp"
         android:textColor="#000000"
         android:gravity="center"
-        android:layout_weight="0.25" />
+        android:layout_weight="0.25"
+        />
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="35dp"
@@ -29,22 +30,26 @@
             android:layout_height="68dp"
             android:weightSum="1">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="35dp"
-                android:text="帳號："
-                android:textColor="#000000"
-                />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textSize="35dp"-->
+                <!--android:text="帳號："-->
+                <!--android:textColor="#000000"-->
+                <!--/>-->
             <EditText
-                android:layout_width="238dp"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:text=""
-                android:textSize="20pt"
+                android:textSize="15pt"
                 android:background="#FFFFFF"
                 android:id="@+id/txtId"
-                android:layout_weight="0.20" />
+                android:layout_weight="0.20"
+                android:hint="帳號"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                />
 
         </LinearLayout>
 
@@ -54,23 +59,26 @@
             android:layout_height="wrap_content"
             android:weightSum="1">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="35dp"
-                android:text="密碼："
-                android:textColor="#000000"
-                />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textSize="35dp"-->
+                <!--android:text="密碼："-->
+                <!--android:textColor="#000000"-->
+                <!--/>-->
             <EditText
-                android:layout_width="238dp"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:text=""
-                android:textSize="20pt"
-
+                android:textSize="15pt"
+                android:hint="密碼"
                 android:background="#FFFFFF"
                 android:id="@+id/txtPassword"
-                android:layout_weight="0.20" />
+                android:layout_weight="0.20"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                />
 
         </LinearLayout>
 
@@ -82,14 +90,7 @@
         android:background="#008080"
         android:layout_weight="0.16">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="清除重填"
-            android:textSize="30dp"
-            android:id="@+id/btnClean"
-            />
+
 
         <Button
             android:layout_width="wrap_content"
@@ -97,7 +98,10 @@
             android:layout_weight="1"
             android:text="確認送出"
             android:textSize="30dp"
+            android:background="#03b5fb"
             android:id="@+id/btnSubmit"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             />
     </LinearLayout>
 

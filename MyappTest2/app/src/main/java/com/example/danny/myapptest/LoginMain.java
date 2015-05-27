@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -16,6 +17,10 @@ public class LoginMain extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loginmain);
         InicialComponent();
+
+
+        setTitle("***********歡迎進入本系統***********");
+
     }
 
 
@@ -34,11 +39,13 @@ public class LoginMain extends Activity {
     private void InicialComponent() {
 
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
+        aa = (TextView) findViewById(R.id.txtId);
         btnSubmit.setOnClickListener(btnSubmit_click);
 
 
     }
 
     Button btnSubmit;
+    TextView aa;
 
 }

@@ -21,7 +21,7 @@
             android:id="@+id/DigitalClock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#99FFFF"
+            android:textColor="#FFFFFF"
 
         />
 
@@ -38,16 +38,16 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/btnisp"
-            android:src="@drawable/isp"
+            android:id="@+id/btnlogin"
+            android:src="@drawable/login"
             android:layout_weight="1"
-            android:background="#444444"
+            android:background="#C63300"
             />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/btnMap"
+            android:id="@+id/btnIMG"
             android:src="@drawable/map"
             android:layout_weight="1"
             android:background="#444444"
@@ -59,7 +59,7 @@
             android:id="@+id/btnNews"
             android:src="@drawable/news"
             android:layout_weight="1"
-            android:background="#444444"
+            android:background="#886600"
             />
 
     </LinearLayout>
@@ -76,20 +76,27 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/btnb"
-            android:src="@drawable/map"
-            android:layout_weight="1" />
+            android:src="@drawable/qr"
+            android:layout_weight="1"
+            android:background="#007799"
+            />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/btnc"
-            android:src="@drawable/map"
-            android:layout_weight="1" />
+            android:src="@drawable/sc"
+            android:layout_weight="1"
+            android:background="#00AA88"
+            />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/btnd"
+            android:id="@+id/btnMap"
             android:src="@drawable/map"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+
+            android:background="#990099"
+            />
 
     </LinearLayout>
 
@@ -97,32 +104,7 @@
 
 
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        >
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/btne"
-            android:src="@drawable/map"
-            android:layout_weight="1" />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/btnf"
-            android:src="@drawable/map"
-            android:layout_weight="1" />
-        <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/btng"
-        android:src="@drawable/map"
-        android:layout_weight="1" />
 
-    </LinearLayout>
 
 
 </LinearLayout>
