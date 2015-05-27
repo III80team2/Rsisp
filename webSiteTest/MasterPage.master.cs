@@ -11,8 +11,4 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         lblLoginName.Text = Session["loginName"].ToString();
     }
-    protected void iBtnSearch_Click(object sender, ImageClickEventArgs e)
-    {
-        Session["patientName"] = search.Value;
-    }
 }

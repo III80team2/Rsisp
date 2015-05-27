@@ -36,7 +36,8 @@
             </tr>
             <tr>
                 <td>
-                    <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
+                    <div style="margin:150px">
+                        <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
                         <LayoutTemplate>
                             <table runat="server">
                                 <tr runat="server">
@@ -51,7 +52,7 @@
                                 </tr>
                                 <tr runat="server">
                                     <td runat="server" style="">
-                                        <asp:DataPager ID="DataPager1" runat="server" PageSize="12">
+                                        <asp:DataPager ID="DataPager1" runat="server" PageSize="16">
                                             <Fields>
                                                 <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" ButtonCssClass="btn-primary"/>
                                             </Fields>
@@ -72,6 +73,7 @@
                             </div>
                         </ItemTemplate>
                     </asp:ListView>
+                    </div>
                 </td>
             </tr>
         </table>

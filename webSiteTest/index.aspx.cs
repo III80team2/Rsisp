@@ -11,4 +11,8 @@ public partial class index : System.Web.UI.Page
     {
 
     }
+    protected void ibtnSearch_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("test.aspx?pid=10001");
+    }
 }

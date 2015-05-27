@@ -19,14 +19,21 @@
 .login {
     text-align: center; 
     padding-top: 50px; 
+    margin-left:25%;
     background-color: #ede9e9; 
     height: 350px; 
-    margin: 10px 500px 0 500px
+    width:50%;
+    position:absolute;
 }
 .loginfooter {
     background-color:#FFF;
+    padding-top:350px;
     height:80px;
     font-size:large;
     color:black;
     text-align:center;
 }
+.blockSearch {
+            margin:0px 250px 0px 300px;
+            padding-top:50px;
+        }
