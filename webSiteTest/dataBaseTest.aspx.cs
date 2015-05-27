@@ -9,7 +9,7 @@ public partial class dataBaseTest : System.Web.UI.Page
 {
     CUserFactory userFactory = new CUserFactory();
     CRoleFactory roleFactory = new CRoleFactory();
-    CPatientFactory patientFactory = new CPatientFactory();
+    CPatientFactory patientFactory = new CPatientFactory();    
 
     protected void btnRefresh_Click(object sender, EventArgs e)
     {        
@@ -18,6 +18,9 @@ public partial class dataBaseTest : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["message"] != null)
+            lblMessage1.Text = Session["message"].ToString();
+
         gvUsers.DataSource = userFactory.getAll();
         gvUsers.DataBind();
 
@@ -27,11 +30,12 @@ public partial class dataBaseTest : System.Web.UI.Page
         gvPatients.DataSource = patientFactory.getAll();
         gvPatients.DataBind();
 
-        if (ddlRole.Items.Count == 0)
+        if (ddlRole.Items.Count == 0 || ddlRoleNew.Items.Count == 0)
         {
             foreach (CRole role in roleFactory.getAll())
             {
                 ddlRole.Items.Add(role.name);
+                ddlRoleNew.Items.Add(role.name);
             }
         }
 
@@ -40,6 +44,14 @@ public partial class dataBaseTest : System.Web.UI.Page
             foreach (CUser user in userFactory.getAll())
             {
                 ddlUserName.Items.Add(user.name);
+            }
+        }
+
+        if (ddlUserID.Items.Count == 0)
+        {
+            foreach (CUser user in userFactory.getAll())
+            {
+                ddlUserID.Items.Add(user.id);
             }
         }
     }
@@ -53,14 +65,39 @@ public partial class dataBaseTest : System.Web.UI.Page
         user.role_id = roleFactory.getByName(ddlRole.SelectedItem.Text).id;
         
         userFactory.addUser(user);
-        lblMessage1.Text = userFactory.message;        
+        Response.Redirect(Request.Url.ToString());
     }
 
-    //protected void btndelete1_Click(object sender, EventArgs e)
-    //{
-    //    CUser user = userFactory.getByName(ddlUserName.SelectedItem.Text);
-    //    userFactory.deleteUser(user);
-    //}
+    protected void btndelete1_Click(object sender, EventArgs e)
+    {
+        CUser user = userFactory.getByName(ddlUserName.SelectedItem.Text);
+        userFactory.deleteUser(user);
+
+        Response.Redirect(Request.Url.ToString());
+    }
+
+    protected void ddlUserID_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        CUser user = userFactory.getById(ddlUserID.SelectedItem.Text);
+        tbUserAccountNew.Text = user.account;
+        tbUserPasswordNew.Text = user.password;
+        tbUserNameNew.Text = user.name;
+
+        ddlRoleNew.Text = roleFactory.getById(user.role_id).name;
+    }
+
+    protected void btnUpdate1_Click(object sender, EventArgs e)
+    {
+        CUser user = userFactory.getById(ddlUserID.SelectedItem.Text);        
+        user.account = tbUserAccountNew.Text;
+        user.password = tbUserPasswordNew.Text;
+        user.name = tbUserNameNew.Text;
+        user.role_id = roleFactory.getByName(ddlRoleNew.SelectedItem.Text).id;
+        userFactory.updateUser(user);
+
+        Session["message"] = userFactory.message;
+        Response.Redirect(Request.Url.ToString());
+    }
 
     protected void btnGetByBirthday_Click(object sender, EventArgs e)
     {        
@@ -70,5 +107,4 @@ public partial class dataBaseTest : System.Web.UI.Page
         lblPIDCard.Text = patient.idcard;
         lblPBirthday.Text = patient.birthday.ToShortDateString();
     }
-    
 }
