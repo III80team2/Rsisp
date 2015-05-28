@@ -22,9 +22,9 @@
         <table class="auto-style1">
             <tr>
                 <td>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString %>" SelectCommand="SELECT * FROM [patientList] WHERE ([pid] = @pid)">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString3 %>" SelectCommand="SELECT * FROM [Patients] WHERE ([ID_Patient] = @ID_Patient)">
                         <SelectParameters>
-                            <asp:QueryStringParameter DefaultValue="0" Name="pid" QueryStringField="pid" Type="Int32" />
+                            <asp:QueryStringParameter Name="ID_Patient" QueryStringField="pid" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource>
                 </td>
@@ -39,10 +39,10 @@
                         <ItemTemplate>
                             <div class="col-sm-6 col-md-3" style="width:auto">
                                 <div class="thumbnail">
-                                    <img src="<%# Eval("picPath") %>"/>
+                                    <img src="<%# Eval("PatientPhotoPath") %>"/>
                                 </div>
                                 <div class="caption" style="text-align: center">
-                                    <asp:Label ID="lblTitle" runat="server" Text='<%# Eval("picTitle") %>'></asp:Label>
+                                    <asp:Label ID="lblTitle" runat="server" Text='<%# Eval("PatientName") %>'></asp:Label>
                                 </div>
 
                             </div>

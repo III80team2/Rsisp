@@ -8,7 +8,7 @@
     <title>選擇病患頁面</title>
     <style>
         .blockSearch {
-            margin:150px 250px 50px 300px
+            margin:150px 250px 80px 300px
         }
         #tboxPatient {
             width: 576px;
@@ -17,26 +17,40 @@
         .auto-style1 {
             width: 100%;
         }
+        .auto-style2 {
+            font-size: xx-large;
+            font-family: 微軟正黑體;
+        }
+        .auto-style3 {
+            color: #FFFFFF;
+        }
     </style>
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <script src="Scripts/bootstrap.js"></script>
     <script src="Scripts/jquery-2.1.4.min.js"></script>
 </head>
-<body style="background-color:white">
+<body style="background-color:#DDD">
     <form id="form1" runat="server">
+        <div style="background-color:#888; height:100px;vertical-align:middle" class="auto-style2">
+            <p>
+                <img src="pics/logo.png"/>
+                <span class="auto-style3">評估表資訊系統
+            </span>
+            </p>
+        </div>
         <div class="blockSearch">
-            <input type="text" id="tboxPatient" name="tboxPatient" placeholder="請輸入住民姓名" runat="server"/>
+            <input type="text" id="tboxPatient" name="tboxPatient" placeholder="請輸入住民姓名" runat="server" style="width:50%"/>
             <asp:ImageButton ID="ibtnSearch" runat="server" Height="25px" ImageAlign="Middle" ImageUrl="~/pics/searchIcon.jpg" OnClick="ibtnSearch_Click" />
         </div>
         <table class="auto-style1">
             <tr>
                 <td>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString %>" SelectCommand="SELECT * FROM [patientList]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString2 %>" SelectCommand="SELECT * FROM [Patients]"></asp:SqlDataSource>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div style="margin:150px">
+                    <div style="margin:0 150px">
                         <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
                         <LayoutTemplate>
                             <table runat="server">
@@ -51,7 +65,7 @@
                                     </td>
                                 </tr>
                                 <tr runat="server">
-                                    <td runat="server" style="">
+                                    <td runat="server">
                                         <asp:DataPager ID="DataPager1" runat="server" PageSize="16">
                                             <Fields>
                                                 <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" ButtonCssClass="btn-primary"/>
@@ -64,10 +78,10 @@
                         <ItemTemplate>
                             <div class="col-sm-6 col-md-3" style="width:auto">
                                 <div class="thumbnail">
-                                    <asp:HyperLink runat="server" ImageUrl='<%# Eval("picPath") %>' NavigateUrl='<%#"test.aspx?pid="+Eval("pid")%>' Width="150px" Height="150px">
+                                    <asp:HyperLink runat="server" ImageUrl='<%# Eval("PatientPhotoPath") %>' NavigateUrl='<%#"test.aspx?pid="+Eval("ID_Patient")%>' Width="150px" Height="150px">
                                     </asp:HyperLink>
                                     <div class="caption" style="text-align:center">
-                                     <asp:Label ID="lblTitle" runat="server" Text='<%# Eval("picTitle") %>'></asp:Label>
+                                     <asp:Label ID="lblTitle" runat="server" Text='<%# Eval("PatientName") %>'></asp:Label>
                                     </div>
                                 </div>
                             </div>
