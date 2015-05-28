@@ -24,19 +24,24 @@ public partial class dataBaseTest : System.Web.UI.Page
 
         if (!this.IsPostBack)
         {
-            foreach (CRole role in roleFactory.getAll())
-            {
-                ddlRole1.Items.Add(role.name);
-                ddlRole2.Items.Add(role.name);
-                ddlRole3.Items.Add(role.name);
-                ddlRoleID.Items.Add(role.id);
-            }
-
-
             foreach (CUser user in userFactory.getAll())
             {
                 ddlUserName.Items.Add(user.name);
                 ddlUserID.Items.Add(user.id);
+            }
+
+            foreach (CRole role in roleFactory.getAll())
+            {
+                ddlRole1.Items.Add(role.name);
+                ddlRole2.Items.Add(role.name);
+                ddlRoleName.Items.Add(role.name);
+                ddlRoleID.Items.Add(role.id);
+            }
+
+            foreach (CPatient patient in patientFactory.getAll())
+            {
+                ddlPatientName.Items.Add(patient.name);
+                ddlPatientID.Items.Add(patient.id);
             }
         }        
     }
@@ -97,7 +102,7 @@ public partial class dataBaseTest : System.Web.UI.Page
 
     protected void btndeleteRole_Click(object sender, EventArgs e)
     {
-        CRole role = roleFactory.getByName(ddlRole3.SelectedItem.Text);
+        CRole role = roleFactory.getByName(ddlRoleName.SelectedItem.Text);
 
         roleFactory.deleteRole(role);
         Response.Redirect(Request.Url.ToString());
@@ -120,5 +125,47 @@ public partial class dataBaseTest : System.Web.UI.Page
         lblPName.Text = patient.name;
         lblPIDCard.Text = patient.idcard;
         lblPBirthday.Text = patient.birthday.ToShortDateString();
-    }    
+    }
+
+    protected void btnAddPatient_Click(object sender, EventArgs e)
+    {
+        CPatient patient = new CPatient();
+        patient.name = tbPatientName.Text;
+        patient.idcard = tbPatientIDCard.Text;
+        patient.birthday = calPatientBirthday.SelectedDate.Date;
+        patient.photoPath = "pics/" + fuPatientPhoto.FileName;
+
+        fuPatientPhoto.SaveAs(this.MapPath("pics\\") + fuPatientPhoto.FileName);
+
+        patientFactory.addPatient(patient);
+        Response.Redirect(Request.Url.ToString());
+    }
+    protected void btndeletePatient_Click(object sender, EventArgs e)
+    {
+        CPatient patient = patientFactory.getByName(ddlPatientName.SelectedItem.Text);
+
+        patientFactory.deletePatient(patient);
+        Response.Redirect(Request.Url.ToString());
+    }
+    protected void ddlPatientID_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        CPatient patient = patientFactory.getById(ddlPatientID.SelectedItem.Text);
+        tbPatientName2.Text = patient.name;
+        tbPatientIDCard2.Text = patient.idcard;
+        calPatientBirthday2.VisibleDate = patient.birthday;
+    }
+    protected void btnUpdatePatient_Click(object sender, EventArgs e)
+    {
+        CPatient patient = patientFactory.getById(ddlPatientID.SelectedItem.Text);
+        patient.name = tbPatientName2.Text;
+        patient.idcard = tbPatientIDCard2.Text;
+        patient.birthday = calPatientBirthday2.SelectedDate.Date;
+        patient.photoPath = "pics/" + fuPatientPhoto2.FileName;
+
+        fuPatientPhoto.SaveAs(this.MapPath("pics\\") + fuPatientPhoto2.FileName);
+
+        patientFactory.updatePatient(patient);
+        Response.Redirect(Request.Url.ToString());
+    }
+
 }
