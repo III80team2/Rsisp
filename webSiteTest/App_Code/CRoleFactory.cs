@@ -69,8 +69,8 @@ public class CRoleFactory
         return null;
     }
 
-    /// <summary>新增角色到資料庫</summary>
-    public void addUser(CRole role)
+    /// <summary>新增身分角色到資料庫</summary>
+    public void addRole(CRole role)
     {
         try
         {
@@ -90,8 +90,8 @@ public class CRoleFactory
         }
     }
 
-    /// <summary>刪除資料庫內的角色身分</summary>
-    public void deleteUser(CRole role)
+    /// <summary>刪除資料庫內的身分角色</summary>
+    public void deleteRole(CRole role)
     {
         try
         {
@@ -110,8 +110,8 @@ public class CRoleFactory
         }
     }
 
-    /// <summary>更新資料庫內指定ID的角色身分資料</summary>
-    public void updateUser(CRole role)
+    /// <summary>更新資料庫內指定ID的身分角色資料</summary>
+    public void updateRole(CRole role)
     {
         try
         {
