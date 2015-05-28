@@ -14,4 +14,6 @@ public class CPatient
     public string idcard { set; get; }
     /// <summary>取得或設定 CPatient 型別物件的屬性 birthday</summary>
     public DateTime birthday { set; get; }
+    /// <summary>取得或設定 CPatient 型別物件的屬性 photoPath</summary>
+    public string photoPath { set; get; }
 }

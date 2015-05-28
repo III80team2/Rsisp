@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -10,7 +12,7 @@ using System.Web.UI.WebControls;
 public class CRoleFactory
 {
     List<CRole> roles = new List<CRole>();
-    string connectionString = @"Data Source=CR4-04\MSSQLSERVER2013;Initial Catalog=Rsisp;Integrated Security=True";
+    string connectionString = WebConfigurationManager.OpenWebConfiguration("/webSiteTest").ConnectionStrings.ConnectionStrings["RsispConnectionString"].ConnectionString;
     public string message;
 
     /// <summary>初始化 CUser 型別的物件</summary>
