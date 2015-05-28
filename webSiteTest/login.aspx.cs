@@ -22,7 +22,7 @@ public partial class login : System.Web.UI.Page
         
         if (factory.loginCheck(Request.Form["loginName"].ToString(), loginPassword))
         {
-            Response.Redirect("index.aspx");
+            Response.Redirect("patientSelect.aspx");
         }
         else
         {
