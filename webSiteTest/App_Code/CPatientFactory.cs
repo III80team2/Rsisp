@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -10,7 +12,7 @@ using System.Web.UI.WebControls;
 public class CPatientFactory
 {
     List<CPatient> patients = new List<CPatient>();
-    string connectionString = @"Data Source=CR4-04\MSSQLSERVER2013;Initial Catalog=Rsisp;Integrated Security=True";
+    string connectionString = WebConfigurationManager.OpenWebConfiguration("/webSiteTest").ConnectionStrings.ConnectionStrings["RsispConnectionString"].ConnectionString;
 
     /// <summary>初始化 CUser 型別的物件</summary>
     public CPatientFactory()
@@ -35,6 +37,7 @@ public class CPatientFactory
                 patient.name = dv.Table.Rows[i]["PatientName"].ToString();
                 patient.idcard = dv.Table.Rows[i]["PatientIDCard"].ToString();
                 patient.birthday = DateTime.Parse(dv.Table.Rows[i]["PatientBirthday"].ToString());
+                patient.photoPath = dv.Table.Rows[i]["PatientPhotoPath"].ToString();
                 patients.Add(patient);
             }
         }
