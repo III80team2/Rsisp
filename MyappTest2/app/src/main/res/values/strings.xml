@@ -5,4 +5,5 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_login_main">LoginMain</string>
     <string name="title_activity_act_map">ActMap</string>
+    <string name="title_activity_act_todo">ActTodo</string>
 </resources>

@@ -28,18 +28,11 @@ import android.widget.Toast;
 public class ActMain extends Activity {
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actmain);
         InicialComponent();
-
-
-
-
-
 
         new Thread(new Runnable(){
             @Override
@@ -124,12 +117,6 @@ public class ActMain extends Activity {
     }
 
 
-
-
-
-
-
-
     View.OnClickListener btnlogin_click=new View.OnClickListener(){
         public void onClick(View arg0) {
 
@@ -142,8 +129,17 @@ public class ActMain extends Activity {
         public void onClick(View arg0) {
 
             Uri uri = Uri.parse("geo:22.638692,120.397787,3a,75y,343.8h,71.11t");	//經緯度
-            final Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
+        }
+    };
+
+    View.OnClickListener btnSc_click=new View.OnClickListener(){
+        public void onClick(View arg0) {
+
+            Intent intent1 = new Intent(ActMain.this,ActTodo.class);
+            startActivity(intent1);
+
         }
     };
 
@@ -194,6 +190,9 @@ public class ActMain extends Activity {
         btnMap = (ImageButton) findViewById(R.id.btnMap);
         btnMap.setOnClickListener(btnMap_click);
 
+        btnSc = (ImageButton) findViewById(R.id.btnSc);
+        btnSc.setOnClickListener(btnSc_click);
+
         textTime1 = (EditText)findViewById(R.id.txtId);
 
     }
@@ -201,6 +200,8 @@ public class ActMain extends Activity {
 
     EditText textTime1;
 
+
+    ImageButton btnSc;
     ImageButton btnMap;
     ImageButton btnlogin;
 
