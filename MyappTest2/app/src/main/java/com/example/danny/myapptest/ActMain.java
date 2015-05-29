@@ -1,33 +1,29 @@
 package com.example.danny.myapptest;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import android.app.Activity;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.widget.Toast;
 
 
 public class ActMain extends Activity {
 
-
+    private Activity mainactivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -143,6 +139,30 @@ public class ActMain extends Activity {
         }
     };
 
+    View.OnClickListener btnq_click = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            IntentIntegrator scanIntegrator = new IntentIntegrator(mainactivity);
+            scanIntegrator.initiateScan();
+        }
+    };
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent){
+        IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if(scanningResult!=null){
+            String scanContent=scanningResult.getContents();
+            //String scanFormat=scanningResult.getFormatName();
+
+            AlertDialog.Builder build=new AlertDialog.Builder(ActMain.this);
+            build.setTitle("掃描到帥哥在附近");
+            build.setMessage(scanContent).create().show();
+
+//            scan_content.setText(scanContent);
+//            scan_format.setText(scanFormat);
+        }else{
+            Toast.makeText(getApplicationContext(), "nothing", Toast.LENGTH_SHORT).show();
+        }
+    }
 
    //----離開對話框
     @Override
@@ -193,6 +213,10 @@ public class ActMain extends Activity {
         btnSc = (ImageButton) findViewById(R.id.btnSc);
         btnSc.setOnClickListener(btnSc_click);
 
+        btnq = (ImageButton) findViewById(R.id.btnq);
+        btnq.setOnClickListener(btnq_click);
+        this.mainactivity=this;
+
         textTime1 = (EditText)findViewById(R.id.txtId);
 
     }
@@ -204,5 +228,6 @@ public class ActMain extends Activity {
     ImageButton btnSc;
     ImageButton btnMap;
     ImageButton btnlogin;
+    ImageButton btnq;
 
 }

@@ -75,7 +75,7 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/btnb"
+            android:id="@+id/btnq"
             android:src="@drawable/qr"
             android:layout_weight="1"
             android:background="#007799"
