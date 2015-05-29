@@ -19,16 +19,31 @@
                         </ItemTemplate>
                     </asp:ListView>
                 </td>
-                <td  rowspan="2">
+                <td  rowspan="2"  style="background-color:#ff6a00;width:auto">
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString3 %>" SelectCommand="SELECT * FROM [Patients] WHERE ([ID_Patient] = @ID_Patient)">
                         <SelectParameters>
                             <asp:QueryStringParameter Name="ID_Patient" QueryStringField="pid" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString %>" SelectCommand="SELECT * FROM [isDoneTest] WHERE ([ID_Patient] = @ID_Patient)">
+                        <SelectParameters>
+                            <asp:QueryStringParameter Name="ID_Patient" QueryStringField="pid" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <asp:ListView ID="ListView2" runat="server" DataSourceID="SqlDataSource2">
+                        <ItemTemplate>
+                            <div class="col-sm-6 col-md-3" style="width:auto;vertical-align:top;">
+                               
+                                <div class="caption" style="text-align:inherit;padding-left:20px">
+                                    <asp:HyperLink ID="HyperLink1" runat="server" Text='<%# Eval("assessName") %>'></asp:HyperLink>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:ListView>
                 </td>
             </tr>
             <tr>
-                <td style="background-color:#ff6a00;width:500px">&nbsp;</td>
+                <td></td>
             </tr>
         </table>
         <div >

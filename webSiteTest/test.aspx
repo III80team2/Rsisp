@@ -21,10 +21,10 @@
         <table>
             <tr>
                 <td class="auto-style1" style="background-color:orange;width:20%"></td>
-                <td rowspan="2">&nbsp;</td>
+                <td rowspan="2"  class="auto-style1" style="background-color:blue;width:80%">&nbsp;</td>
             </tr>
             <tr>
-                <td style="background-color:black;width:80%">&nbsp;</td>
+                <td style="background-color:black;width:20%">&nbsp;</td>
             </tr>
         </table>
     
