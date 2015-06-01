@@ -11,9 +11,10 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-
-            <asp:Label ID="lblAssessName" runat="server" Text="AssessName"></asp:Label>
+        <div class="container">
+            <h1>
+                <asp:Label ID="lblAssessName" runat="server" Text="AssessName" CssClass="label label-default"></asp:Label>
+            </h1>
             <br />
             <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
             <br />
