@@ -4,7 +4,7 @@
     <form runat="server">
         <table>
             <tr>
-                <td class="patientDiv">
+                <td style="width: 200px;height:750px;margin:45px 0 0 80px;padding:0;">
                     <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
                         <ItemTemplate>
                             <div class="col-sm-6 col-md-3" style="width:auto;vertical-align:top;">
@@ -19,23 +19,23 @@
                         </ItemTemplate>
                     </asp:ListView>
                 </td>
-                <td  rowspan="2"  style="background-color:#ff6a00;width:auto">
+                <td  rowspan="2"  style="background-color:#EEE;width:1000px">
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString3 %>" SelectCommand="SELECT * FROM [Patients] WHERE ([ID_Patient] = @ID_Patient)">
                         <SelectParameters>
                             <asp:QueryStringParameter Name="ID_Patient" QueryStringField="pid" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString %>" SelectCommand="SELECT * FROM [isDoneTest] WHERE ([ID_Patient] = @ID_Patient)">
+                    
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString %>" SelectCommand="SELECT * FROM [Schedule] WHERE ([ID_Patient] = @ID_Patient)">
                         <SelectParameters>
                             <asp:QueryStringParameter Name="ID_Patient" QueryStringField="pid" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource>
                     <asp:ListView ID="ListView2" runat="server" DataSourceID="SqlDataSource2">
                         <ItemTemplate>
-                            <div class="col-sm-6 col-md-3" style="width:auto;vertical-align:top;">
-                               
-                                <div class="caption" style="text-align:inherit;padding-left:20px">
-                                    <asp:HyperLink ID="HyperLink1" runat="server" Text='<%# Eval("assessName") %>'></asp:HyperLink>
+                            <div class="col-sm-6 col-md-3" style="width:auto;vertical-align:top;" runat="server">
+                                <div class="caption" style="text-align:inherit;padding-left:20px" runat="server">
+                                    <asp:Button ID="Button1" runat="server" BorderStyle="None" BackColor="" Text='<%# Eval("assessName") %>' OnClick="Button1_Click" />
                                 </div>
                             </div>
                         </ItemTemplate>

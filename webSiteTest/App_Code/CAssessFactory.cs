@@ -130,4 +130,14 @@ public class CAssessFactory
         }
         return null;
     }
+
+    public int getId(string name) 
+    {
+        for (int i = 0; i < assesses.Count; i++ )
+        {
+            if (assesses[i].name == name)
+                return assesses[i].id;
+        }
+        return 0;
+    }
 }

@@ -28,10 +28,10 @@
                 <br />
                 &nbsp;<asp:Button class="btn btn-default" ID="btnSubmit" runat="server" Text="確認" OnClick="btnSubmit_Click" BackColor="#0099FF" BorderStyle="None" Width="40%"/>
                 <br />
-                <asp:HyperLink ID="hLinkRegister" runat="server" Font-Size="X-Large" ForeColor="#003300" NavigateUrl="~/Register.aspx">建立帳戶</asp:HyperLink>
             </span>
             <asp:Label ID="lblMessage" runat="server" ForeColor="Red" Text="您輸入的帳號密碼有誤"></asp:Label>
-        </div>
+        </div><br />
+        <div style="text-align:center"><asp:HyperLink ID="hLinkRegister" runat="server" Font-Size="X-Large" ForeColor="Blue" NavigateUrl="~/Register.aspx">建立帳戶</asp:HyperLink></div>
     
         
     <br /><br />
