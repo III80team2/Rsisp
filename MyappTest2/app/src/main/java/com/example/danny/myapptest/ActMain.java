@@ -2,6 +2,10 @@ package com.example.danny.myapptest;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -80,6 +84,31 @@ public class ActMain extends Activity {
                 startActivity(intent);
                 break;
 
+            case MENU_About:
+
+                Notification message =new Notification(
+                        android.R.drawable.stat_notify_error,
+                        "您有3封簡訊未讀取",
+                        System.currentTimeMillis());
+
+                PendingIntent pend  = PendingIntent.getActivity(
+                        ActMain.this,
+                        0,
+                        new Intent(ActMain.this,ActMain.class),
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+
+                message.setLatestEventInfo(
+                        ActMain.this,
+                        "威爵工作室",
+                        "嚇嚇您~",
+                        pend);
+
+                NotificationManager manager=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+                manager.notify(0, message);
+
+                Toast.makeText(ActMain.this,"歡迎使用威爵工作室系統",Toast.LENGTH_SHORT).show();
+
+                break;
 
             case MENU_exit :
 //結束此程式
@@ -110,6 +139,11 @@ public class ActMain extends Activity {
             default:
         }
         return super.onOptionsItemSelected(item);
+
+
+
+
+
     }
 
 
@@ -118,6 +152,8 @@ public class ActMain extends Activity {
 
             Intent intent = new Intent(ActMain.this,LoginMain.class);
             startActivity(intent);
+
+
         }
     };
 

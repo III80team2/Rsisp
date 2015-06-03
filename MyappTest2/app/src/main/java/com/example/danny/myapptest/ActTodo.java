@@ -1,9 +1,15 @@
 package com.example.danny.myapptest;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
@@ -29,7 +35,34 @@ public class ActTodo extends Activity {
 
         setTitle("*****歡迎進入本系統*****");
 
+
+        Notification message =new Notification(
+                android.R.drawable.stat_sys_download,
+                "您有3封簡訊未讀取",
+                System.currentTimeMillis());
+
+        PendingIntent pend  = PendingIntent.getActivity(
+                ActTodo.this,
+                0,
+                new Intent(ActTodo.this,ActMain.class),
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
+        message.setLatestEventInfo(
+                ActTodo.this,
+                "下載來自帥哥",
+                "您有高雄周愚民的照片下載中",
+                pend);
+
+        NotificationManager manager=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        manager.notify(0, message);
+
+
+
+
     }
+
+
+
 
 
     @Override
