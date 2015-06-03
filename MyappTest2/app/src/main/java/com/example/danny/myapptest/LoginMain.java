@@ -2,8 +2,6 @@ package com.example.danny.myapptest;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +15,7 @@ public class LoginMain extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loginmain);
         InicialComponent();
+        
 
 
         setTitle("***********歡迎進入本系統***********");

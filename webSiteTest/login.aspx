@@ -10,10 +10,19 @@
     <title>LoginTest</title>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(function () {
+            $("#loginName").keypress(function (event) {
+                if (event.keyCode == 13)
+                {
+                    <% Session.Add("loginName", loginName.Value);%>;
+                    $("#Form").submit();
+                } });});
+    </script>
 </head>
 
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" method="post" runat="server" action="patientSelect.aspx">
     <div style="margin-top:180px">
         <h1 style="text-align: center">ISP資訊系統登入畫面</h1>
     </div>
@@ -22,9 +31,8 @@
                 <asp:ImageButton ID="iBtnGuset" runat="server" ImageUrl="~/pics/guest.png" OnClick="iBtnGuest_Click"/>
             </div>
             <span id="divLog" class="divlogin" runat="server">
-                <input id="loginName" name="loginName" placeholder="帳號" spellcheck="false" style="width:40%; font-weight: normal; font-size: x-large; color: #000000;" value="iii" /><br />                
+                <input id="loginName" runat="server" name="loginName" placeholder="帳號" spellcheck="false" style="width:40%; font-weight: normal; font-size: x-large; color: #000000;" value="iii" /><br />                
                 <input id="Passwd" name="Passwd" type="password" placeholder="密碼" style="width:40%; font-weight: normal; font-size: x-large; color: #000000;"value="password4"/><br />
-                
                 <br />
                 &nbsp;<asp:Button class="btn btn-default" ID="btnSubmit" runat="server" Text="確認" OnClick="btnSubmit_Click" BackColor="#0099FF" BorderStyle="None" Width="40%"/>
                 <br />

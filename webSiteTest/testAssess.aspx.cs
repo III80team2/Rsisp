@@ -9,10 +9,12 @@ using System.Text.RegularExpressions;
 public partial class testAssess : System.Web.UI.Page
 {
     CAssessFactory assessFactory = new CAssessFactory();
-
+    public int score = 0;
+    List<int> scoreList = new List<int>();
     protected void Page_Load(object sender, EventArgs e)
     {
         int id = 0;
+        int i = 0;
         if (Request.QueryString["pid"] != null) {
             id = Convert.ToInt32(Request.QueryString["pid"]);
         }
@@ -43,18 +45,18 @@ public partial class testAssess : System.Web.UI.Page
             PlaceHolder1.Controls.Add(new LiteralControl("<div class='form-group'><h4>"));
             PlaceHolder1.Controls.Add(lblItemName);
             PlaceHolder1.Controls.Add(new LiteralControl("</h4>"));
-
+            
             foreach (CAssess.CItem.CContent content in item.contents)
             {
                 RadioButton rdbtn = new RadioButton();
                 rdbtn.GroupName = item.id.ToString();
-                Label lblContent = new Label();
-                lblContent.Text = content.content;
+                rdbtn.ID = "rdbtn"+i;
+                rdbtn.Text = content.content;
 
-                PlaceHolder1.Controls.Add(new LiteralControl("<div class='radio'>"));
+                PlaceHolder1.Controls.Add(new LiteralControl("<span style='padding-right:20px;font-size:medium'>"));
                 PlaceHolder1.Controls.Add(rdbtn);
-                PlaceHolder1.Controls.Add(lblContent);
-                PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
+                PlaceHolder1.Controls.Add(new LiteralControl("</span>"));
+                i++;
             }
 
             if (Regex.IsMatch(item.sqlSchemeName, @"ItemText\d"))
@@ -69,7 +71,21 @@ public partial class testAssess : System.Web.UI.Page
 
         Button btnSubmit=new Button();
         btnSubmit.Text = "送出";
+        btnSubmit.Click += btnSubmit_Click;
         btnSubmit.CssClass = "btn btn-primary";
         PlaceHolder1.Controls.Add(btnSubmit);
+    }
+
+    private void btnSubmit_Click(object sender, EventArgs e)
+    {
+        for (int k = 0; k <= 29;k++ )
+        {
+            RadioButton rbtn = (RadioButton)PlaceHolder1.FindControl("rdbtn"+k);
+            if ((rbtn.Checked) && (rbtn.Text.Equals("是")))
+            {
+                score++;
+                Label1.Text = score.ToString();
+            }
+        }
     }
 }

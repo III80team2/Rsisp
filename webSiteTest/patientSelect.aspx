@@ -40,7 +40,7 @@
         </div>
         <div class="blockSearch">
             <input type="text" id="tboxPatient" name="tboxPatient" placeholder="請輸入住民姓名" runat="server" style="width:50%"/>
-            <asp:ImageButton ID="ibtnSearch" runat="server" Height="25px" ImageAlign="Middle" ImageUrl="~/pics/searchIcon.jpg" OnClick="ibtnSearch_Click" />
+            <asp:ImageButton ID="ibtnSearch" runat="server" Height="25px" ImageAlign="Middle" ImageUrl="~/pics/searchIcon.png" OnClick="ibtnSearch_Click" />
         </div>
         <table class="auto-style1">
             <tr>
@@ -68,7 +68,7 @@
                                     <td runat="server">
                                         <asp:DataPager ID="DataPager1" runat="server" PageSize="16">
                                             <Fields>
-                                                <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" ButtonCssClass="btn-primary"/>
+                                                <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" ButtonCssClass="btn btn-primary"/>
                                             </Fields>
                                         </asp:DataPager>
                                     </td>
