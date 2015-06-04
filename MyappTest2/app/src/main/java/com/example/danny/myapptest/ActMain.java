@@ -100,13 +100,15 @@ public class ActMain extends Activity {
                 message.setLatestEventInfo(
                         ActMain.this,
                         "威爵工作室",
-                        "嚇嚇您~",
+                        "成員:黃大仙,蘇愚民,薛大神,林神手,陳小明",
                         pend);
 
                 NotificationManager manager=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
                 manager.notify(0, message);
 
                 Toast.makeText(ActMain.this,"歡迎使用威爵工作室系統",Toast.LENGTH_SHORT).show();
+
+
 
                 break;
 
@@ -115,24 +117,22 @@ public class ActMain extends Activity {
                 new AlertDialog.Builder(ActMain.this)
                         .setTitle("離開本系統")
                         .setMessage("是否確定?")
-                        .setPositiveButton("確定", new DialogInterface.OnClickListener() {
-
+                        .setPositiveButton("確定", new DialogInterface.OnClickListener()
+                        {
                             @Override
-                            public void onClick(DialogInterface dialog,int which) {
-
+                            public void onClick(DialogInterface dialog,int which)
+                            {
                                 finish();
-
                             }
-                        })
-                        .setNegativeButton("取消",
-                                new DialogInterface.OnClickListener() {
+                        }).setNegativeButton("取消",new DialogInterface.OnClickListener()
+                {
+                    @Override
 
-                                    @Override
-                                    public void onClick(DialogInterface dialog,int which)
-                                    {
+                    public void onClick(DialogInterface dialog,int which)
+                      {
 
-                                    }
-                                }).show();
+                      }
+                }).show();
 
 
                 break;
