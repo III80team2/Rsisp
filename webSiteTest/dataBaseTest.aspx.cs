@@ -9,7 +9,8 @@ public partial class dataBaseTest : System.Web.UI.Page
 {
     CUserFactory userFactory = new CUserFactory();
     CRoleFactory roleFactory = new CRoleFactory();
-    CPatientFactory patientFactory = new CPatientFactory();    
+    CPatientFactory patientFactory = new CPatientFactory();
+    CScheduleFactory scheduleFactory = new CScheduleFactory();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -28,6 +29,7 @@ public partial class dataBaseTest : System.Web.UI.Page
             {
                 ddlUserName.Items.Add(user.name);
                 ddlUserID.Items.Add(user.id);
+                ddlUserName2.Items.Add(user.name);
             }
 
             foreach (CRole role in roleFactory.getAll())
@@ -87,6 +89,12 @@ public partial class dataBaseTest : System.Web.UI.Page
 
         userFactory.updateUser(user);
         Response.Redirect(Request.Url.ToString());
+    }
+
+    protected void ddlUserName2_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        gvSchedule.DataSource = scheduleFactory.getByUserId(userFactory.getByName(ddlUserName2.SelectedItem.Text).id);
+        gvSchedule.DataBind();
     }
 
     //身分角色資料表相關操作

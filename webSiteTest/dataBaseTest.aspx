@@ -135,7 +135,13 @@
                 </td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
+                <td>查詢時間表<br />
+                    姓名：<asp:DropDownList ID="ddlUserName2" runat="server" AutoPostBack="True" CssClass="dropdown" OnSelectedIndexChanged="ddlUserName2_SelectedIndexChanged">
+                    </asp:DropDownList>
+                    <br />
+                    <asp:GridView ID="gvSchedule" runat="server" CssClass="table">
+                    </asp:GridView>
+                </td>
                 <td>&nbsp;</td>
                 <td>
                     <asp:TextBox ID="tbBirthday" runat="server" CssClass="form-control"></asp:TextBox>
