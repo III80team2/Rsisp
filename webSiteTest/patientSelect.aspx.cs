@@ -9,7 +9,7 @@ public partial class patientSelect : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
@@ -19,6 +19,6 @@ public partial class patientSelect : System.Web.UI.Page
     {
         string patientName = Request.Form["tboxPatient"].ToString();
 
-        Response.Redirect("test.aspx?pid=10001");
+        Response.Redirect("index.aspx");
     }
 }

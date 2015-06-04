@@ -56,41 +56,41 @@
 </head>
 <body>
     <form id="form1" runat="server">
-         <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height:800px">
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img class="first-slide" src="pics/star.jpg" />
-            </div>
-            <div class="item">
-                <img class="second-slide" src="pics/forest.jpg" />
-                <div class="container">
-                    <div class="carousel-caption">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 800px">
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img class="first-slide" src="pics/star.jpg" />
+                </div>
+                <div class="item">
+                    <img class="second-slide" src="pics/forest.jpg" />
+                    <div class="container">
+                        <div class="carousel-caption">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="item">
-                <img class="second-slide" src="pics/ironMan.jpg" />
-                <div class="container">
-                    <div class="carousel-caption">
+                <div class="item">
+                    <img class="second-slide" src="pics/ironMan.jpg" />
+                    <div class="container">
+                        <div class="carousel-caption">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="item">
-                <img class="second-slide" src="pics/ocean03.jpg" />
-                <div class="container">
-                    <div class="carousel-caption">
+                <div class="item">
+                    <img class="second-slide" src="pics/ocean03.jpg" />
+                    <div class="container">
+                        <div class="carousel-caption">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="item">
-                <img class="second-slide" src="pics/onePiece.jpg" />
-                <div class="container">
-                    <div class="carousel-caption">
+                <div class="item">
+                    <img class="second-slide" src="pics/onePiece.jpg" />
+                    <div class="container">
+                        <div class="carousel-caption">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
         <div class="registerTitle" runat="server">
             <div style="text-align:left">註冊</div>
             <div class="registerForm">
@@ -104,7 +104,6 @@
             <asp:Button ID="btnInsert" runat="server" Text="新增使用者" CssClass="btnInsert" OnClick="btnInsert_Click"/>
         </div>
         </div>
-        
     </form>
 </body>
 </html>

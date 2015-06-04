@@ -6,9 +6,18 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>選擇病患頁面</title>
+    <script type="text/javascript">
+        $(function () {
+            $("#tboxPatient").keypress(function (event) {
+                if (event.keyCode == 13) {
+                    $("#Form").submit();
+                }
+            });
+        });
+    </script>
     <style>
         .blockSearch {
-            margin:150px 250px 80px 300px
+            margin:150px 250px 80px 300px;
         }
         #tboxPatient {
             width: 576px;
@@ -16,6 +25,7 @@
         }
         .auto-style1 {
             width: 100%;
+            /*margin:-650px 300px 20px 300px;*/
         }
         .auto-style2 {
             font-size: xx-large;
@@ -24,23 +34,24 @@
         .auto-style3 {
             color: #FFFFFF;
         }
+        .qq {
+            background-color:#34495E;
+            height:80px;
+            padding:25px 0 0 25px;
+            margin-bottom:100px
+        }
     </style>
     <link href="Content/bootstrap.css" rel="stylesheet" />
-    <script src="Scripts/bootstrap.js"></script>
-    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
 </head>
-<body style="background-color:#DDD">
-    <form id="form1" runat="server">
-        <div style="background-color:#888; height:100px;vertical-align:middle" class="auto-style2">
-            <p>
-                <img src="pics/logo.png"/>
-                <span class="auto-style3">評估表資訊系統
-            </span>
-            </p>
-        </div>
-        <div class="blockSearch">
+<body>
+    <form id="form1" runat="server" method="post" action="test.aspx?pid=10001">
+        <div class="qq">
+            <span style="margin-right:15px"><img src="pics/logo_heart.png" alt="logo"/></span>
             <input type="text" id="tboxPatient" name="tboxPatient" placeholder="請輸入住民姓名" runat="server" style="width:50%"/>
-            <asp:ImageButton ID="ibtnSearch" runat="server" Height="25px" ImageAlign="Middle" ImageUrl="~/pics/searchIcon.png" OnClick="ibtnSearch_Click" />
+            <asp:ImageButton ID="ibtnSearch" runat="server" Height="25px" ImageAlign="Middle" ImageUrl="~/pics/searchIcon_o.png" OnClick="ibtnSearch_Click" />
         </div>
         <table class="auto-style1">
             <tr>
@@ -91,6 +102,11 @@
                 </td>
             </tr>
         </table>
+        <script>
+            window.onload = function () {
+                document.getElementById("tboxPatient").focus();
+            };
+        </script>
     </form>
 </body>
 </html>
