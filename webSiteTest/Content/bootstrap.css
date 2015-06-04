@@ -1102,7 +1102,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  color: #006600;
   text-decoration: none;
     font-size: xx-large;
     font-family: ·L³n¥¿¶ÂÅé;
@@ -1122,9 +1122,7 @@ figure {
 }
 img {
   vertical-align: middle;
-    height: 96px;
-    width: 134px;
-}
+    }
 .img-responsive,
 .thumbnail > img,
 .thumbnail a > img,
