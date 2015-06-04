@@ -20,13 +20,13 @@
                     </asp:ListView>
                 </td>
                 <td  rowspan="2"  style="background-color:#EEE;width:1000px">
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString3 %>" SelectCommand="SELECT * FROM [Patients] WHERE ([ID_Patient] = @ID_Patient)">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString %>" SelectCommand="SELECT * FROM [Patients] WHERE ([ID_Patient] = @ID_Patient)">
                         <SelectParameters>
                             <asp:QueryStringParameter Name="ID_Patient" QueryStringField="pid" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource>
                     
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString %>" SelectCommand="SELECT * FROM [Schedule] WHERE ([ID_Patient] = @ID_Patient)">
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString %>" SelectCommand="SELECT * FROM [AssessStyle] WHERE [ID_Assess] in (SELECT [ID_Assess] FROM [Schedules] WHERE ([ID_Patient] = @ID_Patient))">
                         <SelectParameters>
                             <asp:QueryStringParameter Name="ID_Patient" QueryStringField="pid" Type="String" />
                         </SelectParameters>
@@ -35,7 +35,7 @@
                         <ItemTemplate>
                             <div class="col-sm-6 col-md-3" style="width:auto;vertical-align:top;" runat="server">
                                 <div class="caption" style="text-align:inherit;padding-left:20px" runat="server">
-                                    <asp:Button ID="Button1" runat="server" BorderStyle="None" BackColor="" Text='<%# Eval("assessName") %>' OnClick="Button1_Click" />
+                                    <asp:Button ID="Button1" runat="server" BorderStyle="None" BackColor="" Text='<%# Eval("AssessName") %>' OnClick="Button1_Click" />
                                 </div>
                             </div>
                         </ItemTemplate>

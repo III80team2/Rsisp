@@ -162,7 +162,7 @@ public partial class dataBaseTest : System.Web.UI.Page
         patient.birthday = calPatientBirthday2.SelectedDate.Date;
         patient.photoPath = "pics/" + fuPatientPhoto2.FileName;
 
-        fuPatientPhoto.SaveAs(this.MapPath("pics\\") + fuPatientPhoto2.FileName);
+        fuPatientPhoto2.SaveAs(this.MapPath("pics\\") + fuPatientPhoto2.FileName);
 
         patientFactory.updatePatient(patient);
         Response.Redirect(Request.Url.ToString());

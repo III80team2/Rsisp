@@ -45,7 +45,7 @@
         <table class="auto-style1">
             <tr>
                 <td>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString2 %>" SelectCommand="SELECT * FROM [Patients]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString %>" SelectCommand="getPatients" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                 </td>
             </tr>
             <tr>
