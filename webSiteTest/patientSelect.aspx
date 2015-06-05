@@ -27,32 +27,25 @@
             width: 100%;
             /*margin:-650px 300px 20px 300px;*/
         }
-        .auto-style2 {
-            font-size: xx-large;
-            font-family: 微軟正黑體;
-        }
-        .auto-style3 {
-            color: #FFFFFF;
-        }
         .qq {
             background-color:#34495E;
             height:80px;
-            padding:25px 0 0 25px;
-            margin-bottom:100px
+            padding:25px 0 25px 25px;
+            margin-bottom:100px;
         }
     </style>
     <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
 </head>
 <body>
-    <form id="form1" runat="server" method="post" action="test.aspx?pid=10001">
+    <form id="form1" runat="server">
         <div class="qq">
-            <span style="margin-right:15px"><img src="pics/logo_heart.png" alt="logo"/></span>
-            <input type="text" id="tboxPatient" name="tboxPatient" placeholder="請輸入住民姓名" runat="server" style="width:50%"/>
-            <asp:ImageButton ID="ibtnSearch" runat="server" Height="25px" ImageAlign="Middle" ImageUrl="~/pics/searchIcon_o.png" OnClick="ibtnSearch_Click" />
-        </div>
+            <span style="margin-right:30px;"><img src="pics/logo_heart.png" alt="logo" /></span>
+            <input type="text" id="tboxPatient" name="tboxPatient" placeholder="請輸入住民姓名" runat="server" style="width: 50%;height:39px" /><asp:ImageButton ID="ImageButton1" runat="server" Height="39px" ImageAlign="AbsBottom" ImageUrl="~/pics/searchIcon_N.png" Width="41px" />
+        &nbsp;</div>
         <table class="auto-style1">
             <tr>
                 <td>

@@ -7,20 +7,23 @@ using System.Web.UI.WebControls;
 
 public partial class index : System.Web.UI.Page
 {
-    int id = 0;
+    CScheduleFactory factory = new CScheduleFactory();
     protected void Page_Load(object sender, EventArgs e)
     {
+        string id = "";
+        if (Request.QueryString["pid"] != null)
+        {
+            id = Request.QueryString["pid"].ToString();
+        }
         
-    }
-    protected void ibtnSearch_Click(object sender, ImageClickEventArgs e)
-    {
-        
+        GridView1.DataSource = factory.getByPatientId(id);
+        GridView1.DataBind();
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        CAssessFactory factory = new CAssessFactory();
-        string name = (sender as Button).Text;
-        id = factory.getId(name);
-        Response.Redirect("testAssess.aspx?pid="+id);
+        //CAssessFactory factory = new CAssessFactory();
+        //string name = (sender as Button).Text;
+        //id = factory.getId(name);
+        //Response.Redirect("testAssess.aspx?pid="+id);
     }
 }

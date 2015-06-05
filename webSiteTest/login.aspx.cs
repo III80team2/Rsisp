@@ -30,12 +30,4 @@ public partial class login : System.Web.UI.Page
             lblMessage.Visible = true;
         }
     }
-    protected void iBtnGuest_Click(object sender, ImageClickEventArgs e)
-    {
-        
-    }
-    protected void iBtnStuff_Click(object sender, ImageClickEventArgs e)
-    {
-        
-    }
 }

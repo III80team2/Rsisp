@@ -59,4 +59,17 @@ public class CScheduleFactory
         }
         return userSchedules;
     }
+
+    public List<CSchedule> getByPatientId(string patient_id) 
+    {
+        userSchedules.Clear();
+
+        for (int i = 0; i < schedules.Count; i++)
+        {
+            if (schedules[i].patient_id == patient_id)
+                userSchedules.Add(schedules[i]);
+        }
+        return userSchedules;
+    
+    }
 }
