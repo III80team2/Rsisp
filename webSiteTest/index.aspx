@@ -26,7 +26,7 @@
                         </SelectParameters>
                     </asp:SqlDataSource>
                     
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString %>" SelectCommand="SELECT * FROM [AssessStyle] WHERE [ID_Assess] in (SELECT [ID_Assess] FROM [Schedules] WHERE ([ID_Patient] = @ID_Patient))">
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString %>" SelectCommand="SELECT * FROM [AssessStyle] WHERE [ID_Assess] in (SELECT [ID_Assess] FROM [Schedules] WHERE ([ID_Patient] = @ID_Patient) and [isFinished] = 0)">
                         <SelectParameters>
                             <asp:QueryStringParameter Name="ID_Patient" QueryStringField="pid" Type="String" />
                         </SelectParameters>
