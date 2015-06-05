@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
+    compileSdkVersion 21
     buildToolsVersion "21.1.2"
 
     defaultConfig {
         applicationId "com.example.danny.myapptest"
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
     }
@@ -18,7 +18,15 @@ android {
         }
     }
 }
+//-----------------Map-------------------------------------------------
 
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.google.android.gms:play-services:7.3.0'
+    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'com.google.android.gms:play-services:7.0.0'
+}
+//---------------------------------------------------------------------
 repositories {
     mavenCentral()
 
@@ -27,20 +35,8 @@ repositories {
     }
 }
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-}
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.google.android.gms:play-services:4.2.42'
-}
-dependencies {
-    compile 'com.google.android.gms:play-services:4.2.42'
-    compile 'com.android.support:appcompat-v7:22.+'
 
 
-
-}
 //q
 dependencies {
     // Supports Android 4.0.3 and later (API level 15)
@@ -59,4 +55,8 @@ dependencies {
     // This mostly affects encoding, but you should test if you plan to support these versions.
     // Older versions e.g. 2.2 may also work if you need support for older Android versions.
     compile 'com.google.zxing:core:3.0.1'
+}
+dependencies {
+    compile 'com.google.android.gms:play-services:4.2.42'
+    compile 'com.android.support:appcompat-v7:21.+'
 }

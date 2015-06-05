@@ -26,9 +26,18 @@
                         </SelectParameters>
                     </asp:SqlDataSource>
                     
+<<<<<<< HEAD
                     <asp:GridView ID="GridView1" runat="server">
                     </asp:GridView>
                     <%--<asp:ListView ID="ListView2" runat="server" DataSourceID="SqlDataSource2">
+=======
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString %>" SelectCommand="SELECT * FROM [AssessStyle] WHERE [ID_Assess] in (SELECT [ID_Assess] FROM [Schedules] WHERE ([ID_Patient] = @ID_Patient) and [isFinished] = 0)">
+                        <SelectParameters>
+                            <asp:QueryStringParameter Name="ID_Patient" QueryStringField="pid" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <asp:ListView ID="ListView2" runat="server" DataSourceID="SqlDataSource2">
+>>>>>>> origin/master
                         <ItemTemplate>
                             <div class="col-sm-6 col-md-3" style="width:auto;vertical-align:top;" runat="server">
                                 <div class="caption" style="text-align:inherit;padding-left:20px" runat="server">
