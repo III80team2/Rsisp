@@ -107,6 +107,7 @@ public class ActMain extends Activity {
                 manager.notify(0, message);
 
                 Toast.makeText(ActMain.this,"歡迎使用威爵工作室系統",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActMain.this,"請注意通知欄",Toast.LENGTH_LONG).show();
 
 
 
@@ -160,9 +161,12 @@ public class ActMain extends Activity {
     View.OnClickListener btnMap_click=new View.OnClickListener(){
         public void onClick(View arg0) {
 
-            Uri uri = Uri.parse("geo:22.638692,120.397787,3a,75y,343.8h,71.11t");	//經緯度
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//            Uri uri = Uri.parse("geo:22.638692,120.397787,3a,75y,343.8h,71.11t");	//經緯度
+//            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//            startActivity(intent);
+            Intent intent = new Intent(ActMain.this,ActMap.class);
             startActivity(intent);
+
         }
     };
 
