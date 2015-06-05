@@ -2,6 +2,7 @@ package com.example.danny.myapptest;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,12 +21,18 @@ public class ActMap extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actmap);
         setUpMapIfNeeded();
+
+        setTitle("-仁愛之家地圖導航-");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         setUpMapIfNeeded();
+
+
+        Toast.makeText(ActMap.this, "搜尋高雄仁愛之家成功!!", Toast.LENGTH_LONG).show();
+
     }
 
     /**
