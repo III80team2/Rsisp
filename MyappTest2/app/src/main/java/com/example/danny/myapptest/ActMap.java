@@ -1,4 +1,4 @@
-package com.example.danny.myapptest;
+﻿package com.example.danny.myapptest;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ public class ActMap extends FragmentActivity {
         setContentView(R.layout.actmap);
         setUpMapIfNeeded();
 
-        setTitle("-仁愛之家地圖導航-");
+        setTitle("--仁愛之家地圖導航--");
     }
 
     @Override
@@ -70,12 +70,12 @@ public class ActMap extends FragmentActivity {
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
-        // 刪除原來預設的內容
+        // --刪除原來預設的內容
         //mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
 
         // 建立位置的座標物件
         LatLng place = new LatLng(22.6391069,120.3977157);
-        // 移動地圖
+        // --移動地圖
         //moveMap(place);
 
 
