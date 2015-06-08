@@ -21,9 +21,9 @@ public partial class index : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        //CAssessFactory factory = new CAssessFactory();
-        //string name = (sender as Button).Text;
-        //id = factory.getId(name);
-        //Response.Redirect("testAssess.aspx?pid="+id);
+        CAssessFactory factory = new CAssessFactory();
+        string name = (sender as Button).Text;
+        int id = factory.getId(name);
+        Response.Redirect("running.aspx");
     }
 }

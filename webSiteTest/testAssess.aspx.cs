@@ -18,7 +18,7 @@ public partial class testAssess : System.Web.UI.Page
         if (Request.QueryString["pid"] != null) {
             id = Convert.ToInt32(Request.QueryString["pid"]);
         }
-        CAssess assess = assessFactory.getById(id);
+        CAssess assess = assessFactory.getById(1);
         lblAssessName.Text = assess.name;
 
         CAssess.CItem.CGroup group = new CAssess.CItem.CGroup();
