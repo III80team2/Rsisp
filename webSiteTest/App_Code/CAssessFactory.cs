@@ -20,6 +20,34 @@ public class CAssessFactory
         loadAssess();
     }
 
+    public CAssessFactory(string lite)
+    {
+        //輕量版CAssess，無items
+        loadAssessLite();
+    }
+
+    private void loadAssessLite()
+    {
+        SqlDataSource sds = new SqlDataSource();
+        sds.ConnectionString = connectionString;
+        sds.SelectCommand = "dbo.getAssessStyles";
+        sds.SelectCommandType = SqlDataSourceCommandType.StoredProcedure;
+        DataView dv = sds.Select(DataSourceSelectArguments.Empty) as DataView;
+
+        if (dv.Count > 0)
+        {
+            for (int i = 0; i < dv.Count; i++)
+            {
+                CAssess assess = new CAssess();
+                assess.id = Convert.ToInt32(dv.Table.Rows[i]["ID_Assess"]);
+                assess.name = dv.Table.Rows[i]["AssessName"].ToString();
+                assess.sqlTableName = dv.Table.Rows[i]["TableName"].ToString();   
+
+                assesses.Add(assess);
+            }
+        }
+    }
+
     private void loadAssess()
     {
         SqlDataSource sds = new SqlDataSource();

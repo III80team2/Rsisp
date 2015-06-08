@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 /// <summary>提供一項機制，用來向 CSchedule 型別的物件要求資料相關的作業。</summary>
 public class CScheduleFactory
 {
+    CAssessFactory assessFactoryLite = new CAssessFactory("Lite");
     List<CSchedule> schedules = new List<CSchedule>();
     List<CSchedule> userSchedules = new List<CSchedule>();
     string connectionString = WebConfigurationManager.OpenWebConfiguration("/webSiteTest").ConnectionStrings.ConnectionStrings["RsispConnectionString"].ConnectionString;
@@ -36,6 +37,7 @@ public class CScheduleFactory
                 schedule.user_id = dv.Table.Rows[i]["ID_User"].ToString();
                 schedule.patient_id = dv.Table.Rows[i]["ID_Patient"].ToString();
                 schedule.assess_id = (int)dv.Table.Rows[i]["ID_Assess"];
+                schedule.assess_name = assessFactoryLite.getById(schedule.assess_id).name;
                 schedule.deadLine = DateTime.Parse(dv.Table.Rows[i]["deadLine"].ToString());
                 schedule.isFinished = (bool)dv.Table.Rows[i]["isFinished"];
                 schedules.Add(schedule);

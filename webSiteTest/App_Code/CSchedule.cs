@@ -10,6 +10,7 @@ public class CSchedule
     public string user_id { set; get; }
     public string patient_id { set; get; }
     public int assess_id { set; get; }
+    public string assess_name { set; get; }
     public DateTime deadLine { set; get; }
     public bool isFinished { set; get; }	
 }
