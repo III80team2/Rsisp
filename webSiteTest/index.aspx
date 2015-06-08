@@ -28,22 +28,6 @@
                     
                     <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString %>" SelectCommand="SELECT * FROM [AssessStyle] WHERE [ID_Assess] in (SELECT [ID_Assess] FROM [Schedules] WHERE ([ID_Patient] = @ID_Patient) and [isFinished] = 0)">
-                        <SelectParameters>
-                            <asp:QueryStringParameter Name="ID_Patient" QueryStringField="pid" Type="String" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
-                    
-                    <asp:ListView ID="ListView2" runat="server" DataSourceID="SqlDataSource2">
-
-                        <ItemTemplate>
-                            <div class="col-sm-6 col-md-3" style="width:auto;vertical-align:top;" runat="server">
-                                <div class="caption" style="text-align:inherit;padding-left:20px" runat="server">
-                                    <asp:Button ID="Button1" runat="server" BorderStyle="None" BackColor="" Text='<%# Eval("AssessName") %>' OnClick="Button1_Click" /><br />
-                                </div>
-                            </div>
-                        </ItemTemplate>
-                    </asp:ListView>
                 </td>
             </tr>
             <tr>
