@@ -42,8 +42,11 @@
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">人員資料管理<i class="dropdown-toggle"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">新增人員</a></li>
+                                    
                                     <li><a href="#">修改人員資料</a></li>
+                                    
+                                    <li class="divider"></li>
+                                    <li><a href="#">新增人員</a></li>
                                     <li><a href="#">刪除人員資料</a></li>
                                 </ul>
                         
@@ -52,13 +55,24 @@
 
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">角色功能管理<i class="icon-angle-down"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">新增角色</a></li>
-                                    <li class="divider"></li>
                                     <li><a href="#">修改角色權限</a></li>
+                                    
+                                    <li class="divider"></li>
+                                    <li><a href="#">新增角色</a></li>
+                                    <li><a href="#">刪除角色</a></li>
                                 </ul>
                         </li>
                         <li > 
-                            <a href="#" >評估表管理 </a>                                                   </li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >評估表管理 <i class="icon-angle-down"></i></a> 
+                            <ul class="dropdown-menu">
+                                <li><a href="#">修改評估表樣式</a></li>
+                                
+                                <li class="divider"></li>
+                                <li><a href="#">新增評估表樣式</a></li>
+                                <li><a href="#">刪除評估表樣式</a></li>
+
+                            </ul>
+                        </li>
                         <li>
                             <a href="#">登出</a>
                         </li>
