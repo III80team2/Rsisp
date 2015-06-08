@@ -36,10 +36,11 @@ public class CScheduleFactory
                 schedule.id = (int)dv.Table.Rows[i]["ID_Schedule"];
                 schedule.user_id = dv.Table.Rows[i]["ID_User"].ToString();
                 schedule.patient_id = dv.Table.Rows[i]["ID_Patient"].ToString();
-                schedule.assess_id = (int)dv.Table.Rows[i]["ID_Assess"];
-                schedule.assess_name = assessFactoryLite.getById(schedule.assess_id).name;
+                schedule.assess_id = (int)dv.Table.Rows[i]["ID_Assess"];                
                 schedule.deadLine = DateTime.Parse(dv.Table.Rows[i]["deadLine"].ToString());
                 schedule.isFinished = (bool)dv.Table.Rows[i]["isFinished"];
+
+                schedule.assess_name = assessFactoryLite.getById(schedule.assess_id).name;
                 schedules.Add(schedule);
             }        
         }
@@ -69,7 +70,7 @@ public class CScheduleFactory
         for (int i = 0; i < schedules.Count; i++)
         {
             if (schedules[i].patient_id == patient_id)
-                userSchedules.Add(schedules[i]);
+                userSchedules.Add(schedules[i]);            
         }
         return userSchedules;
     
