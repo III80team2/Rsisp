@@ -1,4 +1,4 @@
-﻿package com.example.danny.myapptest;
+package com.example.danny.myapptest;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -28,7 +28,7 @@ public class LoginMain extends Activity {
 
             Toast message = Toast.makeText(
                     LoginMain.this,
-                    "偵測到 帥哥 在附近",
+                    "偵測到 帥哥  在附近",
                     Toast.LENGTH_LONG);
             message.show();
         }

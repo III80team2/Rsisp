@@ -1,4 +1,4 @@
-﻿package com.example.danny.myapptest;
+package com.example.danny.myapptest;
 
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -55,7 +55,7 @@ public class ActTodo extends Activity {
 
         NotificationManager manager=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         manager.notify(0, message);
- 
+
 
 
 
