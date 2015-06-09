@@ -8,6 +8,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Movie;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -27,12 +29,16 @@ import java.util.Calendar;
 
 public class ActMain extends Activity {
 
+
+
+
     private Activity mainactivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actmain);
         InicialComponent();
+
 
         new Thread(new Runnable(){
             @Override
@@ -54,6 +60,7 @@ public class ActMain extends Activity {
         }).start();
 
     }
+
     private static final int MENU_Login = Menu.FIRST;
     //private static final int MENU_Add = Menu.FIRST + 1;
     private static final int MENU_About = Menu.FIRST + 1;
@@ -87,7 +94,7 @@ public class ActMain extends Activity {
             case MENU_About:
 
                 Notification message =new Notification(
-                        android.R.drawable.stat_notify_error,
+                        android.R.drawable.star_big_on,
                         "您有3封簡訊未讀取",
                         System.currentTimeMillis());
 
@@ -107,7 +114,7 @@ public class ActMain extends Activity {
                 manager.notify(0, message);
 
                 Toast.makeText(ActMain.this,"歡迎使用威爵工作室系統",Toast.LENGTH_SHORT).show();
-                Toast.makeText(ActMain.this,"請注意通知欄",Toast.LENGTH_LONG).show();
+                Toast.makeText(ActMain.this,"請注意通知欄",Toast.LENGTH_SHORT).show();
 
 
 
@@ -173,8 +180,8 @@ public class ActMain extends Activity {
     View.OnClickListener btnSc_click=new View.OnClickListener(){
         public void onClick(View arg0) {
 
-            Intent intent1 = new Intent(ActMain.this,ActTodo.class);
-            startActivity(intent1);
+            Intent intent = new Intent(ActMain.this,ActTodo.class);
+            startActivity(intent);
 
         }
     };
@@ -187,6 +194,32 @@ public class ActMain extends Activity {
         }
     };
 
+
+    View.OnClickListener btnWWW_click = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+
+            Toast.makeText(ActMain.this,"此圖只供觀賞 請勿觸摸!!",Toast.LENGTH_SHORT).show();
+
+
+
+        }
+    };
+
+
+    View.OnClickListener btnNews_click = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+
+            Toast.makeText(ActMain.this,"請先登入  謝謝您 :D",Toast.LENGTH_SHORT).show();
+
+
+
+        }
+    };
+
     public void onActivityResult(int requestCode, int resultCode, Intent intent){
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if(scanningResult!=null){
@@ -194,8 +227,9 @@ public class ActMain extends Activity {
             //String scanFormat=scanningResult.getFormatName();
 
             AlertDialog.Builder build=new AlertDialog.Builder(ActMain.this);
-            build.setTitle("掃描到帥哥在附近");
-            build.setMessage(scanContent).create().show();
+            build.setTitle("注意!!!");
+            build.setMessage("掃描到帥哥在附近").create().show();
+            //build.setMessage(scanContent).create().show();
 
 //            scan_content.setText(scanContent);
 //            scan_format.setText(scanFormat);
@@ -257,6 +291,15 @@ public class ActMain extends Activity {
         btnq.setOnClickListener(btnq_click);
         this.mainactivity=this;
 
+        btnWWW = (ImageButton) findViewById(R.id.btnWWW);
+        btnWWW.setOnClickListener(btnWWW_click);
+
+        btnWWW = (ImageButton) findViewById(R.id.btnWWW);
+        btnWWW.setOnClickListener(btnWWW_click);
+
+        btnNews = (ImageButton) findViewById(R.id.btnNews);
+        btnNews.setOnClickListener(btnNews_click);
+
         textTime1 = (EditText)findViewById(R.id.txtId);
 
     }
@@ -269,5 +312,7 @@ public class ActMain extends Activity {
     ImageButton btnMap;
     ImageButton btnlogin;
     ImageButton btnq;
+    ImageButton btnWWW;
+    ImageButton btnNews;
 
 }

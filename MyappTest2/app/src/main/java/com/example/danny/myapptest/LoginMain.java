@@ -1,7 +1,11 @@
 package com.example.danny.myapptest;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,10 +19,58 @@ public class LoginMain extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loginmain);
         InicialComponent();
-        
 
 
-        setTitle("***********歡迎進入本系統***********");
+
+        //setTitle("*****歡迎進入本系統*****");
+
+    }
+
+    private static final int MENU_exit = Menu.FIRST ;
+    @Override
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        menu.add(0, MENU_exit, 0,"首頁");
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+
+        switch(item.getItemId()) {
+
+
+            case MENU_exit :
+//結束此程式
+                new AlertDialog.Builder(LoginMain.this)
+                        .setTitle("回首頁")
+                        .setMessage("是否確定?")
+                        .setPositiveButton("確定", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog,int which)
+                            {
+                                finish();
+                            }
+                        }).setNegativeButton("取消",new DialogInterface.OnClickListener()
+                {
+                    @Override
+
+                    public void onClick(DialogInterface dialog,int which)
+                    {
+
+                    }
+                }).show();
+
+
+                break;
+            default:
+        }
+        return super.onOptionsItemSelected(item);
+
 
     }
 

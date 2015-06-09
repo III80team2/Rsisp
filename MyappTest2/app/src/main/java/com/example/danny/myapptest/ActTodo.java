@@ -9,6 +9,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -33,7 +34,7 @@ public class ActTodo extends Activity {
         setContentView(R.layout.acttodo);
         InitialComponent();
 
-        setTitle("*****歡迎進入本系統*****");
+        //setTitle("*****歡迎進入本系統*****");
 
 
         Notification message =new Notification(
@@ -64,27 +65,52 @@ public class ActTodo extends Activity {
 
 
 
-
+    private static final int MENU_exit = Menu.FIRST ;
     @Override
+
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_act_todo, menu);
-        return true;
+
+        menu.add(0, MENU_exit, 0,"首頁");
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch(item.getItemId()) {
+
+
+            case MENU_exit :
+//結束此程式
+            new AlertDialog.Builder(ActTodo.this)
+                    .setTitle("回首頁")
+                    .setMessage("是否確定?")
+                    .setPositiveButton("確定", new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog,int which)
+                        {
+                            finish();
+                        }
+                    }).setNegativeButton("取消",new DialogInterface.OnClickListener()
+            {
+                @Override
+
+                public void onClick(DialogInterface dialog,int which)
+                {
+
+                }
+            }).show();
+
+
+            break;
+            default:
         }
-
         return super.onOptionsItemSelected(item);
+
+
     }
 
 

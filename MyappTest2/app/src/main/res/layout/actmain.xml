@@ -47,8 +47,8 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/btnIMG"
-            android:src="@drawable/map"
+            android:id="@+id/btnWWW"
+            android:src="@drawable/www"
             android:layout_weight="1"
             android:background="#444444"
             />
