@@ -33,19 +33,13 @@
             background-color:#0099FF;
             color :Black;
             Height :45px;
-            Width :300px;
+            Width :33%;
             border: None;
             font-size: large;
         }
     </style>
     <script src="Scripts/jquery-2.1.4.min.js"></script>
     <script src="Scripts/cycleLite.js"></script>
-    <script type="text/javascript">
-        $('.carousel').carousel({
-            interval: 2000,
-            pause: false
-        })
-    </script>
     <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="css/carouselFull.css" rel="stylesheet" />
@@ -60,13 +54,6 @@
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
                     <img class="first-slide" src="pics/star.jpg" />
-                </div>
-                <div class="item">
-                    <img class="second-slide" src="pics/forest.jpg" />
-                    <div class="container">
-                        <div class="carousel-caption">
-                        </div>
-                    </div>
                 </div>
                 <div class="item">
                     <img class="second-slide" src="pics/ironMan.jpg" />
@@ -90,17 +77,24 @@
                     </div>
                 </div>
             </div>
+            
+             <script type="text/javascript">
+                 $('.carousel').carousel({
+                     interval: 2000,
+                     pause: false
+                 })
+             </script>
         </div>
         <div class="registerTitle" runat="server">
             <div style="text-align:left">註冊</div>
             <div class="registerForm">
-            <input id="lastName" name="lastName" type="text" placeholder="姓" class="inputText"style="width:240px"/>
-            <input id="firstName" name="firstName" type="text" placeholder="名" class="inputText"style="width:350px"/><br />
-            <input id="userName" name="userName" type="text" placeholder="帳號" class="inputText"style="width:600px"/><br />
-                <input id="userEmail" name="userEmail" type="text" placeholder="電子信箱" class="inputText"style="width:600px"/><br />
-            <input id="password" name="password" type="password" placeholder="密碼" class="inputText"style="width:600px"/><br />
-            <input id="passwordComit" name="passwordComit" type="password" placeholder="確認密碼" class="inputText"style="width:600px"/><br />
-            <asp:DropDownList ID="roleList" runat="server" CssClass="inputText" Width="600px"></asp:DropDownList><br />
+            <input id="lastName" name="lastName" type="text" placeholder="姓" class="inputText"style="width:27%"/>
+            <input id="firstName" name="firstName" type="text" placeholder="名" class="inputText"style="width:37%"/><br />
+            <input id="userName" name="userName" type="text" placeholder="帳號" class="inputText"style="width:65%"/><br />
+                <input id="userEmail" name="userEmail" type="text" placeholder="電子信箱" class="inputText"style="width:65%"/><br />
+            <input id="password" name="password" type="password" placeholder="密碼" class="inputText"style="width:65%"/><br />
+            <input id="passwordComit" name="passwordComit" type="password" placeholder="確認密碼" class="inputText"style="width:65%"/><br />
+            <asp:DropDownList ID="roleList" runat="server" CssClass="inputText" Width="65%"></asp:DropDownList><br />
             <asp:Button ID="btnInsert" runat="server" Text="新增使用者" CssClass="btnInsert" OnClick="btnInsert_Click"/>
         </div>
         </div>

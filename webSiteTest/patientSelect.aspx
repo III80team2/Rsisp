@@ -85,7 +85,7 @@
                                     <asp:HyperLink runat="server" ImageUrl='<%# Eval("PatientPhotoPath") %>' NavigateUrl='<%#"index.aspx?pid="+Eval("ID_Patient")%>' Width="150px" Height="150px">
                                     </asp:HyperLink>
                                     <div class="caption" style="text-align:center">
-                                     <asp:Label ID="lblTitle" runat="server" Text='<%# Eval("PatientName") %>'></asp:Label>
+                                     <asp:Label ID="lblTitle" runat="server" Text='<%# Eval("PatientName") %>'Font-Size="XX-Large"></asp:Label>
                                     </div>
                                 </div>
                             </div>
