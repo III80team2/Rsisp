@@ -79,7 +79,7 @@ public partial class index : System.Web.UI.Page
             string name = row.Cells[2].Text;
             int id = factory.getId(name);
             //Label2.Text = name;
-            Response.Redirect("testAssess.aspx?pid=" + id);
+            Response.Redirect("assess.aspx?pid=" + id);
         
         }
     }
