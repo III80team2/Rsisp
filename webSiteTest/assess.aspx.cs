@@ -11,6 +11,7 @@ public partial class testAssess : System.Web.UI.Page
     CAssessFactory assessFactory = new CAssessFactory();
     public int score = 0;
     List<int> scoreList = new List<int>();
+    Label lblIsNotChecked = new Label();
     protected void Page_Load(object sender, EventArgs e)
     {
         int id = 0;
@@ -53,19 +54,28 @@ public partial class testAssess : System.Web.UI.Page
                 rdbtn.ID = "rdbtn"+i;
                 rdbtn.Text = content.content;
 
-                PlaceHolder1.Controls.Add(new LiteralControl("<span style='padding-right:20px;font-size:medium'>"));
+                PlaceHolder1.Controls.Add(new LiteralControl("<span style='padding-right:20px;font-size:large'>"));
                 PlaceHolder1.Controls.Add(rdbtn);
+                
                 PlaceHolder1.Controls.Add(new LiteralControl("</span>"));
+                if(i%2 == 1)
+                {
+                    Label lblIsNotChecked = new Label();
+                    lblIsNotChecked.ID = "lblChecked" + i;
+                    lblIsNotChecked.Text = "*尚未選擇欄位";
+                    lblIsNotChecked.Visible = false;
+                    PlaceHolder1.Controls.Add(lblIsNotChecked);
+                }
                 i++;
             }
-
+            
             if (Regex.IsMatch(item.sqlSchemeName, @"ItemText\d"))
             {
                 TextBox tb = new TextBox();
                 tb.CssClass = "form-control";
                 PlaceHolder1.Controls.Add(tb);
             }
-
+            
             PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
         }
 
@@ -78,14 +88,34 @@ public partial class testAssess : System.Web.UI.Page
 
     private void btnSubmit_Click(object sender, EventArgs e)
     {
-        for (int k = 0; k <= 29;k++ )
+        lblIsNotChecked.Visible = false;
+        RadioButton[] rbtnAry = new RadioButton[30];
+        for (int k = 0; k <= 29; k++)
         {
-            RadioButton rbtn = (RadioButton)PlaceHolder1.FindControl("rdbtn"+k);
-            if ((rbtn.Checked) && (rbtn.Text.Equals("是")))
+            rbtnAry[k] = (RadioButton)PlaceHolder1.FindControl("rdbtn" + k);
+            if ((rbtnAry[k].Checked) && (rbtnAry[k].Text.Equals("是")))
             {
                 score++;
                 Label1.Text = score.ToString();
             }
+
+            if (k % 2 == 1)
+            {
+                try
+                {
+                    if ((rbtnAry[k].Checked) || (rbtnAry[k - 1].Checked))
+                    {
+                        
+                    }
+                    else 
+                    {
+                        Label lblChecked = (Label)PlaceHolder1.FindControl("lblChecked" + k);
+                        lblChecked.Visible = true;
+                    }
+                }
+                catch (Exception){}
+            }    
+            
         }
     }
 }

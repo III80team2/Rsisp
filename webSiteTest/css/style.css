@@ -42,3 +42,7 @@
             margin-top:45px;
             padding:0;
 }
+.lblIsNotChecked {
+    font-size:large;
+    color:red;
+}

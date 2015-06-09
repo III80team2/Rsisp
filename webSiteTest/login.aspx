@@ -37,8 +37,8 @@
                 <asp:Image ID="Image1" runat="server" Height="151px" ImageUrl="~/pics/guest.png" Width="162px" />
             </div>
             <span id="divLog" class="divlogin" runat="server">
-                <input id="loginName" runat="server" name="loginName" placeholder="帳號" spellcheck="false" style="width:40%; font-weight: normal; font-size: x-large; color: #000000;" /><br />                
-                <input id="Passwd" name="Passwd" type="password" placeholder="密碼" style="width:40%; font-weight: normal; font-size: x-large; color: #000000;"/><br />
+                <input id="loginName" runat="server" name="loginName" placeholder="帳號" spellcheck="false" style="width:40%; font-weight: normal; font-size: x-large; color: #000000;" value="iii"/><br />                
+                <input id="Passwd" name="Passwd" type="password" placeholder="密碼" style="width:40%; font-weight: normal; font-size: x-large; color: #000000;" value="password4"/><br />
                 <br />
                 &nbsp;<asp:Button class="btn btn-default" ID="btnSubmit" runat="server" Text="確認" OnClick="btnSubmit_Click" BackColor="#0099FF" BorderStyle="None" Width="40%"/>
                 <br />
@@ -48,7 +48,7 @@
         <div style="text-align:center"><asp:HyperLink ID="hLinkRegister" runat="server" Font-Size="X-Large" ForeColor="ForestGreen" NavigateUrl="~/Register.aspx">建立帳戶</asp:HyperLink></div>
     <script>
         window.onload = function () {
-            document.getElementById("loginName").focus();
+            document.getElementById("Passwd").focus();
         };
     </script>
         

@@ -82,10 +82,10 @@
                         <ItemTemplate>
                             <div class="col-sm-6 col-md-3" style="width:auto">
                                 <div class="thumbnail">
-                                    <asp:HyperLink runat="server" ImageUrl='<%# Eval("PatientPhotoPath") %>' NavigateUrl='<%#"index.aspx?pid="+Eval("ID_Patient")%>' Width="150px" Height="150px">
+                                    <asp:HyperLink runat="server" ImageUrl='<%# Eval("PatientPhotoPath") %>' NavigateUrl='<%#"index.aspx?pid="+Eval("ID_Patient")%>' Width="250px" Height="250px">
                                     </asp:HyperLink>
                                     <div class="caption" style="text-align:center">
-                                     <asp:Label ID="lblTitle" runat="server" Text='<%# Eval("PatientName") %>'Font-Size="XX-Large"></asp:Label>
+                                     <asp:Label ID="lblTitle" runat="server" Text='<%# Eval("PatientName") %>'></asp:Label>
                                     </div>
                                 </div>
                             </div>
