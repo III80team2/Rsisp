@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 
-public partial class testAssess : System.Web.UI.Page
+public partial class assess : System.Web.UI.Page
 {
     CAssessFactory assessFactory = new CAssessFactory();
     public int score = 0;
@@ -55,8 +55,7 @@ public partial class testAssess : System.Web.UI.Page
                 rdbtn.Text = content.content;
 
                 PlaceHolder1.Controls.Add(new LiteralControl("<span style='padding-right:20px;font-size:large'>"));
-                PlaceHolder1.Controls.Add(rdbtn);
-                
+                PlaceHolder1.Controls.Add(rdbtn);                
                 PlaceHolder1.Controls.Add(new LiteralControl("</span>"));
                 if(i%2 == 1)
                 {
