@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Assessment.Do</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">設定</string>
+    <string name="title_activity_login_main">*****歡迎進入本系統*****</string>
+    <string name="title_activity_act_map">地圖</string>
+    <string name="title_activity_act_todo">*****歡迎進入本系統*****</string>
+</resources>
