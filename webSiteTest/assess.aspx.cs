@@ -22,10 +22,10 @@ public partial class assess : System.Web.UI.Page
         CAssess assess = assessFactory.getById(id);
         lblAssessName.Text = assess.name;
 
-        CAssess.CItem.CGroup group = new CAssess.CItem.CGroup();
+        CGroup group = new CGroup();
         group.id = 0;
 
-        foreach (CAssess.CItem item in assess.items)
+        foreach (CItem item in assess.items)
         {
             if (!item.group.id.Equals(group.id))
             {
@@ -47,7 +47,7 @@ public partial class assess : System.Web.UI.Page
             PlaceHolder1.Controls.Add(lblItemName);
             PlaceHolder1.Controls.Add(new LiteralControl("</h4>"));
             
-            foreach (CAssess.CItem.CContent content in item.contents)
+            foreach (CContent content in item.contents)
             {
                 RadioButton rdbtn = new RadioButton();
                 rdbtn.GroupName = item.id.ToString();

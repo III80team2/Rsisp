@@ -9,27 +9,27 @@ public class CAssess
     public int id { get; set; }
     public string name { get; set; }
     public string sqlTableName { get; set; }
-    public List<CItem> items { get; set; }
+    public List<CItem> items { get; set; }    
+}
 
-    public class CItem
-    {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string sqlSchemeName { get; set; }
-        public List<CContent> contents { get; set; }
-        public CGroup group { get; set; }
+public class CItem
+{
+    public int id { get; set; }
+    public string name { get; set; }
+    public string sqlSchemeName { get; set; }
+    public List<CContent> contents { get; set; }
+    public CGroup group { get; set; }    
+}
 
-        public class CContent
-        {
-            public int id { get; set; }
-            public int score { get; set; }
-            public string content { get; set; }
-        }
+public class CContent
+{
+    public int id { get; set; }
+    public int score { get; set; }
+    public string content { get; set; }
+}
 
-        public class CGroup
-        {
-            public int id { get; set; }
-            public string name { get; set; }
-        }
-    }
+public class CGroup
+{
+    public int id { get; set; }
+    public string name { get; set; }
 }
