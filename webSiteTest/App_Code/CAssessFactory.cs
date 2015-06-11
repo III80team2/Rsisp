@@ -191,40 +191,57 @@ public class CAssessFactory
     {
         try
         {
-            SqlDataSource sds = new SqlDataSource();
-            sds.ConnectionString = connectionString;
-            sds.InsertCommand = "dbo.addAssessStyle";
-            sds.InsertCommandType = SqlDataSourceCommandType.StoredProcedure;
-            sds.InsertParameters.Add(new Parameter("AssessName", DbType.String, assess.name));
-            sds.Insert();
+            SqlDataSource sds1 = new SqlDataSource();
+            sds1.ConnectionString = connectionString;
+            sds1.InsertCommand = "dbo.addAssessStyle";
+            sds1.InsertCommandType = SqlDataSourceCommandType.StoredProcedure;
+            sds1.InsertParameters.Add(new Parameter("AssessName", DbType.String, assess.name));
+            sds1.Insert();
 
-            //List<CGroup> groups = new List<CGroup>();
-            //foreach (CItem item in assess.items)
+            loadAssessLite();
+
+            //addAssessItemGroupStyle
+            List<CGroup> groups = new List<CGroup>();
+            foreach (CItem item in assess.items)
+            {                
+                //if (groups.Count == 0)
+                //{
+                //    groups.Add(item.group);
+                //    addAssessItemGroupStyle(item.group);
+                //}
+                //foreach (CGroup group in groups)
+                //{
+                //    if (item.group != group)
+                //    {
+                //        groups.Add(item.group);
+                //        addAssessItemGroupStyle(item.group);
+                //    }
+                //}
+                addAssessItemStyle(item, getLast().id, 10, item.sqlSchemeName);
+            }
+
+            //addAssessItemStyle
+            //SqlDataSource sds2 = new SqlDataSource();
+            //sds2.ConnectionString = connectionString;
+            //sds2.SelectCommand = "dbo.getAssessItemGroupStyles";
+            //sds2.SelectCommandType = SqlDataSourceCommandType.StoredProcedure;
+            //DataView dvGroups = sds2.Select(DataSourceSelectArguments.Empty) as DataView;
+
+            //if (dvGroups.Count > 0)
             //{
-            //    //addAssessItemGroupStyle
-            //    if (groups.Count == 0)
+            //    foreach (CItem item in assess.items)
             //    {
-            //        groups.Add(item.group);
-            //        addAssessItemGroupStyle(item.group);
-            //    }
-            //    foreach (CGroup group in groups)
-            //    {
-            //        if (item.group != group)
+            //        for (int i = 0; i < dvGroups.Count; i++)
             //        {
-            //            groups.Add(item.group);
-            //            addAssessItemGroupStyle(item.group);
+            //            if (dvGroups.Table.Rows[i]["GroupName"].ToString() == item.group.name)
+            //            {                            
+            //                int group_id = Convert.ToInt32(dvGroups.Table.Rows[i]["ID_Group"]);
+                            
+            //                addAssessItemStyle(item, getLast().id, group_id, item.sqlSchemeName);
+            //            }
             //        }
             //    }
-
-            //    //addAssessItemStyle
-            //    loadAssess();
-            //    CGroup groupLast = new CGroup();
-            //    if (dvAssessItemGroupStyles.Count > 0)
-            //    {
-            //        int last = dvAssessItemGroupStyles.Count - 1;
-            //        groupLast.id = Convert.ToInt32(dvAssessItemGroupStyles.Table.Rows[last]["ID_Group"]);
-            //    }
-            //    addAssessItemStyle(item, getLast().id, groupLast.id, item.sqlSchemeName);
+            //}           
 
             //    //addAssessItemContentStyle
             //    loadAssess();

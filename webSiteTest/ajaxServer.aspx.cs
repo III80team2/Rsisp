@@ -97,7 +97,7 @@ public partial class ajaxServer : System.Web.UI.Page
                     continue;
                 }
             }
-            //assessFactory.addAssessStyle(assess);
+            assessFactory.addAssessStyle(assess);
         }
     }
 }
