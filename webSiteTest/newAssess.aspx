@@ -90,7 +90,7 @@
             });
             function processData(data) {
                 if (data)
-                    console.log(data);                    
+                    alert(data);
                 else 
                     alert('fail');            
             }

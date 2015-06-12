@@ -35,6 +35,7 @@ public partial class ajaxServer : System.Web.UI.Page
                             item.name = Request.Form[itemNameInGroup];
                             item.group = group;
                             item.sqlSchemeName = "ItemScore";
+                            item.contents = new List<CContent>();
 
                             for (int k = 1; k < formCount; k++)
                             {
@@ -45,6 +46,8 @@ public partial class ajaxServer : System.Web.UI.Page
                                     CContent content = new CContent();
                                     content.content = Request.Form[contentNameInGroup];
                                     content.score = Convert.ToInt32(Request.Form[contentScoreInGroup]);
+
+                                    item.contents.Add(content);
                                 }
                             }
                             assess.items.Add(item);
@@ -71,6 +74,7 @@ public partial class ajaxServer : System.Web.UI.Page
                     CItem item = new CItem();
                     item.name = Request.Form[itemName];
                     item.sqlSchemeName = "ItemScore";
+                    item.contents = new List<CContent>();
 
                     for (int j = 1; j < formCount; j++)
                     {
@@ -81,6 +85,8 @@ public partial class ajaxServer : System.Web.UI.Page
                             CContent content = new CContent();
                             content.content = Request.Form[contentNameInGroup];
                             content.score = Convert.ToInt32(Request.Form[contentScoreInGroup]);
+
+                            item.contents.Add(content);
                         }
                     }
                     assess.items.Add(item);
@@ -98,6 +104,7 @@ public partial class ajaxServer : System.Web.UI.Page
                 }
             }
             assessFactory.addAssessStyle(assess);
+            Response.Write("新增評估表樣式完成");
         }
     }
 }

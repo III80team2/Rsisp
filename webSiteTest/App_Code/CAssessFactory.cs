@@ -203,60 +203,81 @@ public class CAssessFactory
             //addAssessItemGroupStyle
             List<CGroup> groups = new List<CGroup>();
             foreach (CItem item in assess.items)
-            {                
-                //if (groups.Count == 0)
-                //{
-                //    groups.Add(item.group);
-                //    addAssessItemGroupStyle(item.group);
-                //}
-                //foreach (CGroup group in groups)
-                //{
-                //    if (item.group != group)
-                //    {
-                //        groups.Add(item.group);
-                //        addAssessItemGroupStyle(item.group);
-                //    }
-                //}
-                addAssessItemStyle(item, getLast().id, 10, item.sqlSchemeName);
+            {
+                if (groups.Count == 0)
+                {
+                    groups.Add(item.group);
+                    addAssessItemGroupStyle(item.group);
+                    continue;
+                }
+
+                bool notHaveSameGroup = true;
+                foreach (CGroup group in groups)
+                {
+                    if (item.group == group)
+                    {
+                        notHaveSameGroup = false;
+                        break;
+                    }
+                }
+                if (notHaveSameGroup)
+                {
+                    groups.Add(item.group);
+                    addAssessItemGroupStyle(item.group);
+                }
             }
 
             //addAssessItemStyle
-            //SqlDataSource sds2 = new SqlDataSource();
-            //sds2.ConnectionString = connectionString;
-            //sds2.SelectCommand = "dbo.getAssessItemGroupStyles";
-            //sds2.SelectCommandType = SqlDataSourceCommandType.StoredProcedure;
-            //DataView dvGroups = sds2.Select(DataSourceSelectArguments.Empty) as DataView;
+            SqlDataSource sds2 = new SqlDataSource();
+            sds2.ConnectionString = connectionString;
+            sds2.SelectCommand = "dbo.getAssessItemGroupStyles";
+            sds2.SelectCommandType = SqlDataSourceCommandType.StoredProcedure;
+            DataView dvGroups = sds2.Select(DataSourceSelectArguments.Empty) as DataView;
 
-            //if (dvGroups.Count > 0)
-            //{
-            //    foreach (CItem item in assess.items)
-            //    {
-            //        for (int i = 0; i < dvGroups.Count; i++)
-            //        {
-            //            if (dvGroups.Table.Rows[i]["GroupName"].ToString() == item.group.name)
-            //            {                            
-            //                int group_id = Convert.ToInt32(dvGroups.Table.Rows[i]["ID_Group"]);
-                            
-            //                addAssessItemStyle(item, getLast().id, group_id, item.sqlSchemeName);
-            //            }
-            //        }
-            //    }
-            //}           
+            foreach (CItem item in assess.items)
+            {
+                if (item.group != null)
+                {
+                    for (int i = dvGroups.Count - 1; i >= 0; i--)
+                    {
+                        if (dvGroups.Table.Rows[i]["GroupName"].ToString() == item.group.name)
+                        {
+                            int group_id = Convert.ToInt32(dvGroups.Table.Rows[i]["ID_Group"]);
 
-            //    //addAssessItemContentStyle
-            //    loadAssess();
-            //    CItem itemLast = new CItem();
-            //    if (dvAssessItemStyles.Count > 0)
-            //    {
-            //        int last = dvAssessItemStyles.Count - 1;
-            //        itemLast.id = Convert.ToInt32(dvAssessItemStyles.Table.Rows[last]["ID_Item"]);
+                            addAssessItemStyle(item, getLast().id, group_id, item.sqlSchemeName);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    addAssessItemStyle(item, getLast().id, 0, item.sqlSchemeName);
+                }
+            }
 
-            //        foreach (CContent content in item.contents)
-            //        {
-            //            addAssessItemContentStyle(content, itemLast.id);
-            //        }
-            //    }
-            //}
+            //addAssessItemContentStyle
+            SqlDataSource sds3 = new SqlDataSource();
+            sds3.ConnectionString = connectionString;
+            sds3.SelectCommand = "dbo.getAssessItemStyles";
+            sds3.SelectCommandType = SqlDataSourceCommandType.StoredProcedure;
+            DataView dvItems = sds3.Select(DataSourceSelectArguments.Empty) as DataView;
+
+            foreach (CItem item in assess.items)
+            {
+                for (int i = dvItems.Count - 1; i >= 0; i--)
+                {
+                    if (dvItems.Table.Rows[i]["ItemName"].ToString() == item.name)
+                    {
+                        int item_id = Convert.ToInt32(dvItems.Table.Rows[i]["ID_Item"]);
+
+                        foreach (CContent content in item.contents)
+                        {
+                            addAssessItemContentStyle(content, item_id);
+                        }
+                        break;
+                    }
+                }                
+            }
 
             message = "add success";
         }
@@ -292,7 +313,10 @@ public class CAssessFactory
             sds.InsertCommand = "dbo.addAssessItemStyle";
             sds.InsertCommandType = SqlDataSourceCommandType.StoredProcedure;
             sds.InsertParameters.Add(new Parameter("ID_Assess", DbType.Int32, ID_Assess.ToString()));
-            sds.InsertParameters.Add(new Parameter("ID_Group", DbType.Int32, ID_Group.ToString()));
+            if (ID_Group != 0)
+                sds.InsertParameters.Add(new Parameter("ID_Group", DbType.Int32, ID_Group.ToString()));
+            else
+                sds.InsertParameters.Add(new Parameter("ID_Group", DbType.Int32, null));
             sds.InsertParameters.Add(new Parameter("ItemName", DbType.String, item.name));
             sds.InsertParameters.Add(new Parameter("SchemeNameType", DbType.String, SchemeNameType));
             sds.Insert();
