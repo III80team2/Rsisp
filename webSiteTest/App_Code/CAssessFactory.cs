@@ -7,14 +7,17 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
 
 /// <summary>提供一項機制，用來向 CAccess 型別的物件要求資料相關的作業。</summary>
 public class CAssessFactory
-{
-    List<CAssess> assesses = new List<CAssess>();
+{    
     string connectionString = WebConfigurationManager.OpenWebConfiguration("/webSiteTest").ConnectionStrings.ConnectionStrings["RsispConnectionString"].ConnectionString;
-    public string message;
+
+    List<CAssess> assesses = new List<CAssess>();
     DataView dvAssessStyles, dvAssessItemStyles, dvAssessItemContentStyles, dvAssessItemGroupStyles;
+
+    public string message;
 
     public CAssessFactory()
     {
@@ -344,5 +347,23 @@ public class CAssessFactory
         {
             message = ex.Message;
         }
+    }
+
+    public string createAssessTable(string TableName)
+    {
+        string message = "fail";
+        SqlConnection con = new SqlConnection(connectionString);
+        con.Open();
+        SqlCommand cmd;
+        cmd = new SqlCommand(String.Format(@"select {0}
+                               from AssessStyle
+                               order by 1 desc", TableName), con);
+        SqlDataReader reader = cmd.ExecuteReader();
+        while (reader.Read())
+            message = reader[0].ToString();
+
+        reader.Close();
+        con.Close();
+        return message;
     }
 }
