@@ -7,14 +7,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <link href="Content/bootstrap-switch.css" rel="stylesheet" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
     <script src="Scripts/bootstrap-switch.js"></script>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div class="container">
+    <div class="container">
+        <form id="form1" runat="server">
             <h1>
                 <asp:Label ID="lblAssessName" runat="server" Text="AssessName" CssClass="label label-default"></asp:Label>
             </h1>
@@ -22,19 +22,19 @@
             <asp:PlaceHolder ID="PlaceHolder1" runat="server">
                 <script type="text/javascript">
                     $(function radio() {
-                        for (var i = 0 ; i <= 29 ; i++) {
+                        var count = $('#form1').children().children().length;
+                        for (var i = 0 ; i < count * count ; i++) {
                             $("#rdbtn" + i).bootstrapSwitch({
                                 onText: '<span class="glyphicon glyphicon-ok"></span>',
                                 offText: '<span class="glyphicon glyphicon-remove"></span>'
                             });
                         }
                     })
-        </script>
+                </script>
             </asp:PlaceHolder>
             <br />
             <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-             
-        </div>
-    </form>
+        </form>
+    </div>
 </body>
 </html>
