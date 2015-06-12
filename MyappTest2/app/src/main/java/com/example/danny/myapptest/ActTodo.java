@@ -28,6 +28,8 @@ import java.util.Calendar;
 
 public class ActTodo extends Activity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +116,8 @@ public class ActTodo extends Activity {
     }
 
 
+
+
 View.OnClickListener btnAdd_click =new View.OnClickListener(){
     public void onClick(View arg0) {
 
@@ -134,6 +138,8 @@ View.OnClickListener btnAdd_click =new View.OnClickListener(){
 
     }
 };
+
+
 
 
 
@@ -158,6 +164,9 @@ View.OnClickListener btnList_click=new View.OnClickListener(){
                 list.add(
                         table.getString(ketT, "No Data")+"\r\n"+
                                 table.getString(ketD, "No Data"));
+//                list.remove(table.getString(ketT, "No Data")+"\r\n"+
+//                        table.getString(ketD, "No Data"));
+
             }
         }
         if(list.size()==0){
@@ -165,18 +174,9 @@ View.OnClickListener btnList_click=new View.OnClickListener(){
             return;
         }
 
-
-
-
         AlertDialog.Builder build=new AlertDialog.Builder(ActTodo.this);
         build.setTitle("未完成工作列表");
         build.setItems(list.toArray(new String[list.size()]),null).create().show();
-
-
-
-
-
-
 
     }
 };

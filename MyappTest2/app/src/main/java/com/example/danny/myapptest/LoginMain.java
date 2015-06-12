@@ -80,7 +80,7 @@ public class LoginMain extends Activity {
 
             Toast message = Toast.makeText(
                     LoginMain.this,
-                    "偵測到 帥哥  在附近",
+                    "帳號或密碼錯誤!!",
                     Toast.LENGTH_LONG);
             message.show();
         }
