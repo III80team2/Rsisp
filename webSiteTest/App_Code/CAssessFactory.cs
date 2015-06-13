@@ -113,8 +113,11 @@ public class CAssessFactory
 
                     loadContent(item);
 
-                    int id_group = Convert.ToInt32(dvAssessItemStyles.Table.Rows[i]["ID_Group"]);
-                    loadGroup(item, id_group);
+                    if (dvAssessItemStyles.Table.Rows[i]["ID_Group"].ToString() != "")
+                    {
+                        int id_group = Convert.ToInt32(dvAssessItemStyles.Table.Rows[i]["ID_Group"]);
+                        loadGroup(item, id_group);
+                    }
 
                     assess.items.Add(item);
                 }
@@ -189,7 +192,8 @@ public class CAssessFactory
         return 0;
     }
 
-    //新增評估表樣式
+    //----------------------------------------新增評估表樣式----------------------------------------//
+
     public void addAssessStyle(CAssess assess)
     {
         try
@@ -267,20 +271,27 @@ public class CAssessFactory
 
             foreach (CItem item in assess.items)
             {
-                for (int i = dvItems.Count - 1; i >= 0; i--)
+                if (item.contents != null)
                 {
-                    if (dvItems.Table.Rows[i]["ItemName"].ToString() == item.name)
+                    for (int i = dvItems.Count - 1; i >= 0; i--)
                     {
-                        int item_id = Convert.ToInt32(dvItems.Table.Rows[i]["ID_Item"]);
-
-                        foreach (CContent content in item.contents)
+                        if (dvItems.Table.Rows[i]["ItemName"].ToString() == item.name)
                         {
-                            addAssessItemContentStyle(content, item_id);
+                            int item_id = Convert.ToInt32(dvItems.Table.Rows[i]["ID_Item"]);
+
+                            foreach (CContent content in item.contents)
+                            {
+                                addAssessItemContentStyle(content, item_id);
+                            }
+                            break;
                         }
-                        break;
                     }
-                }                
+                }
             }
+
+            //createTable
+            loadAssess();
+            createAssessTable(getLast());
 
             message = "add success";
         }
@@ -349,21 +360,66 @@ public class CAssessFactory
         }
     }
 
-    public string createAssessTable(string TableName)
-    {
-        string message = "fail";
+    private void createAssessTable(CAssess assess)
+    {        
         SqlConnection con = new SqlConnection(connectionString);
         con.Open();
-        SqlCommand cmd;
-        cmd = new SqlCommand(String.Format(@"select {0}
-                               from AssessStyle
-                               order by 1 desc", TableName), con);
-        SqlDataReader reader = cmd.ExecuteReader();
-        while (reader.Read())
-            message = reader[0].ToString();
+        SqlCommand cmd = new SqlCommand(String.Format(@"
+                create table {0}
+                (
+                    ID_{0}        int identity(1, 1), 
+	                ID_User       nvarchar(20) not null,
+	                ID_Patient    nvarchar(20) not null
 
-        reader.Close();
-        con.Close();
-        return message;
+                    primary key (ID_{0}),
+	                foreign key (ID_User) references Users(ID_User),
+	                foreign key (ID_Patient) references Patients(ID_Patient)	
+                )
+            ", assess.sqlTableName), con);
+
+        try
+        {
+            cmd.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+            message = ex.Message;
+        }
+
+        addColumns(assess, con);
+
+        con.Close();        
     }
+
+    private void addColumns(CAssess assess, SqlConnection con)
+    {
+        foreach (CItem item in assess.items)
+        {
+            SqlCommand cmd;
+            if (item.contents != null)
+            {
+                cmd = new SqlCommand(String.Format(@"
+                    alter table {0} add {1} int not null
+                ", assess.sqlTableName, item.sqlSchemeName), con);
+            }
+            else
+            {
+                cmd = new SqlCommand(String.Format(@"
+                    alter table {0} add {1} nvarchar(100)
+                ", assess.sqlTableName, item.sqlSchemeName), con);
+            }
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+            }
+        }
+    }
+
+    //----------------------------------------新增評估表樣式完成----------------------------------------//
+
 }
