@@ -18,6 +18,7 @@ public partial class assess : System.Web.UI.Page
     CAssessFactory assessFactory = new CAssessFactory();
     CAssess myAssess = new CAssess();
     string patient_id;
+    int schedule_id;
     int assessRecord_id;
 
     public int totalScore = 0;        
@@ -32,10 +33,11 @@ public partial class assess : System.Web.UI.Page
 
         int assess_id = 0;
 
-        if (Request.QueryString["pid"] != null || Request.QueryString["aid"] != null)
+        if (Request.QueryString["pid"] != null && Request.QueryString["aid"] != null && Request.QueryString["sid"] != null)
         {
             assess_id = Convert.ToInt32(Request.QueryString["aid"]);
             patient_id = Request.QueryString["pid"];
+            schedule_id = Convert.ToInt32(Request.QueryString["sid"]);
         }
         else
             Response.Redirect(Request.UrlReferrer.ToString());
@@ -166,6 +168,8 @@ public partial class assess : System.Web.UI.Page
                 catch (Exception) { }
             }
         }
+        CScheduleFactory scheduleFactory = new CScheduleFactory();
+        scheduleFactory.setScheduleIsFinishedById(schedule_id);
     }
 
     private void readyToInsertRecord()

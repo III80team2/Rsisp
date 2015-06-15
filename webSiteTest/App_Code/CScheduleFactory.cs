@@ -74,4 +74,20 @@ public class CScheduleFactory
         }
         return userSchedules;    
     }
+
+    public void setScheduleIsFinishedById(int id)
+    {
+        for (int i = 0; i < schedules.Count; i++)
+        {
+            if (schedules[i].id == id)
+            {
+                SqlDataSource sds = new SqlDataSource();
+                sds.ConnectionString = connectionString;
+                sds.UpdateCommand = "dbo.setScheduleIsFinished";
+                sds.UpdateCommandType = SqlDataSourceCommandType.StoredProcedure;
+                sds.UpdateParameters.Add(new Parameter("ID_Schedule", DbType.Int32, id.ToString()));
+                sds.Update();
+            }                
+        }
+    }
 }
