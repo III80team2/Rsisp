@@ -79,7 +79,6 @@ public class ActMain extends Activity {
     }
 
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -117,7 +116,6 @@ public class ActMain extends Activity {
                 Toast.makeText(ActMain.this,"請注意通知欄",Toast.LENGTH_SHORT).show();
 
 
-
                 break;
 
             case MENU_exit :
@@ -147,9 +145,6 @@ public class ActMain extends Activity {
             default:
         }
         return super.onOptionsItemSelected(item);
-
-
-
 
 
     }

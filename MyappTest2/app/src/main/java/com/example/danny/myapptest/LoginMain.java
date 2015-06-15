@@ -21,7 +21,6 @@ public class LoginMain extends Activity {
         InicialComponent();
 
 
-
         //setTitle("*****歡迎進入本系統*****");
 
     }
@@ -92,7 +91,6 @@ public class LoginMain extends Activity {
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
         aa = (TextView) findViewById(R.id.txtId);
         btnSubmit.setOnClickListener(btnSubmit_click);
-
 
     }
 

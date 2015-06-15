@@ -116,8 +116,6 @@ public class ActTodo extends Activity {
     }
 
 
-
-
 View.OnClickListener btnAdd_click =new View.OnClickListener(){
     public void onClick(View arg0) {
 
@@ -138,9 +136,6 @@ View.OnClickListener btnAdd_click =new View.OnClickListener(){
 
     }
 };
-
-
-
 
 
 View.OnClickListener btnList_click=new View.OnClickListener(){
