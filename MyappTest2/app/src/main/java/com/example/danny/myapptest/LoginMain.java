@@ -21,8 +21,6 @@ public class LoginMain extends Activity {
         InicialComponent();
 
 
-        //setTitle("*****歡迎進入本系統*****");
-
     }
 
     private static final int MENU_exit = Menu.FIRST ;

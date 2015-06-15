@@ -36,8 +36,6 @@ public class ActTodo extends Activity {
         setContentView(R.layout.acttodo);
         InitialComponent();
 
-        //setTitle("*****歡迎進入本系統*****");
-
 
         Notification message =new Notification(
                 android.R.drawable.stat_sys_download,
@@ -58,8 +56,6 @@ public class ActTodo extends Activity {
 
         NotificationManager manager=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         manager.notify(0, message);
-
-
 
 
     }
@@ -159,8 +155,7 @@ View.OnClickListener btnList_click=new View.OnClickListener(){
                 list.add(
                         table.getString(ketT, "No Data")+"\r\n"+
                                 table.getString(ketD, "No Data"));
-//                list.remove(table.getString(ketT, "No Data")+"\r\n"+
-//                        table.getString(ketD, "No Data"));
+
 
             }
         }
