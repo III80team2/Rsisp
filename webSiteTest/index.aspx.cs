@@ -8,10 +8,11 @@ using System.Web.UI.WebControls;
 public partial class index : System.Web.UI.Page
 {
     CScheduleFactory factory = new CScheduleFactory();
-    
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack) {
+        if (!IsPostBack)
+        {
             string id = "";
             if (Request.QueryString["pid"] != null)
             {
@@ -21,6 +22,7 @@ public partial class index : System.Web.UI.Page
             fetchData(id);
         }
     }
+
     protected void Button1_Click(object sender, EventArgs e)
     {
         CAssessFactory factory = new CAssessFactory();
@@ -28,6 +30,7 @@ public partial class index : System.Web.UI.Page
         int id = factory.getId(name);
         Response.Redirect("running.aspx");
     }
+
     private void fetchData(string id)
     {
         GridView1.DataSource = factory.getByPatientId(id);
@@ -58,6 +61,8 @@ public partial class index : System.Web.UI.Page
         editAssess.HeaderText = "填寫";
         editAssess.CommandName = "edit";
 
+        BoundField schedule_id = new BoundField();
+        schedule_id.DataField = "id";        
 
         GridView1.Columns.Add(user_id);
         GridView1.Columns.Add(patient_id);
@@ -65,22 +70,28 @@ public partial class index : System.Web.UI.Page
         GridView1.Columns.Add(deadLine);
         GridView1.Columns.Add(isFinished);
         GridView1.Columns.Add(editAssess);
+        GridView1.Columns.Add(schedule_id);        
         GridView1.DataBind();
+        GridView1.Columns[6].Visible = false;
     }
+
     protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         if (e.CommandName == "edit")
         {
-            CAssessFactory factory = new CAssessFactory();
+            CAssessFactory assessFactory = new CAssessFactory();
+            CPatientFactory patientFactory = new CPatientFactory();
             int index = Convert.ToInt32(e.CommandArgument);
             GridView GridViewTest = (GridView)e.CommandSource;
-            
+
             GridViewRow row = GridViewTest.Rows[index];
             string name = row.Cells[2].Text;
-            int id = factory.getId(name);
+            int aid = assessFactory.getId(name);
+            string pid = patientFactory.getById(row.Cells[1].Text).id;
+            int sid = Convert.ToInt32(row.Cells[6].Text);
             //Label2.Text = name;
-            Response.Redirect("assess.aspx?pid=" + id);
-        
+            Response.Redirect("assess.aspx?pid=" + pid + "&aid=" + aid + "&sid=" + sid);
+
         }
     }
 }

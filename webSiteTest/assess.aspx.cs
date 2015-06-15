@@ -6,32 +6,48 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 using System.Drawing;
+using System.Data.SqlClient;
+using System.Web.Configuration;
 
 public partial class assess : System.Web.UI.Page
 {
+    string connectionString = WebConfigurationManager.OpenWebConfiguration("/webSiteTest").ConnectionStrings.ConnectionStrings["RsispConnectionString"].ConnectionString;
+
+    CUserFactory userFactory = new CUserFactory();
+    CUser user = new CUser();
     CAssessFactory assessFactory = new CAssessFactory();
-    public int score = 0;
-    List<int> scoreList = new List<int>();
-    Label lblIsNotChecked = new Label();
+    CAssess myAssess = new CAssess();
+    string patient_id;
+    int assessRecord_id;
+
+    public int totalScore = 0;        
     int rdbtn_id = 0;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        int id = 0;        
+        if (Session["loginName"] != null)
+            user = userFactory.getByAccount(Session["loginName"].ToString());
+        else
+            Response.Redirect("login.aspx");
 
-        if (Request.QueryString["pid"] != null)
-            id = Convert.ToInt32(Request.QueryString["pid"]);
+        int assess_id = 0;
+
+        if (Request.QueryString["pid"] != null || Request.QueryString["aid"] != null)
+        {
+            assess_id = Convert.ToInt32(Request.QueryString["aid"]);
+            patient_id = Request.QueryString["pid"];
+        }
         else
             Response.Redirect(Request.UrlReferrer.ToString());
 
-        CAssess assess = assessFactory.getById(id);
-        lblAssessName.Text = assess.name;
+        myAssess = assessFactory.getById(assess_id);
+        lblAssessName.Text = myAssess.name;
 
         CGroup group = new CGroup();
         group.id = 0;
 
         int groupCount = 0;
-        foreach (CItem item in assess.items)
+        foreach (CItem item in myAssess.items)
         {
             if (!item.group.id.Equals(group.id))
             {
@@ -49,7 +65,7 @@ public partial class assess : System.Web.UI.Page
                 PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
                 groupCount++;
             }
-            addItem(item);            
+            addItem(item);
         }
         PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
 
@@ -77,6 +93,7 @@ public partial class assess : System.Web.UI.Page
             RadioButton rdbtn = new RadioButton();
             rdbtn.GroupName = item.id.ToString();
             rdbtn.ID = "rdbtn" + rdbtn_id;
+            rdbtn.Attributes["ID_Content"] = content.id.ToString();
             rdbtn.Text = content.content;
 
             PlaceHolder1.Controls.Add(new LiteralControl("<span style='font-size:large'>"));
@@ -108,17 +125,30 @@ public partial class assess : System.Web.UI.Page
 
     private void btnSubmit_Click(object sender, EventArgs e)
     {
-        
-        RadioButton[] rbtnAry = new RadioButton[30];
-        for (int k = 0; k <= 29; k++)
+        readyToInsertRecord();
+
+        int contents_count = 0;
+        foreach (CItem item in myAssess.items)
+            foreach (CContent content in item.contents)
+                contents_count++;
+
+        RadioButton[] rbtnAry = new RadioButton[contents_count];
+        for (int k = 0; k < contents_count; k++)
         {
             rbtnAry[k] = (RadioButton)PlaceHolder1.FindControl("rdbtn" + k);
-            if ((rbtnAry[k].Checked) && (rbtnAry[k].Text.Equals("是")))
+            if (rbtnAry[k].Checked)
             {
-                score++;
-                Label1.Text = score.ToString();
+                int content_id = Convert.ToInt32(rbtnAry[k].Attributes["ID_Content"]);
+                CContent content = assessFactory.getContentById(content_id);
+                string schemeName = assessFactory.getItemById(content.item_id).sqlSchemeName;
+
+                insertRecord_Score(schemeName, content.score);
+
+                totalScore += content.score;
+                Label1.Text = totalScore.ToString();
             }
 
+            //欄位驗證
             if (k % 2 == 1)
             {
                 try
@@ -135,7 +165,59 @@ public partial class assess : System.Web.UI.Page
                 }
                 catch (Exception) { }
             }
-
         }
+    }
+
+    private void readyToInsertRecord()
+    {
+        SqlConnection con = new SqlConnection(connectionString);
+        con.Open();
+        SqlCommand cmd = new SqlCommand(String.Format(@"
+                insert into {0}(ID_User, ID_Patient, RecordDate)
+                values ('{1}', '{2}', '{3}')
+            ", myAssess.sqlTableName, user.id, patient_id, DateTime.Now.ToShortDateString()), con);
+
+        try
+        {
+            cmd.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+            string message=ex.Message;
+        }
+
+        cmd = new SqlCommand(String.Format(@"
+                select ID_{0} 
+                from {0} 
+                where ID_User = '{1}' and ID_Patient = '{2}' and RecordDate = '{3}'
+            ", myAssess.sqlTableName, user.id, patient_id, DateTime.Now.ToShortDateString()), con);
+        SqlDataReader reader = cmd.ExecuteReader();
+        while (reader.Read())
+            assessRecord_id = (int)reader[0];
+        reader.Close();
+
+        con.Close();        
+    }
+
+    private void insertRecord_Score(string schemeName, int score)
+    {
+        SqlConnection con = new SqlConnection(connectionString);
+        con.Open();
+        SqlCommand cmd = new SqlCommand(String.Format(@"
+                update {0}
+                set {1} = {2}
+                where ID_{0} = {3}
+            ", myAssess.sqlTableName, schemeName, score, assessRecord_id), con);
+
+        try
+        {
+            cmd.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+            string message = ex.Message;
+        }
+
+        con.Close();
     }
 }

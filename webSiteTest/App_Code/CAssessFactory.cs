@@ -15,6 +15,9 @@ public class CAssessFactory
     string connectionString = WebConfigurationManager.OpenWebConfiguration("/webSiteTest").ConnectionStrings.ConnectionStrings["RsispConnectionString"].ConnectionString;
 
     List<CAssess> assesses = new List<CAssess>();
+    List<CItem> items = new List<CItem>();
+    List<CContent> contents = new List<CContent>();
+
     DataView dvAssessStyles, dvAssessItemStyles, dvAssessItemContentStyles, dvAssessItemGroupStyles;
 
     public string message;
@@ -107,6 +110,7 @@ public class CAssessFactory
                 {
                     CItem item = new CItem();
                     item.id = Convert.ToInt32(dvAssessItemStyles.Table.Rows[i]["ID_Item"]);
+                    item.assess_id = Convert.ToInt32(dvAssessItemStyles.Table.Rows[i]["ID_Assess"]);
                     item.name = dvAssessItemStyles.Table.Rows[i]["ItemName"].ToString();
                     item.sqlSchemeName = dvAssessItemStyles.Table.Rows[i]["SchemeName"].ToString();
                     item.contents = new List<CContent>();
@@ -120,6 +124,7 @@ public class CAssessFactory
                     }
 
                     assess.items.Add(item);
+                    items.Add(item);
                 }
             }
         }
@@ -135,10 +140,12 @@ public class CAssessFactory
                 {
                     CContent content = new CContent();
                     content.id = Convert.ToInt32(dvAssessItemContentStyles.Table.Rows[i]["ID_Content"]);
+                    content.item_id = Convert.ToInt32(dvAssessItemContentStyles.Table.Rows[i]["ID_Item"]);
                     content.score = Convert.ToInt32(dvAssessItemContentStyles.Table.Rows[i]["Score"]);
                     content.content = dvAssessItemContentStyles.Table.Rows[i]["Content"].ToString();
 
                     item.contents.Add(content);
+                    contents.Add(content);
                 }
             }
         }
@@ -180,6 +187,26 @@ public class CAssessFactory
     public CAssess getLast()
     {
         return assesses[assesses.Count - 1];
+    }
+
+    public CItem getItemById(int id)
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].id == id)
+                return items[i];
+        }
+        return null;
+    }
+
+    public CContent getContentById(int id)
+    {
+        for (int i = 0; i < contents.Count; i++)
+        {
+            if (contents[i].id == id)
+                return contents[i];
+        }
+        return null;
     }
 
     public int getId(string name)
@@ -369,7 +396,8 @@ public class CAssessFactory
                 (
                     ID_{0}        int identity(1, 1), 
 	                ID_User       nvarchar(20) not null,
-	                ID_Patient    nvarchar(20) not null
+	                ID_Patient    nvarchar(20) not null,
+                    RecordDate    date not null
 
                     primary key (ID_{0}),
 	                foreign key (ID_User) references Users(ID_User),
@@ -399,7 +427,7 @@ public class CAssessFactory
             if (item.contents != null)
             {
                 cmd = new SqlCommand(String.Format(@"
-                    alter table {0} add {1} int not null
+                    alter table {0} add {1} int
                 ", assess.sqlTableName, item.sqlSchemeName), con);
             }
             else

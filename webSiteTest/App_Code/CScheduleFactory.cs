@@ -72,7 +72,6 @@ public class CScheduleFactory
             if (schedules[i].patient_id == patient_id)
                 userSchedules.Add(schedules[i]);            
         }
-        return userSchedules;
-    
+        return userSchedules;    
     }
 }

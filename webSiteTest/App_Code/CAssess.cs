@@ -15,6 +15,7 @@ public class CAssess
 public class CItem
 {
     public int id { get; set; }
+    public int assess_id { get; set; }
     public string name { get; set; }
     public string sqlSchemeName { get; set; }
     public List<CContent> contents { get; set; }
@@ -24,6 +25,7 @@ public class CItem
 public class CContent
 {
     public int id { get; set; }
+    public int item_id { get; set; }
     public int score { get; set; }
     public string content { get; set; }
 }
