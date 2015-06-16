@@ -18,6 +18,7 @@ public partial class assess : System.Web.UI.Page
     CAssessFactory assessFactory = new CAssessFactory();
     CAssess myAssess = new CAssess();
     CScheduleFactory scheduleFactory = new CScheduleFactory();
+    bool isFinished;
     string patient_id;
     int schedule_id;
     int assessRecord_id;
@@ -45,6 +46,7 @@ public partial class assess : System.Web.UI.Page
             Response.Redirect(Request.UrlReferrer.ToString());
 
         myAssess = assessFactory.getById(assess_id);
+        isFinished = scheduleFactory.getById(schedule_id).isFinished;
         lblAssessName.Text = myAssess.name;
 
         CGroup group = new CGroup();
@@ -81,6 +83,9 @@ public partial class assess : System.Web.UI.Page
         btnSubmit.Height = 60;
         btnSubmit.Font.Size = 18;
         btnSubmit.ForeColor = Color.Black;
+        if (isFinished)
+            btnSubmit.Enabled = false;
+
         PlaceHolder1.Controls.Add(btnSubmit);
     }
 
@@ -93,6 +98,12 @@ public partial class assess : System.Web.UI.Page
         PlaceHolder1.Controls.Add(lblItemName);
         PlaceHolder1.Controls.Add(new LiteralControl("</div><div class='panel-body'>"));
 
+        int itemScore;
+        if (isFinished)
+            itemScore = getItemScoreRecord(item.sqlSchemeName);
+        else
+            itemScore = 0;
+
         //加入選擇項目
         foreach (CContent content in item.contents)
         {
@@ -101,6 +112,14 @@ public partial class assess : System.Web.UI.Page
             rdbtn.ID = "rdbtn" + rdbtn_id;
             rdbtn.Attributes["ID_Content"] = content.id.ToString();
             rdbtn.Text = content.content;
+            if (isFinished)
+            {
+                rdbtn.Enabled = false;
+                if (content.score == itemScore)
+                    rdbtn.Checked = true;
+                else
+                    rdbtn.Checked = false;
+            }
 
             PlaceHolder1.Controls.Add(new LiteralControl("<span style='font-size:large'>"));
             PlaceHolder1.Controls.Add(rdbtn);
@@ -126,8 +145,15 @@ public partial class assess : System.Web.UI.Page
             tb.Attributes["SchemeName"] = item.sqlSchemeName;
             tb.TextMode = TextBoxMode.MultiLine;
             tb.CssClass = "form-control";
-            PlaceHolder1.Controls.Add(tb);
+            if (isFinished)
+            {
+                tb.Enabled = false;
+                //加載已完成紀錄資料
+                tb.Text = getItemTextRecord(item.sqlSchemeName);
+            }
+            
 
+            PlaceHolder1.Controls.Add(tb);
             tb_id++;
         }
         PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
@@ -192,7 +218,7 @@ public partial class assess : System.Web.UI.Page
         }
 
         scheduleFactory.setScheduleIsFinishedById(schedule_id);
-        Response.Redirect(Request.UrlReferrer.ToString());
+        Response.Redirect("index.aspx?pid=" + patient_id);
     }
 
     private void readyToInsertRecord()
@@ -268,5 +294,50 @@ public partial class assess : System.Web.UI.Page
         }
 
         con.Close();
+    }
+
+    private int getItemScoreRecord(string sqlSchemeName)
+    {
+        int result = 0;
+        SqlConnection con = new SqlConnection(connectionString);
+        con.Open();
+        SqlCommand cmd = new SqlCommand(String.Format(@"
+                select {0}
+                from {1}
+            ", sqlSchemeName, myAssess.sqlTableName), con);
+
+        SqlDataReader reader = cmd.ExecuteReader();
+        try
+        {
+            while (reader.Read())
+                result = Convert.ToInt32(reader[0]);
+        }
+        catch (Exception ex)
+        {
+            string message = ex.Message;
+        }
+        reader.Close();
+
+        con.Close();
+        return result;
+    }
+
+    private string getItemTextRecord(string sqlSchemeName)
+    {
+        string result = null;
+        SqlConnection con = new SqlConnection(connectionString);
+        con.Open();
+        SqlCommand cmd = new SqlCommand(String.Format(@"
+                select {0}
+                from {1}
+            ", sqlSchemeName, myAssess.sqlTableName), con);
+
+        SqlDataReader reader = cmd.ExecuteReader();
+        while (reader.Read())
+            result = Convert.ToString(reader[0]);
+        reader.Close();
+
+        con.Close();
+        return result;
     }
 }
