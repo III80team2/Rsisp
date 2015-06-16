@@ -62,7 +62,7 @@ public partial class index : System.Web.UI.Page
         editAssess.CommandName = "edit";
 
         BoundField schedule_id = new BoundField();
-        schedule_id.DataField = "id";        
+        schedule_id.DataField = "id";
 
         GridView1.Columns.Add(user_id);
         GridView1.Columns.Add(patient_id);
@@ -70,7 +70,7 @@ public partial class index : System.Web.UI.Page
         GridView1.Columns.Add(deadLine);
         GridView1.Columns.Add(isFinished);
         GridView1.Columns.Add(editAssess);
-        GridView1.Columns.Add(schedule_id);        
+        GridView1.Columns.Add(schedule_id);
         GridView1.DataBind();
         GridView1.Columns[6].Visible = false;
     }
@@ -86,12 +86,11 @@ public partial class index : System.Web.UI.Page
 
             GridViewRow row = GridViewTest.Rows[index];
             string name = row.Cells[2].Text;
-            int aid = assessFactory.getId(name);
-            string pid = patientFactory.getById(row.Cells[1].Text).id;
-            int sid = Convert.ToInt32(row.Cells[6].Text);
+            int assess_id = assessFactory.getId(name);
+            string patient_id = patientFactory.getById(row.Cells[1].Text).id;
+            int schedule_id = Convert.ToInt32(row.Cells[6].Text);
             //Label2.Text = name;
-            Response.Redirect("assess.aspx?pid=" + pid + "&aid=" + aid + "&sid=" + sid);
-
+            Response.Redirect("assess.aspx?pid=" + patient_id + "&aid=" + assess_id + "&sid=" + schedule_id);
         }
     }
 }

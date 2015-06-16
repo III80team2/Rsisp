@@ -51,6 +51,16 @@ public class CScheduleFactory
         return schedules;
     }
 
+    public CSchedule getById(int id)
+    {
+        for (int i = 0; i < schedules.Count; i++)
+        {
+            if (schedules[i].id == id)
+                return schedules[i];
+        }
+        return null;
+    }
+
     public List<CSchedule> getByUserId(string user_id)
     {
         userSchedules.Clear();

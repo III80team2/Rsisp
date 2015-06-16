@@ -8,6 +8,7 @@ using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 /// <summary>提供一項機制，用來向 CAccess 型別的物件要求資料相關的作業。</summary>
 public class CAssessFactory
@@ -424,7 +425,7 @@ public class CAssessFactory
         foreach (CItem item in assess.items)
         {
             SqlCommand cmd;
-            if (item.contents != null)
+            if (Regex.IsMatch(item.sqlSchemeName, @"ItemScore\d{2}"))
             {
                 cmd = new SqlCommand(String.Format(@"
                     alter table {0} add {1} int

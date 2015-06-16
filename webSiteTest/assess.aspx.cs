@@ -17,12 +17,14 @@ public partial class assess : System.Web.UI.Page
     CUser user = new CUser();
     CAssessFactory assessFactory = new CAssessFactory();
     CAssess myAssess = new CAssess();
+    CScheduleFactory scheduleFactory = new CScheduleFactory();
     string patient_id;
     int schedule_id;
     int assessRecord_id;
 
-    public int totalScore = 0;        
+    public int totalScore = 0;
     int rdbtn_id = 0;
+    int tb_id = 0;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -67,6 +69,7 @@ public partial class assess : System.Web.UI.Page
                 PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
                 groupCount++;
             }
+            //加入項目
             addItem(item);
         }
         PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
@@ -90,6 +93,7 @@ public partial class assess : System.Web.UI.Page
         PlaceHolder1.Controls.Add(lblItemName);
         PlaceHolder1.Controls.Add(new LiteralControl("</div><div class='panel-body'>"));
 
+        //加入選擇項目
         foreach (CContent content in item.contents)
         {
             RadioButton rdbtn = new RadioButton();
@@ -114,14 +118,18 @@ public partial class assess : System.Web.UI.Page
         }
         PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
 
+        //加入文字項目
         if (Regex.IsMatch(item.sqlSchemeName, @"ItemText\d"))
         {
             TextBox tb = new TextBox();
+            tb.ID = "tb" + tb_id;
+            tb.Attributes["SchemeName"] = item.sqlSchemeName;
             tb.TextMode = TextBoxMode.MultiLine;
             tb.CssClass = "form-control";
             PlaceHolder1.Controls.Add(tb);
-        }
 
+            tb_id++;
+        }
         PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
     }
 
@@ -168,8 +176,23 @@ public partial class assess : System.Web.UI.Page
                 catch (Exception) { }
             }
         }
-        CScheduleFactory scheduleFactory = new CScheduleFactory();
+
+        int itemText_count = 0;
+        foreach (CItem item in myAssess.items)
+            if (Regex.IsMatch(item.sqlSchemeName, @"ItemText\d{2}"))
+                itemText_count++;
+
+        TextBox[] tbAry = new TextBox[itemText_count];
+        for (int j = 0; j < itemText_count; j++)
+        {
+            tbAry[j] = (TextBox)PlaceHolder1.FindControl("tb" + j);
+
+            string schemeName = tbAry[j].Attributes["SchemeName"];
+            insertRecord_Text(schemeName, tbAry[j].Text);
+        }
+
         scheduleFactory.setScheduleIsFinishedById(schedule_id);
+        Response.Redirect(Request.UrlReferrer.ToString());
     }
 
     private void readyToInsertRecord()
@@ -187,7 +210,7 @@ public partial class assess : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            string message=ex.Message;
+            string message = ex.Message;
         }
 
         cmd = new SqlCommand(String.Format(@"
@@ -200,7 +223,7 @@ public partial class assess : System.Web.UI.Page
             assessRecord_id = (int)reader[0];
         reader.Close();
 
-        con.Close();        
+        con.Close();
     }
 
     private void insertRecord_Score(string schemeName, int score)
@@ -212,6 +235,28 @@ public partial class assess : System.Web.UI.Page
                 set {1} = {2}
                 where ID_{0} = {3}
             ", myAssess.sqlTableName, schemeName, score, assessRecord_id), con);
+
+        try
+        {
+            cmd.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+            string message = ex.Message;
+        }
+
+        con.Close();
+    }
+
+    private void insertRecord_Text(string schemeName, string text)
+    {
+        SqlConnection con = new SqlConnection(connectionString);
+        con.Open();
+        SqlCommand cmd = new SqlCommand(String.Format(@"
+                update {0}
+                set {1} = '{2}'
+                where ID_{0} = {3}
+            ", myAssess.sqlTableName, schemeName, text, assessRecord_id), con);
 
         try
         {

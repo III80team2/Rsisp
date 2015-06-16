@@ -91,8 +91,8 @@
             function processData(data) {
                 if (data)
                     alert(data);
-                else 
-                    alert('fail');            
+                else
+                    alert('fail');
             }
             //window.location.href = 'xxx.aspx';
         }
@@ -115,10 +115,10 @@
             <button class="btn btn-default" onclick="addGroup()">新增項目群組</button>
             <button class="btn btn-default" onclick="addItem()">新增評估項目</button>
             <button class="btn btn-default" onclick="addText()">新增文字項目</button>
-            <button class="btn btn-danger btn-sm pull-right" onclick="clearAll()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>清除所有</button>
-        </div>
-        <div>
-            <button class="btn btn-default" onclick="complete()">完成</button>
+            <div class="pull-right">
+                <button class="btn btn-primary" onclick="complete()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>完成</button>
+                <button class="btn btn-danger" onclick="clearAll()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>清除所有</button>
+            </div>
         </div>
     </div>
 </body>
