@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,8 +29,7 @@ import java.util.Calendar;
 
 public class ActTodo extends Activity {
 
-
-
+    ArrayList<String> list;// = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,22 +114,24 @@ public class ActTodo extends Activity {
 
 View.OnClickListener btnAdd_click =new View.OnClickListener(){
     public void onClick(View arg0) {
+        if(txtTodo.length()==0){
+                  Toast.makeText(ActTodo.this,"您尚未輸入待辨事項",Toast.LENGTH_SHORT).show();
+        }else {
+            SharedPreferences table = getSharedPreferences("T", 0);
+            int index = table.getInt("COUNT", 0);
+            index++;
+            table.edit().putInt("COUNT", index).commit();
 
-        SharedPreferences table = getSharedPreferences("T", 0);
-        int index = table.getInt("COUNT", 0);
-        index++;
-        table.edit().putInt("COUNT",index).commit();
+            String ketT = "T" + String.valueOf(index);
+            String ketD = "D" + String.valueOf(index);
+            table.edit().putString(ketT, txtTodo.getText().toString()).commit();
+            table.edit().putString(ketD, txtDatePicker.getText().toString()).commit();
 
-        String ketT="T"+String.valueOf(index);
-        String ketD="D"+String.valueOf(index);
-        table.edit().putString(ketT,txtTodo.getText().toString()).commit();
-        table.edit().putString(ketD,txtDatePicker.getText().toString()).commit();
+            Toast.makeText(ActTodo.this, "新增資料成功", Toast.LENGTH_SHORT).show();
 
-        Toast.makeText(ActTodo.this,"新增資料成功",Toast.LENGTH_SHORT).show();
-
-        txtDatePicker.setText("");
-        txtTodo.setText("");
-
+            txtDatePicker.setText("");
+            txtTodo.setText("");
+        }
     }
 };
 
@@ -138,14 +140,15 @@ View.OnClickListener btnList_click=new View.OnClickListener(){
     public void onClick(View arg0) {
 
         SharedPreferences table = getSharedPreferences("T", 0);
-        int index = table.getInt("COUNT", 0);
+        final int index = table.getInt("COUNT", 0);
 
         if(index==0){
             Toast.makeText(ActTodo.this,"沒有工作",Toast.LENGTH_SHORT).show();
             return;
         }
 
-        ArrayList<String> list = new ArrayList<String>();
+        ////////////////原本ArrayList位置
+        list = new ArrayList<String>();
         for(int i=1;i<=index;i++){
             String ketT="T"+String.valueOf(i);
             String ketD="D"+String.valueOf(i);
@@ -164,9 +167,54 @@ View.OnClickListener btnList_click=new View.OnClickListener(){
             return;
         }
 
-        AlertDialog.Builder build=new AlertDialog.Builder(ActTodo.this);
+        final AlertDialog.Builder build=new AlertDialog.Builder(ActTodo.this);
         build.setTitle("未完成工作列表");
-        build.setItems(list.toArray(new String[list.size()]),null).create().show();
+        build.setPositiveButton("返回",null);
+        build.setItems(list.toArray(new String[list.size()]),new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                AlertDialog.Builder askDelete = new AlertDialog.Builder(ActTodo.this)
+                        .setTitle("確定要刪除？")
+                        .setMessage(list.get(which))
+                        .setPositiveButton("確定",new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                               // list.remove(which);
+                                Toast.makeText(ActTodo.this, "你刪除了一筆備忘", Toast.LENGTH_SHORT).show();
+                                //重新排列ListArray
+
+
+                            }
+                        })
+                        .setNegativeButton("取消",new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                               build.create().show();
+                            }
+                        });
+                askDelete.create().show();
+
+
+
+
+//                Toast.makeText(ActTodo.this,list.get(which),Toast.LENGTH_SHORT).show();
+
+//                String message="";
+//                for(int i=0;i<list.size();i++){
+//
+//
+//                }
+//                message = list.get(which);
+
+
+
+            }
+        })
+
+
+        .create().show();
+
+
 
     }
 };
@@ -215,6 +263,16 @@ View.OnClickListener txtDatePicker_click =new View.OnClickListener(){
 
 
         txtTodo = (EditText)findViewById(R.id.txtTodo);
+        //自動預設當天
+        Calendar today=Calendar.getInstance();
+        int year = today.get(Calendar.YEAR);
+        int monthOfYear = today.get(Calendar.MONTH);
+        int dayOfMonth = today.get(Calendar.DATE);
+        txtDatePicker.setText(""+
+                String.valueOf(year)+"-"+
+                String.valueOf(monthOfYear+1)+"-"+
+                String.valueOf(dayOfMonth) );
+        txtDatePicker.setHintTextColor(Color.GRAY);
 
 
     }
