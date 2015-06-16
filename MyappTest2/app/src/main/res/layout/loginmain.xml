@@ -49,6 +49,7 @@
                 android:hint="帳號"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
+
                 />
 
         </LinearLayout>
@@ -78,6 +79,7 @@
                 android:layout_weight="0.20"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
+                android:password="true"
                 />
 
         </LinearLayout>
