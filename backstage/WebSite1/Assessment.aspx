@@ -1,7 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Main.aspx.cs" Inherits="Main" %>
 
-<!DOCTYPE html>
-
+<asp:content 
+    runat="server"
+    contentplaceholderid="ContentPlaceHolder1" >Hello, Master Pages!
 
 <html lang="zh-TW">
 <head id="Head1" runat="server">
@@ -79,4 +80,4 @@
      <script src="js/bootstrap.min.js"></script>
 </body>
 
-</html>
+</html></asp:content>

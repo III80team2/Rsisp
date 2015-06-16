@@ -1,7 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Main.aspx.cs" Inherits="Main" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 
 <!DOCTYPE html>
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
@@ -76,9 +75,15 @@
             </nav>
         </header>
     </div>
-    
     <div>
 
+    </div>
+    <br />
+    <br />
+    <div class="center-block">
+        <asp:ContentPlaceHolder id="CPH1" runat="server">
+</asp:ContentPlaceHolder>
+    
     </div>
 </body>
 
