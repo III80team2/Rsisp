@@ -77,14 +77,21 @@ public partial class assess : System.Web.UI.Page
         PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
 
         Button btnSubmit = new Button();
-        btnSubmit.Text = "送出";
-        btnSubmit.Click += btnSubmit_Click;
-        btnSubmit.CssClass = "btn btn-large btn-block btn-success";
+        if (isFinished)
+        {
+            btnSubmit.Text = "上一頁";
+            btnSubmit.Click += btnBack_Click;
+            btnSubmit.CssClass = "btn btn-large btn-block btn-danger";
+        }
+        else
+        {
+            btnSubmit.Text = "送出";
+            btnSubmit.Click += btnSubmit_Click;
+            btnSubmit.CssClass = "btn btn-large btn-block btn-success";
+        }
         btnSubmit.Height = 60;
         btnSubmit.Font.Size = 18;
         btnSubmit.ForeColor = Color.Black;
-        if (isFinished)
-            btnSubmit.Enabled = false;
 
         PlaceHolder1.Controls.Add(btnSubmit);
     }
@@ -218,6 +225,11 @@ public partial class assess : System.Web.UI.Page
         }
 
         scheduleFactory.setScheduleIsFinishedById(schedule_id);
+        Response.Redirect("index.aspx?pid=" + patient_id);
+    }
+
+    private void btnBack_Click(object sender, EventArgs e)
+    {
         Response.Redirect("index.aspx?pid=" + patient_id);
     }
 

@@ -1,0 +1,91 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="backstage_MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/main.css" rel="stylesheet" />
+    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-2.1.4.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+</head>
+<body role="document" style="background-color: #FFF">
+    <div>
+        <header>
+            <nav class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">玫瑰園 </a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="index.aspx">首頁</a>   </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">人員資料管理<i class="icon-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="userUpdate.aspx">修改人員資料</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="userAdd.aspx">新增人員資料</a></li>
+                                    <li><a href="userDelete.aspx">刪除人員資料</a></li>
+                                </ul>
+
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">身分權限管理<i class="icon-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="roleUpdate.aspx">修改身分權限</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="roleAdd.aspx">新增身分權限</a></li>
+                                    <li><a href="roleDelete.aspx">刪除身分權限</a></li>
+                                </ul>
+                            </li>
+                                                        <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">住民資料管理<i class="icon-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="patientUpdate.aspx">修改住民資料</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="patientAdd.aspx">新增住民資料</a></li>
+                                    <li><a href="patientDelete.aspx">刪除住民資料</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">評估表樣式管理 <i class="icon-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="assessUpdate.aspx">修改評估表樣式</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="assessAdd.aspx">新增評估表樣式</a></li>
+                                    <li><a href="assessDelete.aspx">刪除評估表樣式</a></li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="../login.aspx">登出</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+    <div>
+
+    </div>
+    <br />
+    <br />
+    <div class="center-block">
+        <asp:ContentPlaceHolder id="CPH1" runat="server">
+</asp:ContentPlaceHolder>
+    
+    </div>
+</body>
+</html>
