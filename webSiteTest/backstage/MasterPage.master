@@ -64,6 +64,8 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">個人事項管理<i class="icon-angle-down"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="schedule.aspx">個人事項總覽</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="scheduleAdd.aspx">新增個人事項</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">

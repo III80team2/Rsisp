@@ -13,7 +13,9 @@ public class CScheduleFactory
     CAssessFactory assessFactoryLite = new CAssessFactory("Lite");
     List<CSchedule> schedules = new List<CSchedule>();
     List<CSchedule> userSchedules = new List<CSchedule>();
+
     string connectionString = WebConfigurationManager.OpenWebConfiguration("/webSiteTest").ConnectionStrings.ConnectionStrings["RsispConnectionString"].ConnectionString;
+    string message;
 
     public CScheduleFactory()
 	{
@@ -98,6 +100,28 @@ public class CScheduleFactory
                 sds.UpdateParameters.Add(new Parameter("ID_Schedule", DbType.Int32, id.ToString()));
                 sds.Update();
             }                
+        }
+    }
+
+    public void addSchedule(CSchedule schedule)
+    {
+        try
+        {
+            SqlDataSource sds = new SqlDataSource();
+            sds.ConnectionString = connectionString;
+            sds.InsertCommand = "dbo.addSchedule";
+            sds.InsertCommandType = SqlDataSourceCommandType.StoredProcedure;
+            sds.InsertParameters.Add(new Parameter("ID_User", DbType.String, schedule.user_id));
+            sds.InsertParameters.Add(new Parameter("ID_Patient", DbType.String, schedule.patient_id));
+            sds.InsertParameters.Add(new Parameter("ID_Assess", DbType.Int32, schedule.assess_id.ToString()));
+            sds.InsertParameters.Add(new Parameter("deadLine", DbType.Date, schedule.deadLine.ToShortDateString()));
+            sds.Insert();
+
+            message = "add success";
+        }
+        catch (Exception ex)
+        {
+            message = ex.Message;
         }
     }
 }

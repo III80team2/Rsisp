@@ -185,6 +185,16 @@ public class CAssessFactory
         return null;
     }
 
+    public CAssess getByName(string name)
+    {
+        for (int i = 0; i < assesses.Count; i++)
+        {
+            if (assesses[i].name == name)
+                return assesses[i];
+        }
+        return null;
+    }
+
     public CAssess getLast()
     {
         return assesses[assesses.Count - 1];
