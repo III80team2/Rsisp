@@ -43,7 +43,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="qq">
-            <span style="margin-right:30px;"><img src="pics/logo_heart.png" alt="logo" /></span>
+            <span style="margin-right:30px;"><img src="pics/logo_heart2.png" alt="logo" /></span>
             <input type="text" id="tboxPatient" name="tboxPatient" placeholder="請輸入住民姓名" runat="server" style="width: 50%;height:39px" /><asp:ImageButton ID="ImageButton1" runat="server" Height="39px" ImageAlign="AbsBottom" ImageUrl="~/pics/searchIcon_N.png" Width="41px" />
         &nbsp;</div>
         <table class="auto-style1">

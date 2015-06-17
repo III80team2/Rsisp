@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 
 public partial class backstage_roleAdd : System.Web.UI.Page
 {
+    CRoleFactory roleFactory = new CRoleFactory();
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -14,11 +16,11 @@ public partial class backstage_roleAdd : System.Web.UI.Page
 
     protected void btnAddRole_Click(object sender, EventArgs e)
     {
-        //CRole role = new CRole();
-        //role.id = tbRoleID.Text;
-        //role.name = tbRoleName.Text;
+        CRole role = new CRole();
+        role.id = tbRoleID.Text;
+        role.name = tbRoleName.Text;
 
-        //roleFactory.addRole(role);
-        //Response.Redirect(Request.Url.ToString());
+        roleFactory.addRole(role);
+        Response.Redirect("role.aspx");
     }
 }

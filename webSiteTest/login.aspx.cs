@@ -30,4 +30,19 @@ public partial class login : System.Web.UI.Page
             lblMessage.Visible = true;
         }
     }
+    protected void btnBackstage_Click(object sender, EventArgs e)
+    {
+        Session["loginName"] = Request.Form["loginName"].ToString();
+        loginPassword = Request.Form["Passwd"].ToString();
+
+        if (factory.loginCheck(Request.Form["loginName"].ToString(), loginPassword))
+        {
+            Response.Redirect("backstage/index.aspx");
+        }
+        else
+        {
+            divLog.Visible = true;
+            lblMessage.Visible = true;
+        }
+    }
 }
