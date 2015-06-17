@@ -14,7 +14,7 @@
                                 <div class="caption" style="text-align:inherit;padding-left:20px;font-family:微軟正黑體">
                                     <span style="font-size:large">姓名:<asp:Label ID="lblTitle" runat="server" Text='<%# Eval("PatientName") %>'></asp:Label><br/></span>
                                     <span style="font-size:large">身分證字號:<asp:Label ID="Label1" runat="server" Text='<%# Eval("PatientIDCard") %>'></asp:Label></span><br/>
-                                    <span style="font-size:large">生日:<asp:Label ID="Label2" runat="server" Text='<%# Eval("PatientBirthday") %>'></asp:Label></span>
+                                    <span style="font-size:large">生日:<asp:Label ID="Label2" runat="server" Text='<%# Convert.ToDateTime(Eval("PatientBirthday")).ToShortDateString() %>'></asp:Label></span>
                                 </div>
                             </div>
                         </ItemTemplate>

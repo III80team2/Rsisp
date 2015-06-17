@@ -50,6 +50,7 @@ public partial class index : System.Web.UI.Page
         BoundField deadLine = new BoundField();
         deadLine.DataField = "deadLine";
         deadLine.HeaderText = "期限";
+        deadLine.DataFormatString = "{0:yyyy/MM/dd}";
 
         CheckBoxField isFinished = new CheckBoxField();
         isFinished.DataField = "isFinished";
