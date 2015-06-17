@@ -26,7 +26,20 @@ public partial class login : System.Web.UI.Page
         }
         else
         {
-            divLog.Visible = true;
+            //divLog.Visible = true;
+            lblMessage.Visible = true;
+        }
+    }
+    protected void btnEnter_Click(object sender, EventArgs e)
+    {
+        loginPassword = Request.Form["Passwd"].ToString();
+
+        if (factory.loginCheck(Request.Form["loginName"].ToString(), loginPassword))
+        {
+            Response.Redirect("patientSelect.aspx");
+        }
+        else
+        {
             lblMessage.Visible = true;
         }
     }

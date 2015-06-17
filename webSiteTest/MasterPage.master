@@ -18,11 +18,6 @@
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        $('.carousel').carousel({
-            interval: 2000
-        })
-    </script>
 </head>
 <body role="document" style="background-color:#EEE">
     <div>
@@ -59,7 +54,8 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">登入帳號：<asp:Label ID="lblLoginName" runat="server" Text="Label"></asp:Label><i class="icon-angle-down"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="pics/account.png" /><asp:Label ID="lblLoginName" runat="server" Text="Label"></asp:Label><i class="icon-angle-down"></i></a>
                                 <ul class="dropdown-menu" style="font-size: medium;">
                                     <li><a href="login.aspx">登出</a></li>
                                 </ul>
