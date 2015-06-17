@@ -1,17 +1,17 @@
 package com.example.danny.myapptest;
 
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,7 +29,7 @@ import java.util.Calendar;
 public class ActTodo extends Activity {
 
 
-
+    ArrayList<String> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,6 +129,7 @@ View.OnClickListener btnAdd_click =new View.OnClickListener(){
 
         txtDatePicker.setText("");
         txtTodo.setText("");
+        initTextType();
 
     }
 };
@@ -145,7 +146,7 @@ View.OnClickListener btnList_click=new View.OnClickListener(){
             return;
         }
 
-        ArrayList<String> list = new ArrayList<String>();
+        list = new ArrayList<String>();
         for(int i=1;i<=index;i++){
             String ketT="T"+String.valueOf(i);
             String ketD="D"+String.valueOf(i);
@@ -164,9 +165,30 @@ View.OnClickListener btnList_click=new View.OnClickListener(){
             return;
         }
 
-        AlertDialog.Builder build=new AlertDialog.Builder(ActTodo.this);
+        final AlertDialog.Builder build=new AlertDialog.Builder(ActTodo.this);
         build.setTitle("未完成工作列表");
-        build.setItems(list.toArray(new String[list.size()]),null).create().show();
+        build.setNegativeButton("返回",null);
+        build.setItems(list.toArray(new String[list.size()]),new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                AlertDialog.Builder askDelete = new AlertDialog.Builder(ActTodo.this)
+                        .setTitle("確定要刪除？")
+                        .setMessage(list.get(which))
+                        .setPositiveButton("確定",new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(ActTodo.this,"你刪除了一筆備忘",Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("取消",new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                 build.create().show();
+                            }
+                        });
+                askDelete.create().show();
+            }
+        }).create().show();
 
     }
 };
@@ -180,6 +202,10 @@ DatePickerDialog.OnDateSetListener btnDateSetting_click=new DatePickerDialog.OnD
                 String.valueOf(year)+"-"+
                 String.valueOf(monthOfYear+1)+"-"+
                 String.valueOf(dayOfMonth) );
+              //選擇完日期
+              txtDatePicker.setTextColor(Color.BLACK);
+              txtDatePicker.setTypeface(Typeface.DEFAULT);
+              txtDatePicker.setTextSize(30);
     }
 };
 
@@ -196,6 +222,8 @@ View.OnClickListener txtDatePicker_click =new View.OnClickListener(){
                 today.get(Calendar.YEAR),
                 today.get(Calendar.MONTH),
                 today.get(Calendar.DATE)
+
+
         );
 
         dialog.show();
@@ -203,6 +231,21 @@ View.OnClickListener txtDatePicker_click =new View.OnClickListener(){
     }
 };
 
+    private void initTextType(){
+        //預設當天
+        Calendar today=Calendar.getInstance();
+        int year = today.get(Calendar.YEAR);
+        int monthOfYear = today.get(Calendar.MONTH);
+        int dayOfMonth = today.get(Calendar.DATE);
+        txtDatePicker.setText(""+
+                String.valueOf(year)+"-"+
+                String.valueOf(monthOfYear+1)+"-"+
+                String.valueOf(dayOfMonth) );
+        //載入時字體顏色樣式
+        txtDatePicker.setTextColor(Color.GRAY);
+        txtDatePicker.setTypeface(Typeface.defaultFromStyle(3),Typeface.ITALIC);
+        txtDatePicker.setTextSize(18);
+    }
 
     private void InitialComponent(){
         btnAdd = (Button)findViewById(R.id.btnAdd);
@@ -215,7 +258,7 @@ View.OnClickListener txtDatePicker_click =new View.OnClickListener(){
 
 
         txtTodo = (EditText)findViewById(R.id.txtTodo);
-
+        initTextType();
 
     }
     Button btnAdd;
