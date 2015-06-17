@@ -3,8 +3,54 @@
 <asp:Content ContentPlaceHolderId="CPH1" runat="server">
 
     <!DOCTYPE html>
+    <script runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+        protected void DropDownListYear_Load(object sender, EventArgs e)
+        {
+            for(int i=1900;i<=DateTime.Today.Year;i++)
+            {
+                DropDownListYear.Items.Add(i.ToString());
+            }
+        }
+
+        protected void DropDownListMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownListDate.Items.Clear();
+            int i=31;
+            switch (DropDownListMonth.SelectedValue)
+            {
+                case "1":
+                case "3":
+                case "5":
+                case "7":
+                case "8":
+                case "10":
+                case "12":  
+                    i = 31;
+                    break;
+                case "4":
+                case "6":
+                case "9":
+                case "11":
+                    i = 30;
+                    break;
+                case"2":
+                    if (DateTime.IsLeapYear(Convert.ToInt16(DropDownListYear.SelectedValue)))
+                    {
+                        i = 29;
+                    }
+                    else
+                    { i = 28; }
+                    break;   
+            }
+            
+            for(int days=1;days<=i;days++)
+            { DropDownListDate.Items.Add(days.ToString()); }
+        }
+</script>
+
+
+    <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
@@ -56,23 +102,23 @@
             <tr>
                 <td class="auto-style6">出生年月日：</td>
                 <td class="auto-style7">
-                    <asp:DropDownList ID="DropDownList2" runat="server">
+                    <asp:DropDownList ID="DropDownListYear" runat="server" OnLoad="DropDownListYear_Load">
                     </asp:DropDownList>
-                    年<asp:DropDownList ID="DropDownList3" runat="server">
-                        <asp:ListItem>Jan</asp:ListItem>
-                        <asp:ListItem>Feb</asp:ListItem>
-                        <asp:ListItem>Mar</asp:ListItem>
-                        <asp:ListItem>Apr</asp:ListItem>
-                        <asp:ListItem>May</asp:ListItem>
-                        <asp:ListItem>Jun</asp:ListItem>
-                        <asp:ListItem>Jul</asp:ListItem>
-                        <asp:ListItem>Aug</asp:ListItem>
-                        <asp:ListItem>Sep</asp:ListItem>
-                        <asp:ListItem>Oct</asp:ListItem>
-                        <asp:ListItem>Nov</asp:ListItem>
-                        <asp:ListItem>Dec</asp:ListItem>
+                    年<asp:DropDownList ID="DropDownListMonth" runat="server" OnSelectedIndexChanged="DropDownListMonth_SelectedIndexChanged">
+                        <asp:ListItem>1</asp:ListItem>
+                        <asp:ListItem>2</asp:ListItem>
+                        <asp:ListItem>3</asp:ListItem>
+                        <asp:ListItem>4</asp:ListItem>
+                        <asp:ListItem>5</asp:ListItem>
+                        <asp:ListItem>6</asp:ListItem>
+                        <asp:ListItem>7</asp:ListItem>
+                        <asp:ListItem>8</asp:ListItem>
+                        <asp:ListItem>9</asp:ListItem>
+                        <asp:ListItem>10</asp:ListItem>
+                        <asp:ListItem>11</asp:ListItem>
+                        <asp:ListItem>12</asp:ListItem>
                     </asp:DropDownList>
-                    月<asp:DropDownList ID="DropDownList4" runat="server">
+                    月<asp:DropDownList ID="DropDownListDate" runat="server">
                     </asp:DropDownList>
                     日</td>
             </tr>
