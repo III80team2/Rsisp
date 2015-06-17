@@ -12,7 +12,7 @@ public partial class login : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Session["loginName"] = null;
-        if (!IsPostBack) { lblMessage.Visible = false;}
+        if (!IsPostBack) { lblMessage.Visible = false; }
         
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
@@ -26,7 +26,6 @@ public partial class login : System.Web.UI.Page
         }
         else
         {
-            //divLog.Visible = true;
             lblMessage.Visible = true;
         }
     }
@@ -36,25 +35,10 @@ public partial class login : System.Web.UI.Page
 
         if (factory.loginCheck(Request.Form["loginName"].ToString(), loginPassword))
         {
-            Response.Redirect("patientSelect.aspx");
-        }
-        else
-        {
-            lblMessage.Visible = true;
-        }
-    }
-    protected void btnBackstage_Click(object sender, EventArgs e)
-    {
-        Session["loginName"] = Request.Form["loginName"].ToString();
-        loginPassword = Request.Form["Passwd"].ToString();
-
-        if (factory.loginCheck(Request.Form["loginName"].ToString(), loginPassword))
-        {
             Response.Redirect("backstage/index.aspx");
         }
         else
         {
-            divLog.Visible = true;
             lblMessage.Visible = true;
         }
     }
