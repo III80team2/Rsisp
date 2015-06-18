@@ -5,40 +5,92 @@
 <head>
     <meta charset="UTF-8">
     <title>HTML5 Canvas粒子效果文字动画特效DEMO演示</title>
-    <link href="Content/normalize.css" rel="stylesheet" />
     <link href="Content/style.css" rel="stylesheet" />
+    <link href="css/default.css" rel="stylesheet" />
+    <link href="css/reset.css" rel="stylesheet" />
+    <script src="http://libs.useso.com/js/jquery/1.11.0/jquery.min.js"></script>
+    <script src="Scripts/turnBox.js"></script>
+
+    <style>
+        
+    </style>
 </head>
 <body>
-<div style="text-align:center;clear:both;position:absolute;top:0;left:260px">
-</div>
-<canvas class="canvas"></canvas>
-<div class="help"></div> 
+    <form id="form1" runat="server">
+        <canvas class="canvas" style=""></canvas>
+        <div class="ui">
+            <input class="ui-input" type="text" style="visibility: hidden;" />
+            <div class="htmleaf-container">
+            <div class="htmleaf-content" style="margin-top:150px;">
+                <div class="example" />
+                <div>
+                    <p class="turnBoxButton">LOGIN</p>
+                </div>
+                <div style="padding-top:30px;">
+                    <ul class="user-information">
+                        <li>
+                            <asp:Label ID="lblMessage" runat="server" ForeColor="DarkRed" Text="您輸入的帳號密碼有誤!!!" Width="62%"></asp:Label>
+                        </li>
+                        <li>
+                            <input id="loginName" runat="server" name="loginName" placeholder="帳號" spellcheck="false" />
+                        </li>
+                        <li>
+                            <input id="Passwd" name="Passwd" type="password" placeholder="密碼"/>
+                        </li>
+                    </ul>
+                    <div class="login-contents">
+                        <span class="check"><asp:Button ID="btnSubmit" runat="server" Text="Login" BackColor="#009900" BorderStyle="None" Width="40%" OnClick="btnSubmit_Click"/>
+                        </span>
+                        <div style="text-align:center"><asp:HyperLink ID="hLinkRegister" runat="server" Font-Size="X-Large" ForeColor="#220088" NavigateUrl="~/Register.aspx">建立帳戶</asp:HyperLink>
+                            
+                        </div>
 
-<div class="ui">
-  <input class="ui-input" type="text" />
-  <span class="ui-return">↵</span>
-</div>
+                        
+                    </div>
+                    <span class="login-contentsL"><asp:Button ID="btnEnter" runat="server" Text="進入後台" BackColor="#EE7700" Width="136px" Height="50px" BorderStyle="None" OnClick="btnEnter_Click"/></span>
+                    
+                </div>
+            </div>
+        </div>
+        </div>
 
-<div class="overlay">
-  <div class="tabs">
-    <div class="tabs-labels"><span class="tabs-label">Commands</span><span class="tabs-label">Info</span><span class="tabs-label">Share</span></div>
+        <div class="overlay">
+            <div class="tabs">
+                <div class="tabs-labels"><span class="tabs-label">Commands</span><span class="tabs-label">Info</span><span class="tabs-label">Share</span></div>
+                <div class="tabs-panels">
+                    <ul class="tabs-panel commands">
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-    <div class="tabs-panels">
-      <ul class="tabs-panel commands">
-        <li class="commands-item"><span class="commands-item-title">Text</span><span class="commands-item-info" data-demo="Hello :)">Type anything</span><span class="commands-item-action">Demo</span></li>
-        <li class="commands-item"><span class="commands-item-title">Countdown</span><span class="commands-item-info" data-demo="#countdown 10">#countdown<span class="commands-item-mode">number</span></span><span class="commands-item-action">Demo</span></li>
-        <li class="commands-item"><span class="commands-item-title">Time</span><span class="commands-item-info" data-demo="#time">#time</span><span class="commands-item-action">Demo</span></li>
-        <li class="commands-item"><span class="commands-item-title">Rectangle</span><span class="commands-item-info" data-demo="#rectangle 30x15">#rectangle<span class="commands-item-mode">width x height</span></span><span class="commands-item-action">Demo</span></li>
-        <li class="commands-item"><span class="commands-item-title">Circle</span><span class="commands-item-info" data-demo="#circle 25">#circle<span class="commands-item-mode">diameter</span></span><span class="commands-item-action">Demo</span></li>
+        <script src="Scripts/index.js"></script>
+        <script type="text/javascript">
+            var width = 340;
+            var duration = 450;
+            var general_box = $(".example");
 
-        <li class="commands-item commands-item--gap"><span class="commands-item-title">Animate</span><span class="commands-item-info" data-demo="The time is|#time|#countdown 3|#icon thumbs-up"><span class="commands-item-mode">command1</span>&nbsp;|<span class="commands-item-mode">command2</span></span><span class="commands-item-action">Demo</span></li>
-      </ul>
-    </div>
-  </div>
-</div>
+            general_box.turnBox({
+                width: width,
+                height: 87,
+                even: 320,
+                perspective: 3000,
+                duration: duration,
+                easing: "ease-in-out",
+                type: "repeat"
+            });
 
-  <script src="Scripts/index.js"></script>
+            general_box.find(".check").turnBoxLink({
+                box: ".example",
+                events: "click touchend"
+            });
 
+            general_box.find(".check").on("click touchend", function () {
+                setTimeout(function () {
+                    general_box.find("input").val("").attr("checked", false);
+                }, duration);
+            });
+        </script>
+    </form>
 </body>
-
 </html>

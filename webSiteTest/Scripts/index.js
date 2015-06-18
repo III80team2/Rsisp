@@ -23,8 +23,9 @@ var S = {
 
     if (i !== -1) {
       S.UI.simulate(decodeURI(action).substring(i + 3));
-    } else {
-      S.UI.simulate('Shape|Shifter|Type|to start|#rectangle|#countdown 3||');
+    }
+    else {
+      S.UI.simulate('Welcome||');
     }
 
     S.Drawing.loop(function () {
@@ -153,100 +154,100 @@ S.UI = (function () {
 
     overlay.classList.remove('overlay--visible');
     sequence = typeof(value) === 'object' ? value : sequence.concat(value.split('|'));
-    input.value = '';
-    checkInputWidth();
+    //input.value = '';
+    //checkInputWidth();
 
     timedAction(function (index) {
       current = sequence.shift();
       action = getAction(current);
       value = getValue(current);
 
-      switch (action) {
-        case 'countdown':
-          value = parseInt(value) || 10;
-          value = value > 0 ? value : 10;
+      //switch (action) {
+      //  case 'countdown':
+      //    value = parseInt(value) || 10;
+      //    value = value > 0 ? value : 10;
 
-          timedAction(function (index) {
-            if (index === 0) {
-              if (sequence.length === 0) {
-                S.Shape.switchShape(S.ShapeBuilder.letter(''));
-              } else {
-                performAction(sequence);
-              }
-            } else {
-              S.Shape.switchShape(S.ShapeBuilder.letter(index), true);
-            }
-          }, 1000, value, true);
-          break;
+      //    timedAction(function (index) {
+      //      if (index === 0) {
+      //        if (sequence.length === 0) {
+      //          S.Shape.switchShape(S.ShapeBuilder.letter(''));
+      //        } else {
+      //          performAction(sequence);
+      //        }
+      //      } else {
+      //        S.Shape.switchShape(S.ShapeBuilder.letter(index), true);
+      //      }
+      //    }, 1000, value, true);
+      //    break;
 
-        case 'rectangle':
-          value = value && value.split('x');
-          value = (value && value.length === 2) ? value : [maxShapeSize, maxShapeSize / 2];
+      //  case 'rectangle':
+      //    value = value && value.split('x');
+      //    value = (value && value.length === 2) ? value : [maxShapeSize, maxShapeSize / 2];
 
-          S.Shape.switchShape(S.ShapeBuilder.rectangle(Math.min(maxShapeSize, parseInt(value[0])), Math.min(maxShapeSize, parseInt(value[1]))));
-          break;
+      //    S.Shape.switchShape(S.ShapeBuilder.rectangle(Math.min(maxShapeSize, parseInt(value[0])), Math.min(maxShapeSize, parseInt(value[1]))));
+      //    break;
 
-        case 'circle':
-          value = parseInt(value) || maxShapeSize;
-          value = Math.min(value, maxShapeSize);
-          S.Shape.switchShape(S.ShapeBuilder.circle(value));
-          break;
+      //  case 'circle':
+      //    value = parseInt(value) || maxShapeSize;
+      //    value = Math.min(value, maxShapeSize);
+      //    S.Shape.switchShape(S.ShapeBuilder.circle(value));
+      //    break;
 
-        case 'time':
-          var t = formatTime(new Date());
+      //  case 'time':
+      //    var t = formatTime(new Date());
 
-          if (sequence.length > 0) {
-            S.Shape.switchShape(S.ShapeBuilder.letter(t));
-          } else {
-            timedAction(function () {
-              t = formatTime(new Date());
-              if (t !== time) {
-                time = t;
-                S.Shape.switchShape(S.ShapeBuilder.letter(time));
-              }
-            }, 1000);
-          }
-          break;
+      //    if (sequence.length > 0) {
+      //      S.Shape.switchShape(S.ShapeBuilder.letter(t));
+      //    } else {
+      //      timedAction(function () {
+      //        t = formatTime(new Date());
+      //        if (t !== time) {
+      //          time = t;
+      //          S.Shape.switchShape(S.ShapeBuilder.letter(time));
+      //        }
+      //      }, 1000);
+      //    }
+      //    break;
 
-        default:
+        //default:
           S.Shape.switchShape(S.ShapeBuilder.letter(current[0] === cmd ? 'What?' : current));
-      }
-    }, 2000, sequence.length);
+      //}
+    }, 1000, sequence.length);
   }
 
-  function checkInputWidth(e) {
-    if (input.value.length > 18) {
-      ui.classList.add('ui--wide');
-    } else {
-      ui.classList.remove('ui--wide');
-    }
+  //function checkInputWidth(e) {
+  //  if (input.value.length > 18) {
+  //    ui.classList.add('ui--wide');
+  //  } else {
+  //    ui.classList.remove('ui--wide');
+  //  }
 
-    if (firstAction && input.value.length > 0) {
-      ui.classList.add('ui--enter');
-    } else {
-      ui.classList.remove('ui--enter');
-    }
-  }
+  //  if (firstAction && input.value.length > 0) {
+  //    ui.classList.add('ui--enter');
+  //  } else {
+  //    ui.classList.remove('ui--enter');
+  //  }
+  //}
 
   function bindEvents() {
-    document.body.addEventListener('keydown', function (e) {
-      input.focus();
+    //document.body.addEventListener('keydown', function (e) {
+    //  input.focus();
 
-      if (e.keyCode === 13) {
-        firstAction = false;
-        reset();
-        performAction(input.value);
-      }
-    });
+    //  if (e.keyCode === 13) {
+    //    firstAction = false;
+    //    reset();
+    //    performAction(input.value);
+    //  }
+    //});
 
-    input.addEventListener('input', checkInputWidth);
-    input.addEventListener('change', checkInputWidth);
-    input.addEventListener('focus', checkInputWidth);
+    //input.addEventListener('input', checkInputWidth);
+    //input.addEventListener('change', checkInputWidth);
+    //input.addEventListener('focus', checkInputWidth);
 
-    help.addEventListener('click', function (e) {
-      overlay.classList.toggle('overlay--visible');
-      overlay.classList.contains('overlay--visible') && reset(true);
-    });
+    //help.addEventListener('click', function (e) {
+    //  overlay.classList.toggle('overlay--visible');
+    //  overlay.classList.contains('overlay--visible') && reset(true);
+    //});
 
     commands.addEventListener('click', function (e) {
       var el,
@@ -266,22 +267,22 @@ S.UI = (function () {
       demo = el && info.getAttribute('data-demo');
       url = el && info.getAttribute('data-url');
 
-      if (info) {
-        overlay.classList.remove('overlay--visible');
+      //if (info) {
+      //  overlay.classList.remove('overlay--visible');
 
-        if (demo) {
-          input.value = demo;
+      //  if (demo) {
+      //    input.value = demo;
 
-          if (isTouch) {
-            reset();
-            performAction(input.value);
-          } else {
-            input.focus();
-          }
-        } else if (url) {
-          //window.location = url;
-        }
-      }
+      //    if (isTouch) {
+      //      reset();
+      //      performAction(input.value);
+      //    } else {
+      //      input.focus();
+      //    }
+      //  } else if (url) {
+      //    //window.location = url;
+      //  }
+      //}
     });
 
     canvas.addEventListener('click', function (e) {
@@ -485,7 +486,7 @@ S.ShapeBuilder = (function () {
   var gap = 13,
       shapeCanvas = document.createElement('canvas'),
       shapeContext = shapeCanvas.getContext('2d'),
-      fontSize = 12,
+      fontSize = 200,
       fontFamily = 'Avenir, Helvetica Neue, Helvetica, Arial, sans-serif';
 
   function fit() {

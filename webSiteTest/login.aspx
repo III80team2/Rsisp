@@ -1,137 +1,26 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="login" %>
 
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Canvas粒子效果文字动画特效DEMO演示</title>
+    <link href="Content/style.css" rel="stylesheet" />
     <link href="css/default.css" rel="stylesheet" />
     <link href="css/reset.css" rel="stylesheet" />
     <script src="http://libs.useso.com/js/jquery/1.11.0/jquery.min.js"></script>
     <script src="Scripts/turnBox.js"></script>
-    
+
     <style>
-        body {
-            background-color: #fff;
-            color: #000;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        input {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            outline: 0;
-            font-size: 100%;
-            vertical-align: baseline;
-            background: transparent;
-            background-color: #fff;
-        }
-
-        .example {
-            color: #fff;
-            margin: 0px auto;
-            text-align: center;
-        }
-
-        p {
-            line-height: 4.2;
-        }
-
-        .example.turnBoxCurrentFace1 > .turnBoxFaceNum1, .example.turnBoxCurrentFace3 > .turnBoxFaceNum3 {
-            background-color: #0099FF;
-            font-size: 20px;
-        }
-
-        .example.turnBoxCurrentFace1 > .turnBoxFaceNum1:hover, .example.turnBoxCurrentFace3 > .turnBoxFaceNum3:hover {
-            background-color: #009900;
-            font-size: 20px;
-        }
-
-        .example > .turnBoxFaceNum1, .example > .turnBoxFaceNum3 {
-            background-color: #0099FF;
-            font-size: 20px;
-        }
-
-        .example.turnBoxCurrentFace2 > .turnBoxFaceNum2 {
-            background-color: #0099FF;
-            font-size: 20px;
-        }
-
-        .example > .turnBoxFaceNum1 p, .example > .turnBoxFaceNum3 p {
-            width: 100%;
-            height: 100%;
-            font-size: 20px;
-        }
-
-        .example > .turnBoxFaceNum2 {
-            background-color: #0099FF;
-            font-size: 20px;
-        }
-
-        .user-information {
-            padding-top: 35px;
-        }
-
-        .user-information > li > * {
-            display: inline-block;
-        }
-
-        .user-information > li > span {
-            width: 13%;
-            text-align: right;
-            font-size: 14px;
-            margin-right: 17px;
-        }
-
-        .user-information > li > input {
-            width: 62%;
-            padding: 7px 10px;
-        }
-
-        .user-information > li:first-child {
-            margin-bottom: 10px;
-        }
-        .login-contents {
-            float: right;
-            margin: 15px 0px;
-            margin-right: 20px;
-            text-align: right;
-        }
-        .login-contentsL {
-            float: left;
-            margin: 15px 0px;
-            margin-left: 20px;
-            text-align: left;
-        }
-
-        .check {
-            -webkit-transition: all 100ms ease-in-out 0ms;
-            -moz-transition: all 100ms ease-in-out 0ms;
-            -ms-transition: all 100ms ease-in-out 0ms;
-            -o-transition: all 100ms ease-in-out 0ms;
-            transition: all 100ms ease-in-out 0ms;
-            width: 136px;
-            height: 50px;
-            display: block;
-            text-align: center;
-            line-height: 2.5;
-            background-color: #009900;
-            cursor: pointer;
-        }
-
-        .check:hover {
-            background-color: #009900;
-        }
+        
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="htmleaf-container">
+        <canvas class="canvas" style=""></canvas>
+        <div class="ui">
+            <input class="ui-input" type="text" style="visibility: hidden;" />
+            <div class="htmleaf-container">
             <div class="htmleaf-content" style="margin-top:150px;">
                 <div class="example" />
                 <div>
@@ -143,10 +32,10 @@
                             <asp:Label ID="lblMessage" runat="server" ForeColor="DarkRed" Text="您輸入的帳號密碼有誤!!!" Width="62%"></asp:Label>
                         </li>
                         <li>
-                            <input id="loginName" runat="server" name="loginName" placeholder="帳號" spellcheck="false" />
+                            <input id="loginName" runat="server" name="loginName" placeholder="帳號" style="background-color:#FFF;"/>
                         </li>
                         <li>
-                            <input id="Passwd" name="Passwd" type="password" placeholder="密碼"/>
+                            <input id="Passwd" name="Passwd" type="password" placeholder="密碼" style="background-color:#FFF;"/>
                         </li>
                     </ul>
                     <div class="login-contents">
@@ -163,6 +52,19 @@
                 </div>
             </div>
         </div>
+        </div>
+
+        <div class="overlay">
+            <div class="tabs">
+                <div class="tabs-labels"><span class="tabs-label">Commands</span><span class="tabs-label">Info</span><span class="tabs-label">Share</span></div>
+                <div class="tabs-panels">
+                    <ul class="tabs-panel commands">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script src="Scripts/index.js"></script>
         <script type="text/javascript">
             var width = 340;
             var duration = 450;
@@ -192,7 +94,6 @@
     </form>
 </body>
 </html>
-
 
 
 
