@@ -90,7 +90,7 @@ public partial class index : System.Web.UI.Page
             int assess_id = assessFactory.getId(name);
             string patient_id = patientFactory.getById(row.Cells[1].Text).id;
             int schedule_id = Convert.ToInt32(row.Cells[6].Text);
-            //Label2.Text = name;
+            
             Response.Redirect("assess.aspx?pid=" + patient_id + "&aid=" + assess_id + "&sid=" + schedule_id);
         }
     }

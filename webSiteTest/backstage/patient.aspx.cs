@@ -12,6 +12,28 @@ public partial class backstage_patient : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         gvPatients.DataSource = patientFactory.getAll();
+
+        BoundField id = new BoundField();
+        id.DataField = "id";
+        id.HeaderText = "住民編號";
+
+        BoundField name = new BoundField();
+        name.DataField = "name";
+        name.HeaderText = "住民姓名";
+
+        BoundField idcard = new BoundField();
+        idcard.DataField = "idcard";
+        idcard.HeaderText = "身分證字號";
+
+        BoundField birthday = new BoundField();
+        birthday.DataField = "birthday";
+        birthday.HeaderText = "出生日期";
+        birthday.DataFormatString = "{0:yyyy/MM/dd}";
+
+        gvPatients.Columns.Add(id);
+        gvPatients.Columns.Add(name);
+        gvPatients.Columns.Add(idcard);
+        gvPatients.Columns.Add(birthday);
         gvPatients.DataBind();
     }
 }

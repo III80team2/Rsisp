@@ -16,12 +16,12 @@ public partial class login : System.Web.UI.Page
         
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
-    {
-        Session["loginName"] = Request.Form["loginName"].ToString();
+    {        
         loginPassword = Request.Form["Passwd"].ToString();
         
         if (factory.loginCheck(Request.Form["loginName"].ToString(), loginPassword))
         {
+            Session["loginName"] = Request.Form["loginName"].ToString();
             Response.Redirect("patientSelect.aspx");
         }
         else
@@ -30,11 +30,12 @@ public partial class login : System.Web.UI.Page
         }
     }
     protected void btnEnter_Click(object sender, EventArgs e)
-    {
+    {        
         loginPassword = Request.Form["Passwd"].ToString();
 
         if (factory.loginCheck(Request.Form["loginName"].ToString(), loginPassword))
-        {
+        {            
+            Session["loginName"] = Request.Form["loginName"].ToString();
             Response.Redirect("backstage/index.aspx");
         }
         else

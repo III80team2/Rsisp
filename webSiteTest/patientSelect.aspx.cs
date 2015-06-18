@@ -9,7 +9,8 @@ public partial class patientSelect : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        if (Session["loginName"] == null)
+            Response.Redirect("login.aspx");
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {

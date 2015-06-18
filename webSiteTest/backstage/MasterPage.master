@@ -25,7 +25,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.aspx"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span><span class="label">後台管理系統</span></a>
+                        <a class="navbar-brand" href="index.aspx"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>後台管理系統</a>
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -38,7 +38,6 @@
                                     <li><a href="userUpdate.aspx">修改人員資料</a></li>
                                     <li><a href="userDelete.aspx">刪除人員資料</a></li>
                                 </ul>
-
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">身分權限管理<i class="icon-angle-down"></i></a>
@@ -76,23 +75,22 @@
                                     <li><a href="assessAdd.aspx">新增評估表樣式</a></li>
                                 </ul>
                             </li>
-                            <li>
-                                <a href="../login.aspx">登出</a>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="../pics/account.png" /><asp:Label ID="lblLoginName" runat="server" Text="Label"></asp:Label><i class="icon-angle-down"></i></a>
+                                <ul class="dropdown-menu" style="font-size: medium;">
+                                    <li><a href="../login.aspx">登出</a></li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
-    </div>
-    <div>
-    </div>
-    <br />
-    <br />
-    <div class="center-block">
-        <asp:ContentPlaceHolder ID="CPH1" runat="server">
-        </asp:ContentPlaceHolder>
-
+        <div style="margin-top:100px">
+            <asp:ContentPlaceHolder ID="CPH1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
     </div>
 </body>
 </html>
