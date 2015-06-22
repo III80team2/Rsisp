@@ -39,6 +39,8 @@
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-2.1.4.js"></script>
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -92,14 +94,11 @@
                         </ItemTemplate>
                     </asp:ListView>
                     </div>
+                     
                 </td>
             </tr>
         </table>
-        <script>
-            window.onload = function () {
-                document.getElementById("tboxPatient").focus();
-            };
-        </script>
     </form>
+   
 </body>
 </html>

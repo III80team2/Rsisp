@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="index" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <form runat="server">
+    <form runat="server" id="writeAssess">
         <table>
             <tr>
                 <td style="width:20%;height:750px;margin:45px 0 0 80px;padding:120px 20px;vertical-align:top;">
@@ -32,11 +32,13 @@
                 </td>
             </tr>
             <tr>
-                <td></td>
+                <td>
+                </td>
             </tr>
         </table>
         <div >
         </div>
     </form>
+    <div id="loadingIMG" style="display:none"><img src="pics/loading.gif" height="14"/>資料處理中，請稍後。</div>
 </asp:Content>
 

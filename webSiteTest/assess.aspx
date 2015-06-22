@@ -11,6 +11,7 @@
     <link href="css/style.css" rel="stylesheet" />
     <script src="Scripts/jquery-2.1.4.min.js"></script>
     <script src="Scripts/bootstrap-switch.js"></script>
+
 </head>
 <body>
     <div class="container">
