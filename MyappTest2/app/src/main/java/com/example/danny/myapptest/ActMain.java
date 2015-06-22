@@ -212,6 +212,7 @@ public class ActMain extends Activity {
         }
     };
 
+    //QRCode後續動作
     public void onActivityResult(int requestCode, int resultCode, Intent intent){
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if(scanningResult!=null){
@@ -220,8 +221,14 @@ public class ActMain extends Activity {
 
             AlertDialog.Builder build=new AlertDialog.Builder(ActMain.this);
             build.setTitle("注意!!!");
-            build.setMessage("掃描到帥哥在附近").create().show();
-            //build.setMessage(scanContent).create().show();
+           // build.setMessage("掃描到帥哥在附近").create().show();
+            //build出來
+            build.setMessage(scanContent).create().show();
+
+            //如果是網頁
+//            Uri uri = Uri.parse(scanContent);
+//            Intent intentWeb = new Intent(Intent.ACTION_VIEW,uri);
+//            startActivity(intentWeb);
 
 //            scan_content.setText(scanContent);
 //            scan_format.setText(scanFormat);
