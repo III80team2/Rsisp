@@ -7,19 +7,17 @@ using System.Web.UI.WebControls;
 
 public partial class patientSelect : System.Web.UI.Page
 {
+    CPatientFactory patientFactory = new CPatientFactory();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["loginName"] == null)
             Response.Redirect("login.aspx");
     }
-    protected void btnSubmit_Click(object sender, EventArgs e)
-    {
-        
-    }
     protected void ibtnSearch_Click(object sender, ImageClickEventArgs e)
     {
         string patientName = Request.Form["tboxPatient"].ToString();
-
-        Response.Redirect("index.aspx");
+        CPatient patient = patientFactory.getByName(patientName);
+        string pid = patient.id;
+        Response.Redirect("index.aspx?pid="+pid);
     }
 }

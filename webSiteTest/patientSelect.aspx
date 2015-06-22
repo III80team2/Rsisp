@@ -44,7 +44,7 @@
     <form id="form1" runat="server">
         <div class="qq">
             <span style="margin-right:30px;"><img src="pics/logo_heart2.png" alt="logo" /></span>
-            <input type="text" id="tboxPatient" name="tboxPatient" placeholder="請輸入住民姓名" runat="server" style="width: 50%;height:39px" /><asp:ImageButton ID="ImageButton1" runat="server" Height="39px" ImageAlign="AbsBottom" ImageUrl="~/pics/searchIcon_N.png" Width="41px" />
+            <input type="text" id="tboxPatient" name="tboxPatient" placeholder="請輸入住民姓名" runat="server" style="width: 50%;height:39px" /><asp:ImageButton ID="ibtnSearch" runat="server" Height="39px" ImageAlign="AbsBottom" ImageUrl="~/pics/searchIcon_N.png" Width="41px" OnClick="ibtnSearch_Click" />
         &nbsp;</div>
         <table class="auto-style1">
             <tr>
@@ -70,7 +70,7 @@
                                 </tr>
                                 <tr runat="server">
                                     <td runat="server">
-                                        <asp:DataPager ID="DataPager1" runat="server" PageSize="16">
+                                        <asp:DataPager ID="DataPager1" runat="server" PageSize="10">
                                             <Fields>
                                                 <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" ButtonCssClass="btn btn-primary"/>
                                             </Fields>

@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>HTML5 Canvas粒子效果文字动画特效DEMO演示</title>
+    <title>Login</title>
     <link href="Content/style.css" rel="stylesheet" />
     <link href="css/default.css" rel="stylesheet" />
     <link href="css/reset.css" rel="stylesheet" />
@@ -41,11 +41,7 @@
                     <div class="login-contents">
                         <span class="check"><asp:Button ID="btnSubmit" runat="server" Text="Login" BackColor="#009900" BorderStyle="None" Width="40%" OnClick="btnSubmit_Click"/>
                         </span>
-                        <div style="text-align:center"><asp:HyperLink ID="hLinkRegister" runat="server" Font-Size="X-Large" ForeColor="#220088" NavigateUrl="~/Register.aspx">建立帳戶</asp:HyperLink>
-                            
-                        </div>
-
-                        
+                        <div style="text-align:center"><asp:HyperLink ID="hLinkRegister" runat="server" Font-Size="X-Large" ForeColor="#220088" NavigateUrl="~/Register.aspx">建立帳戶</asp:HyperLink></div>
                     </div>
                     <span class="login-contentsL"><asp:Button ID="btnEnter" runat="server" Text="進入後台" BackColor="#EE7700" Width="136px" Height="50px" BorderStyle="None" OnClick="btnEnter_Click"/></span>
                     
