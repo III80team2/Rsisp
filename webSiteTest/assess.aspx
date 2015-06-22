@@ -17,6 +17,7 @@
         <form id="form1" runat="server">
             <h1>
                 <asp:Label ID="lblAssessName" runat="server" Text="AssessName" CssClass="label label-warning"></asp:Label>
+                <asp:Label ID="lbltotalScore" runat="server" Text="TotalScore" CssClass="label label-success pull-right" Visible="False"></asp:Label>
             </h1>
             <br />
             <asp:PlaceHolder ID="PlaceHolder1" runat="server">
@@ -33,7 +34,6 @@
                 </script>
             </asp:PlaceHolder>
             <br />
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         </form>
     </div>
 </body>

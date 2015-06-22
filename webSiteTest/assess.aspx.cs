@@ -23,7 +23,10 @@ public partial class assess : System.Web.UI.Page
     int schedule_id;
     int assessRecord_id;
 
-    public int totalScore = 0;
+    int totalScore = 0;
+    int totalItem = 0;
+    int groupScore = 0;
+    int groupItem = 0;
     int rdbtn_id = 0;
     int tb_id = 0;
 
@@ -43,7 +46,7 @@ public partial class assess : System.Web.UI.Page
             schedule_id = Convert.ToInt32(Request.QueryString["sid"]);
         }
         else
-            Response.Redirect(Request.UrlReferrer.ToString());
+            Response.Redirect("login.aspx");
 
         myAssess = assessFactory.getById(assess_id);
         isFinished = scheduleFactory.getById(schedule_id).isFinished;
@@ -58,7 +61,18 @@ public partial class assess : System.Web.UI.Page
             if (!item.group.id.Equals(group.id))
             {
                 if (groupCount > 0)
+                {
+                    if (isFinished)
+                    {
+                        Label lblGroupScore = new Label();
+                        lblGroupScore.Text = "分數：" + groupScore.ToString() + "/" + groupItem.ToString();
+
+                        PlaceHolder1.Controls.Add(new LiteralControl("<div class='panel-primary panel-footer'><span class='glyphicon glyphicon-ok' aria-hidden='true'></span>"));
+                        PlaceHolder1.Controls.Add(lblGroupScore);
+                        PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
+                    }
                     PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
+                }
 
                 group.id = item.group.id;
 
@@ -70,6 +84,8 @@ public partial class assess : System.Web.UI.Page
                 PlaceHolder1.Controls.Add(lblGroupName);
                 PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
                 groupCount++;
+                groupScore = 0;
+                groupItem = 0;
             }
             //加入項目
             addItem(item);
@@ -79,6 +95,9 @@ public partial class assess : System.Web.UI.Page
         Button btnSubmit = new Button();
         if (isFinished)
         {
+            lbltotalScore.Visible = true;
+            lbltotalScore.Text = "總分：" + totalScore.ToString() + "/" + totalItem.ToString(); ;
+
             btnSubmit.Text = "上一頁";
             btnSubmit.Click += btnBack_Click;
             btnSubmit.CssClass = "btn btn-large btn-block btn-danger";
@@ -123,7 +142,13 @@ public partial class assess : System.Web.UI.Page
             {
                 rdbtn.Enabled = false;
                 if (content.score == itemScore)
+                {
                     rdbtn.Checked = true;
+                    totalScore += content.score;
+                    totalItem++;
+                    groupScore += content.score;
+                    groupItem++;
+                }
                 else
                     rdbtn.Checked = false;
             }
@@ -187,8 +212,8 @@ public partial class assess : System.Web.UI.Page
 
                 insertRecord_Score(schemeName, content.score);
 
-                totalScore += content.score;
-                Label1.Text = totalScore.ToString();
+                //totalScore += content.score;
+                //Label1.Text = totalScore.ToString();
             }
 
             //欄位驗證
