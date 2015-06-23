@@ -5,7 +5,7 @@
     <form runat="server" id="writeAssess">
         <table>
             <tr>
-                <td style="width:20%;height:750px;margin:45px 0 0 80px;padding:120px 20px;vertical-align:top;">
+                <td style="width:20%;height:750px;margin:45px 0 0 800px;padding:150px 20px;vertical-align:top;">
                     <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
                         <ItemTemplate>
                             <div class="col-sm-6 col-md-3" style="width:auto;">
@@ -21,7 +21,7 @@
                         </ItemTemplate>
                     </asp:ListView>
                 </td>
-                <td  rowspan="2"  style="background-color:#EEE;width:1000px;vertical-align:top;padding-top:150px;">
+                <td  rowspan="2"  style="width:100%;vertical-align:top;padding-top:150px;">
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RsispConnectionString %>" SelectCommand="SELECT * FROM [Patients] WHERE ([ID_Patient] = @ID_Patient)">
                         <SelectParameters>
                             <asp:QueryStringParameter Name="ID_Patient" QueryStringField="pid" Type="String" />

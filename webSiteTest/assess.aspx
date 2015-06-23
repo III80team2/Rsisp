@@ -13,7 +13,7 @@
     <script src="Scripts/bootstrap-switch.js"></script>
 
 </head>
-<body>
+<body style="background: -webkit-linear-gradient(top, rgb(203, 235, 219) 0%, rgb(55, 148, 192) 120%);">
     <div class="container" id="assessForm">
         <form id="form1" runat="server">
             <h1>

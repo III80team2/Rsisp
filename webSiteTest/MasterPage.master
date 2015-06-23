@@ -55,9 +55,9 @@
     
     
 </head>
-<body role="document" style="background-color:#EEE">
+<body role="document" style="background: -webkit-linear-gradient(top, rgb(203, 235, 219) 0%, rgb(55, 148, 192) 120%);">
     <div>
-        <header style="padding-left:200px">
+        <header>
             <nav class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
                 <div class="container">
                     <div class="navbar-header">

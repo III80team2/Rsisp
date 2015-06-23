@@ -16,9 +16,7 @@
         });
     </script>
     <style>
-        .blockSearch {
-            margin:150px 250px 80px 300px;
-        }
+        
         #tboxPatient {
             width: 576px;
             height: 38px;
@@ -42,7 +40,7 @@
     <script src="Scripts/jquery-2.1.4.js"></script>
     
 </head>
-<body>
+<body style="background:-webkit-gradient(linear, left top, left bottom, from(#00475E), to(#007276));">
     <form id="form1" runat="server">
         <div class="qq">
             <span style="margin-right:30px;"><img src="pics/logo_heart2.png" alt="logo" /></span>
@@ -62,8 +60,8 @@
                             <table runat="server">
                                 <tr runat="server">
                                     <td runat="server">
-                                        <table id="itemPlaceholderContainer" runat="server" border="0" style="">
-                                            <tr runat="server" style="">
+                                        <table id="itemPlaceholderContainer" runat="server" border="0">
+                                            <tr runat="server">
                                             </tr>
                                             <tr id="itemPlaceholder" runat="server">
                                             </tr>
