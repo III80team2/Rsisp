@@ -9,5 +9,10 @@ public partial class test : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //Button1.Attributes["OnClick"] = "Submit();";
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        //Button1.Attributes["OnClick"] = "Submit();"; 
     }
 }

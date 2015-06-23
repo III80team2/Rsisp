@@ -10,10 +10,6 @@
     <link href="css/reset.css" rel="stylesheet" />
     <script src="http://libs.useso.com/js/jquery/1.11.0/jquery.min.js"></script>
     <script src="Scripts/turnBox.js"></script>
-
-    <style>
-        
-    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -76,16 +72,7 @@
                 type: "repeat"
             });
 
-            general_box.find(".check").turnBoxLink({
-                box: ".example",
-                events: "click touchend"
-            });
-
-            general_box.find(".check").on("click touchend", function () {
-                setTimeout(function () {
-                    general_box.find("input").val("").attr("checked", false);
-                }, duration);
-            });
+            
         </script>
     </form>
 </body>

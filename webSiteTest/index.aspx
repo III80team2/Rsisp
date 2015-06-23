@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="index" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    
     <form runat="server" id="writeAssess">
         <table>
             <tr>
@@ -29,16 +30,47 @@
                     
                     <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
                     </asp:GridView>
+                    <div id="loadingIMG" style="display:none;text-align:center"><img src="pics/runningMan.GIF" height="50"/>資料處理中，請稍後。</div>
                 </td>
             </tr>
             <tr>
                 <td>
+                    
+                    <script>
+                        var AJAX_Work = function () {
+                            $.ajax({
+                                url: "assess.aspx",
+                                data: $('#writeAssess').serialize(),
+                                type: "POST",
+                                dataType: 'text',
+                                async: false,
+                                success: function () {
+                                    $("#writeAssess").submit();
+                                },
+                                complete: function () {
+                                    $('#loadingIMG').hide();
+                                },
+                                error: function (xhr, ajaxOptions, thrownError) {
+                                    alert(xhr.status);
+                                    alert(thrownError);
+                                }
+                            });
+                        }
+
+                        $("input").mousedown(function () {
+                            $('#loadingIMG').show();
+                            setTimeout(function () {
+                                AJAX_Work();
+                            }, 2000);
+                        })
+        </script>
                 </td>
             </tr>
         </table>
         <div >
         </div>
     </form>
-    <div id="loadingIMG" style="display:none"><img src="pics/loading.gif" height="14"/>資料處理中，請稍後。</div>
+    
+    
 </asp:Content>
 

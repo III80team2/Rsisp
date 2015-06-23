@@ -97,11 +97,13 @@ public partial class index : System.Web.UI.Page
             GridView GridViewTest = (GridView)e.CommandSource;
 
             GridViewRow row = GridViewTest.Rows[index];
+
             string name = row.Cells[2].Text;
             int assess_id = assessFactory.getId(name);
             string patient_id = patientFactory.getById(row.Cells[1].Text).id;
             int schedule_id = Convert.ToInt32(row.Cells[6].Text);
-            
+
+            Response.Write("<script>Submit();</script>");
             Response.Redirect("assess.aspx?pid=" + patient_id + "&aid=" + assess_id + "&sid=" + schedule_id);
         }
     }
