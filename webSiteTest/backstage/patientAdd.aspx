@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/backstage/MasterPage.master" AutoEventWireup="true" CodeFile="patientAdd.aspx.cs" Inherits="backstage_patientAdd" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="CPH1" runat="Server">
-    <script type="text/javascript">
+    <script>
         $(function () {
             //日期選擇器
             $("#CPH1_tbPatientBirthday").datepicker({
