@@ -12,7 +12,7 @@
     <link href="css/style.css" rel="stylesheet" />
     <script type="text/javascript">
         $(function () {
-            $("#loginName").keypress(function (event) {
+            $("#Passwd").keypress(function (event) {
                 if (event.keyCode == 13)
                 {
                     <% Session.Add("loginName", loginName.Value);%>;

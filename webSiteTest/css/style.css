@@ -46,3 +46,10 @@
     font-size:large;
     color:red;
 }
+
+.assessItem {
+    border-color:#ff6a00;
+    color:#FFF;
+    font-size:medium;
+    padding: 15px;
+}

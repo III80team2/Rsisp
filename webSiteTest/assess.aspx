@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <link href="Content/bootstrap-switch.css" rel="stylesheet" />
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <script src="Scripts/jquery-2.1.4.min.js"></script>
     <script src="Scripts/bootstrap-switch.js"></script>
@@ -16,7 +16,7 @@
     <div class="container">
         <form id="form1" runat="server">
             <h1>
-                <asp:Label ID="lblAssessName" runat="server" Text="AssessName" CssClass="label label-default"></asp:Label>
+                <asp:Label ID="lblAssessName" runat="server" Text="AssessName" CssClass="label label-warning"></asp:Label>
             </h1>
             <br />
             <asp:PlaceHolder ID="PlaceHolder1" runat="server">

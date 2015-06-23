@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
+using System.Drawing;
 
 public partial class assess : System.Web.UI.Page
 {
@@ -43,7 +44,7 @@ public partial class assess : System.Web.UI.Page
                 lblGroupName.Text = item.group.name;
                 lblGroupName.CssClass = "label";
 
-                PlaceHolder1.Controls.Add(new LiteralControl("<div class='panel panel-primary'><div class='panel-heading'>"));
+                PlaceHolder1.Controls.Add(new LiteralControl("<div class='panel panel-primary' style='font-size:X-large'><div class='panel-heading'>"));
                 PlaceHolder1.Controls.Add(lblGroupName);
                 PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
                 groupCount++;
@@ -55,7 +56,10 @@ public partial class assess : System.Web.UI.Page
         Button btnSubmit = new Button();
         btnSubmit.Text = "送出";
         btnSubmit.Click += btnSubmit_Click;
-        btnSubmit.CssClass = "btn btn-primary";
+        btnSubmit.CssClass = "btn btn-large btn-block btn-success";
+        btnSubmit.Height = 60;
+        btnSubmit.Font.Size = 18;
+        btnSubmit.ForeColor = Color.Black;
         PlaceHolder1.Controls.Add(btnSubmit);
     }
 
@@ -64,7 +68,7 @@ public partial class assess : System.Web.UI.Page
         Label lblItemName = new Label();
         lblItemName.Text = item.name;
 
-        PlaceHolder1.Controls.Add(new LiteralControl("<div class='panel-body panel-success'><div class='panel-heading'>"));
+        PlaceHolder1.Controls.Add(new LiteralControl("<div class='panel-success'><div class='panel-heading'>"));
         PlaceHolder1.Controls.Add(lblItemName);
         PlaceHolder1.Controls.Add(new LiteralControl("</div><div class='panel-body'>"));
 
@@ -94,6 +98,7 @@ public partial class assess : System.Web.UI.Page
         if (Regex.IsMatch(item.sqlSchemeName, @"ItemText\d"))
         {
             TextBox tb = new TextBox();
+            tb.TextMode = TextBoxMode.MultiLine;
             tb.CssClass = "form-control";
             PlaceHolder1.Controls.Add(tb);
         }
@@ -103,7 +108,7 @@ public partial class assess : System.Web.UI.Page
 
     private void btnSubmit_Click(object sender, EventArgs e)
     {
-        lblIsNotChecked.Visible = false;
+        
         RadioButton[] rbtnAry = new RadioButton[30];
         for (int k = 0; k <= 29; k++)
         {
