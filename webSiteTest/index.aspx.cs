@@ -7,7 +7,9 @@ using System.Web.UI.WebControls;
 
 public partial class index : System.Web.UI.Page
 {
-    CScheduleFactory factory = new CScheduleFactory();
+    CScheduleFactory scheduleFactory = new CScheduleFactory();
+    CUserFactory userFactory = new CUserFactory();
+    CUser user = new CUser();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -18,6 +20,8 @@ public partial class index : System.Web.UI.Page
             {
                 id = Request.QueryString["pid"].ToString();
             }
+            if (Session["loginName"] != null)
+                user = userFactory.getByAccount(Session["loginName"].ToString());
 
             fetchData(id);
         }
@@ -33,7 +37,14 @@ public partial class index : System.Web.UI.Page
 
     private void fetchData(string id)
     {
-        GridView1.DataSource = factory.getByPatientId(id);
+        List<CSchedule> schedules = new List<CSchedule>();
+        foreach (CSchedule schedule in scheduleFactory.getByPatientId(id))
+        {
+            if (schedule.user_id == user.id && schedule.deadLine >= DateTime.Now)
+                schedules.Add(schedule);
+        }
+
+        GridView1.DataSource = schedules;
 
         BoundField user_id = new BoundField();
         user_id.DataField = "user_id";
