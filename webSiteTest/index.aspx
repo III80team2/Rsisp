@@ -28,7 +28,7 @@
                         </SelectParameters>
                     </asp:SqlDataSource>
                     
-                    <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
+                    <asp:GridView ID="GridView1" runat="server" CssClass="gvStyle" AlternatingRowStyle-CssClass="alt" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
                     </asp:GridView>
                     <div id="loadingIMG" style="display:none;text-align:center"><img src="pics/runningMan.GIF" height="50"/>資料處理中，請稍後。</div>
                 </td>

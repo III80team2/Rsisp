@@ -12,8 +12,41 @@
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/main.css" rel="stylesheet" />
     <link href="Content/font-awesome.min.css" rel="stylesheet" />
-
     <link href="css/style.css" rel="stylesheet" />
+
+    <style>
+        .gvStyle {
+            border: 2px solid #CCC;
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+            /*Header 標題*/
+            .gvStyle th {
+                background-color: #f8c80b;
+                font-weight: 700;
+                font-size: large;
+                font-family: 微軟正黑體;
+                color: #000;
+                border: 1px solid #ccc;
+                height: 70px;
+                text-align: center;
+            }
+            /*OnMouseOver 滑鼠移過列表時, 背景色變更*/
+            .gvStyle tr:hover {
+                background-color: #96f3ed;
+            }
+            /*Rows 列表顏色*/
+            .gvStyle td {
+                border: 1px solid #ccc;
+                height: 50px;
+                font-size: large;
+                font-family: 微軟正黑體;
+                color: #000;
+                text-align: center;
+            }
+
+    </style>
 
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -24,7 +57,7 @@
 </head>
 <body role="document" style="background-color:#EEE">
     <div>
-        <header>
+        <header style="padding-left:200px">
             <nav class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
                 <div class="container">
                     <div class="navbar-header">
@@ -69,9 +102,9 @@
 
 
         <footer>
-            <div class="text-center" style=" bottom:0; width: 100%; padding: 0;margin:0; background-color: #514c4c; height: 120px; font-size: large; color: white">
+            <div class="text-center" style=" bottom:0; width: 100%; padding: 20px;margin-top:150px; background-color: #514c4c; height: 120px; font-size: x-large; color: white">
                 <br />
-                <p>Trafalgar Law &nbsp;&copy;&nbsp;tel:123456789&nbsp;address:Dressrosa</p>
+                <p>財團法人台灣省私立高雄仁愛之家 &nbsp;&copy;&nbsp;電話:(07)703-7380#2101&nbsp;地址:高雄市大寮區民順街1號8樓</p>
             </div>
         </footer>
     </div>
