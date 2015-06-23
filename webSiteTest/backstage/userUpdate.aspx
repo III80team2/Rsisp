@@ -2,6 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="CPH1" runat="Server">
     <div class="container">
+        <div class="page-header">
+            <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> 修改人員資料
+        </div>
         <form id="fomr1" runat="server">
             ID：<asp:DropDownList ID="ddlUserID" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlUserID_SelectedIndexChanged" CssClass="dropdown-header" Font-Size="Small" ForeColor="Black">
                 <asp:ListItem Value="0">請選擇</asp:ListItem>
@@ -17,7 +20,7 @@
                 <asp:ListItem Value="0">請選擇</asp:ListItem>
             </asp:DropDownList>
             <br />
-            <asp:Button ID="btnUpdateUser" runat="server" OnClick="btnUpdateUser_Click" Text="更新" CssClass="btn btn-default" />
+            <asp:Button ID="btnUpdateUser" runat="server" OnClick="btnUpdateUser_Click" Text="更新" CssClass="btn btn-warning" />
         </form>
     </div>
 </asp:Content>

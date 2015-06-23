@@ -18,9 +18,12 @@ public partial class backstage_roleDelete : System.Web.UI.Page
 
     protected void btndeleteRole_Click(object sender, EventArgs e)
     {
-        CRole role = roleFactory.getByName(ddlRoleName.SelectedItem.Text);
+        if (ddlRoleName.SelectedIndex != 0)
+        {
+            CRole role = roleFactory.getByName(ddlRoleName.SelectedItem.Text);
 
-        roleFactory.deleteRole(role);
-        Response.Redirect("role.aspx");
+            roleFactory.deleteRole(role);
+            Response.Redirect("role.aspx");
+        }
     }
 }

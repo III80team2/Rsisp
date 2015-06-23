@@ -25,7 +25,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.aspx"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>評估資訊系統管理</a>
+                        <a class="navbar-brand" href="index.aspx"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> 評估資訊系統管理</a>
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -87,7 +87,7 @@
                 </div>
             </nav>
         </header>
-        <div style="margin-top:100px">
+        <div>
             <asp:ContentPlaceHolder ID="CPH1" runat="server">
             </asp:ContentPlaceHolder>
         </div>

@@ -18,9 +18,12 @@ public partial class backstage_userDelete : System.Web.UI.Page
 
     protected void btndeleteUser_Click(object sender, EventArgs e)
     {
-        CUser user = userFactory.getByName(ddlUserName.SelectedItem.Text);
+        if (ddlUserName.SelectedIndex != 0)
+        {
+            CUser user = userFactory.getByName(ddlUserName.SelectedItem.Text);
 
-        userFactory.deleteUser(user);
-        Response.Redirect("user.aspx");
+            userFactory.deleteUser(user);
+            Response.Redirect("user.aspx");
+        }
     }
 }

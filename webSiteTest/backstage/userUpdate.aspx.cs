@@ -24,23 +24,29 @@ public partial class backstage_userUpdate : System.Web.UI.Page
 
     protected void ddlUserID_SelectedIndexChanged(object sender, EventArgs e)
     {
-        CUser user = userFactory.getById(ddlUserID.SelectedItem.Text);
-        tbUserAccount2.Text = user.account;
-        tbUserPassword2.Text = user.password;
-        tbUserName2.Text = user.name;
+        if (ddlUserID.SelectedIndex != 0)
+        {
+            CUser user = userFactory.getById(ddlUserID.SelectedItem.Text);
+            tbUserAccount2.Text = user.account;
+            tbUserPassword2.Text = user.password;
+            tbUserName2.Text = user.name;
 
-        ddlRole2.Text = roleFactory.getById(user.role_id).name;
+            ddlRole2.Text = roleFactory.getById(user.role_id).name;
+        }
     }
 
     protected void btnUpdateUser_Click(object sender, EventArgs e)
     {
-        CUser user = userFactory.getById(ddlUserID.SelectedItem.Text);
-        user.account = tbUserAccount2.Text;
-        user.password = tbUserPassword2.Text;
-        user.name = tbUserName2.Text;
-        user.role_id = roleFactory.getByName(ddlRole2.SelectedItem.Text).id;
+        if (ddlUserID.SelectedIndex != 0 && ddlRole2.SelectedIndex != 0)
+        {
+            CUser user = userFactory.getById(ddlUserID.SelectedItem.Text);
+            user.account = tbUserAccount2.Text;
+            user.password = tbUserPassword2.Text;
+            user.name = tbUserName2.Text;
+            user.role_id = roleFactory.getByName(ddlRole2.SelectedItem.Text).id;
 
-        userFactory.updateUser(user);
-        Response.Redirect("user.aspx");
+            userFactory.updateUser(user);
+            Response.Redirect("user.aspx");
+        }
     }
 }

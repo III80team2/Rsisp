@@ -19,13 +19,16 @@ public partial class backstage_userAdd : System.Web.UI.Page
 
     protected void btnAddUser_Click(object sender, EventArgs e)
     {
-        CUser user = new CUser();
-        user.account = tbUserAccount.Text;
-        user.password = tbUserPassword.Text;
-        user.name = tbUserName.Text;
-        user.role_id = roleFactory.getByName(ddlRole1.SelectedItem.Text).id;
+        if (ddlRole1.SelectedIndex != 0)
+        {
+            CUser user = new CUser();
+            user.account = tbUserAccount.Text;
+            user.password = tbUserPassword.Text;
+            user.name = tbUserName.Text;
+            user.role_id = roleFactory.getByName(ddlRole1.SelectedItem.Text).id;
 
-        userFactory.addUser(user);
-        Response.Redirect("user.aspx");
+            userFactory.addUser(user);
+            Response.Redirect("user.aspx");
+        }
     }
 }
