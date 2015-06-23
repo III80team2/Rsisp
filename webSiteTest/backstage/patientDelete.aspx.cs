@@ -18,9 +18,12 @@ public partial class backstage_patientDelete : System.Web.UI.Page
 
     protected void btndeletePatient_Click(object sender, EventArgs e)
     {
-        CPatient patient = patientFactory.getByName(ddlPatientName.SelectedItem.Text);
+        if (ddlPatientName.SelectedIndex != 0)
+        {
+            CPatient patient = patientFactory.getByName(ddlPatientName.SelectedItem.Text);
 
-        patientFactory.deletePatient(patient);
-        Response.Redirect("patient.aspx");
+            patientFactory.deletePatient(patient);
+            Response.Redirect("patient.aspx");
+        }
     }
 }

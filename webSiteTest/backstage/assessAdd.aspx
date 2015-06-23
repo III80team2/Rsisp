@@ -13,7 +13,7 @@
             $('#group' + group_id + ' .panel-heading').append('<input type="text" id="groupName' + group_id + '" name="groupName' + group_id + '"/>');
             $('#group' + group_id + ' .panel-footer').append('<button class="btn btn-default" onclick="addItemInGroup(' + group_id + ')">新增評估項目</button>');
             $('#group' + group_id + ' .panel-footer').append('<button class="btn btn-default" onclick="addTextInGroup(' + group_id + ')">新增文字項目</button>');
-            $('#group' + group_id + ' .panel-footer').append('<button class="btn btn-danger btn-sm pull-right" onclick="clearAllInGroup(' + group_id + ')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>清除所有項目</button>');
+            $('#group' + group_id + ' .panel-footer').append('<button class="btn btn-danger btn-sm pull-right" onclick="clearAllInGroup(' + group_id + ')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 清除所有項目</button>');
         }
         function addItemInGroup(group_id) {
             var id = $('#group' + group_id).children('div').length - 1;
@@ -23,7 +23,7 @@
             $('#item' + item_id).append('<div id="itemFooter' + item_id + '" class="panel-footer"></div>');
             $('#item' + item_id + ' .panel-heading').append('<input type="text" id="itemName' + item_id + '" name="itemName' + item_id + '"/>');
             $('#item' + item_id + ' .panel-footer').append('<button class="btn btn-default" onclick="addContentInItemGroup(' + group_id + ',' + id + ')">新增選項</button>');
-            $('#item' + item_id + ' .panel-footer').append('<button class="btn btn-warning btn-sm pull-right" onclick="clearAllInGroupItem(' + group_id + ',' + id + ')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>清除所有選項</button>');
+            $('#item' + item_id + ' .panel-footer').append('<button class="btn btn-warning btn-sm pull-right" onclick="clearAllInGroupItem(' + group_id + ',' + id + ')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 清除所有選項</button>');
         }
         function addTextInGroup(group_id) {
             var id = $('#group' + group_id).children('div').length - 1;
@@ -53,7 +53,7 @@
             $('#item' + item_id).append('<div id="itemFooter' + item_id + '" class="panel-footer"></div>');
             $('#item' + item_id + ' .panel-heading').append('<input type="text" id="itemName' + item_id + '" name="itemName' + item_id + '"/>');
             $('#item' + item_id + ' .panel-footer').append('<button class="btn btn-default" onclick="addContentInItem(' + item_id + ')">新增選項</button>');
-            $('#item' + item_id + ' .panel-footer').append('<button class="btn btn-warning btn-sm pull-right" onclick="clearAllInItem(' + item_id + ')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>清除所有選項</button>');
+            $('#item' + item_id + ' .panel-footer').append('<button class="btn btn-warning btn-sm pull-right" onclick="clearAllInItem(' + item_id + ')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 清除所有選項</button>');
         }
         function addContentInItem(item_id) {
             var id = $('#item' + item_id).children('div').length - 1;
@@ -93,8 +93,8 @@
         }
     </script>
     <div class="container">
-        <div class="panel-heading">
-            <h3>新增評估表樣式</h3>
+        <div class="page-header">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增評估表樣式
         </div>
         <div id="newAssessStyle" class="panel-body">
             <div class="panel-body">
@@ -109,8 +109,8 @@
             <button class="btn btn-default" onclick="addItem()">新增評估項目</button>
             <button class="btn btn-default" onclick="addText()">新增文字項目</button>
             <div class="pull-right">
-                <button class="btn btn-primary" onclick="complete()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>完成</button>
-                <button class="btn btn-danger" onclick="clearAll()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>清除所有</button>
+                <button class="btn btn-primary" onclick="complete()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 完成</button>
+                <button class="btn btn-danger" onclick="clearAll()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 清除所有</button>
             </div>
         </div>
     </div>

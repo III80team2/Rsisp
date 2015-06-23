@@ -29,13 +29,16 @@ public partial class backstage_scheduleAdd : System.Web.UI.Page
 
     protected void btnAddSchedule_Click(object sender, EventArgs e)
     {
-        CSchedule schedule = new CSchedule();
-        schedule.user_id = userFactory.getByName(ddlUserName.SelectedItem.Text).id;
-        schedule.patient_id = patientFactory.getByName(ddlPatientName.SelectedItem.Text).id;
-        schedule.assess_id = assessFactory.getByName(ddlAssessName.SelectedItem.Text).id;
-        schedule.deadLine = calPatientBirthday.SelectedDate;
+        if (ddlUserName.SelectedIndex != 0 && ddlPatientName.SelectedIndex != 0 && ddlAssessName.SelectedIndex != 0)
+        {
+            CSchedule schedule = new CSchedule();
+            schedule.user_id = userFactory.getByName(ddlUserName.SelectedItem.Text).id;
+            schedule.patient_id = patientFactory.getByName(ddlPatientName.SelectedItem.Text).id;
+            schedule.assess_id = assessFactory.getByName(ddlAssessName.SelectedItem.Text).id;
+            //schedule.deadLine = calPatientBirthday.SelectedDate;
 
-        scheduleFactory.addSchedule(schedule);
-        Response.Redirect("schedule.aspx");
+            scheduleFactory.addSchedule(schedule);
+            Response.Redirect("schedule.aspx");
+        }
     }
 }
