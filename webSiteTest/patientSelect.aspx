@@ -72,7 +72,7 @@
                                 </tr>
                                 <tr runat="server">
                                     <td runat="server">
-                                        <asp:DataPager ID="DataPager1" runat="server" PageSize="10">
+                                        <asp:DataPager ID="DataPager1" runat="server" PageSize="8">
                                             <Fields>
                                                 <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" ButtonCssClass="btn btn-primary"/>
                                             </Fields>
