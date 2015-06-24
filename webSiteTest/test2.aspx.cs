@@ -15,6 +15,9 @@ public partial class test2 : System.Web.UI.Page
 
         string jsonData = JsonConvert.SerializeObject(allUser);
 
-        Label1.Text = jsonData;
+        Response.Clear();
+        Response.ContentType = "application/json; charset=utf-8";
+        Response.Write(jsonData);
+        Response.End();
     }
 }
