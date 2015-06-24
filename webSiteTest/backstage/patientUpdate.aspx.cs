@@ -11,7 +11,7 @@ public partial class backstage_patientUpdate : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!this.IsPostBack)        
+        if (!this.IsPostBack)
             foreach (CPatient patient in patientFactory.getAll())
                 ddlPatientID.Items.Add(patient.id);
     }
@@ -23,7 +23,7 @@ public partial class backstage_patientUpdate : System.Web.UI.Page
             CPatient patient = patientFactory.getById(ddlPatientID.SelectedItem.Text);
             tbPatientName2.Text = patient.name;
             tbPatientIDCard2.Text = patient.idcard;
-            //calPatientBirthday2.VisibleDate = patient.birthday;
+            tbPatientBirthday.Text = patient.birthday.ToShortDateString();
         }
     }
 
@@ -34,10 +34,16 @@ public partial class backstage_patientUpdate : System.Web.UI.Page
             CPatient patient = patientFactory.getById(ddlPatientID.SelectedItem.Text);
             patient.name = tbPatientName2.Text;
             patient.idcard = tbPatientIDCard2.Text;
-            //patient.birthday = calPatientBirthday2.SelectedDate.Date;
-            patient.photoPath = "pics/" + fuPatientPhoto2.FileName;
-
-            fuPatientPhoto2.SaveAs(this.MapPath("..\\pics\\") + fuPatientPhoto2.FileName);
+            patient.birthday = Convert.ToDateTime(tbPatientBirthday.Text);
+            try
+            {
+                patient.photoPath = "pics/" + fuPatientPhoto2.FileName;
+                fuPatientPhoto2.SaveAs(this.MapPath("..\\pics\\") + fuPatientPhoto2.FileName);
+            }
+            catch
+            {
+                patient.photoPath = "pics/a.png";
+            }
 
             patientFactory.updatePatient(patient);
             Response.Redirect("patient.aspx");

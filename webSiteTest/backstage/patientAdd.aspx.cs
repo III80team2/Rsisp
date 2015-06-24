@@ -19,15 +19,16 @@ public partial class backstage_patientAdd : System.Web.UI.Page
         CPatient patient = new CPatient();
         patient.name = tbPatientName.Text;
         patient.idcard = tbPatientIDCard.Text;
-        //patient.birthday = calPatientBirthday.SelectedDate.Date;
-        if (fuPatientPhoto.FileName != null)
+        patient.birthday = Convert.ToDateTime(tbPatientBirthday.Text);
+        try
         {
             patient.photoPath = "pics/" + fuPatientPhoto.FileName;
             fuPatientPhoto.SaveAs(this.MapPath("..\\pics\\") + fuPatientPhoto.FileName);
         }
-        else
-            patient.photoPath = "pics/a.png";        
-
+        catch
+        {
+            patient.photoPath = "pics/a.png";
+        }
         patientFactory.addPatient(patient);
         Response.Redirect("patient.aspx");
     }

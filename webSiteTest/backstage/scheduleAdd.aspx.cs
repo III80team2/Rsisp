@@ -35,7 +35,7 @@ public partial class backstage_scheduleAdd : System.Web.UI.Page
             schedule.user_id = userFactory.getByName(ddlUserName.SelectedItem.Text).id;
             schedule.patient_id = patientFactory.getByName(ddlPatientName.SelectedItem.Text).id;
             schedule.assess_id = assessFactory.getByName(ddlAssessName.SelectedItem.Text).id;
-            //schedule.deadLine = calPatientBirthday.SelectedDate;
+            schedule.deadLine = Convert.ToDateTime(tbPatientBirthday.Text);
 
             scheduleFactory.addSchedule(schedule);
             Response.Redirect("schedule.aspx");
