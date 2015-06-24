@@ -13,9 +13,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.net.URI;
-import java.util.ArrayList;
-
 
 public class LoginMain extends Activity {
 

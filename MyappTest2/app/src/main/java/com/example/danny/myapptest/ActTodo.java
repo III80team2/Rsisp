@@ -4,11 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -21,11 +17,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 
 public class ActTodo extends Activity {
@@ -161,6 +154,7 @@ View.OnClickListener btnList_click=new View.OnClickListener(){
             public void onClick(DialogInterface dialog, int which) {  //從0開始
                 //抓到是which的值
                // Toast.makeText(ActTodo.this,Integer.toString(which),Toast.LENGTH_SHORT).show();
+
                 deleteNo = which;
 
                 AlertDialog.Builder askDelete = new AlertDialog.Builder(ActTodo.this)
@@ -171,8 +165,31 @@ View.OnClickListener btnList_click=new View.OnClickListener(){
                             public void onClick(DialogInterface dialog, int which) {
 
                                 SharedPreferences table = getSharedPreferences("T", 0);
+
+                                int inttempPut = deleteNo+1;
                                 String ketT="T"+String.valueOf(deleteNo+1);
+                                String ketD="D"+String.valueOf(deleteNo+1);
+                                String tempketTValue;
+                                String tempketDValue;
+                                int tempDelete = deleteNo+2;
                                 table.edit().remove(ketT).commit();
+                                Toast.makeText(ActTodo.this,"已刪除一筆資料",Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(ActTodo.this,table.getString("T"+String.valueOf(tempDelete),"沒"),Toast.LENGTH_SHORT).show();
+                                 for(int j = deleteNo+1;j<=list.size();j++) {
+                                    if (table.contains("T" + String.valueOf(tempDelete))) {
+                                        tempketTValue = table.getString("T" + String.valueOf(tempDelete), "no data");
+                                        tempketDValue = table.getString("D" + String.valueOf(tempDelete), "no data");
+                                        table.edit().putString("T"+String.valueOf(inttempPut), tempketTValue).commit();
+                                        table.edit().putString("D"+String.valueOf(inttempPut), tempketDValue).commit();
+                                        table.edit().remove("T"+String.valueOf(tempDelete)).commit();
+                                        table.edit().remove("D"+String.valueOf(tempDelete)).commit();
+                                         tempDelete++;
+                                        inttempPut++;
+
+                                    }
+                                }
+
+
 //                                for(int i =1;i<list.size();i++){
 //                                    Toast.makeText(ActTodo.this,String.valueOf(deleteNo),Toast.LENGTH_SHORT).show();
 
