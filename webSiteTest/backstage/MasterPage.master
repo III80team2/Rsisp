@@ -14,12 +14,37 @@
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/jquery-ui.min.js"></script>
     <script>
-        $(function () {
-            //日期選擇器
+        //日期選擇器
+        $(function () {            
             $("#CPH1_tbPatientBirthday").datepicker({
                 showOn: 'both', numberOfMonths: [1, 1], changeYear: true
             });
         })
+        //表單驗證
+        $(function () {
+            $("#form1").submit(function () {
+                var error = false;
+                $(":text", this).not('[readonly]').each(function () {
+                    if ($(this).val() == '') {                        
+                        alert("請輸入正確資料");
+                        $(this).focus();
+                        error = true;
+                        return false;//break out of each()
+                    }
+                });
+                if (error) return false;
+
+                $("select", this).each(function () {
+                    if ($(":selected", this).val() == '0') {                        
+                        alert("請輸入正確資料");
+                        $(this).focus();
+                        error = true;
+                        return false; //break out of each()
+                    }
+                });
+                if (error) return false;
+            });
+        });
     </script>
 </head>
 <body role="document" style="background-color: #FFF">
@@ -39,7 +64,7 @@
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">人員資料管理<i class="icon-angle-down"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">人員資料</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="user.aspx">人員資料總覽</a></li>
                                     <li class="divider"></li>
@@ -49,7 +74,7 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">身分權限管理<i class="icon-angle-down"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">身分權限</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="role.aspx">身分權限總覽</a></li>
                                     <li class="divider"></li>
@@ -59,7 +84,7 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">住民資料管理<i class="icon-angle-down"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">住民資料</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="patient.aspx">住民資料總覽</a></li>
                                     <li class="divider"></li>
@@ -69,7 +94,7 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">個人事項管理<i class="icon-angle-down"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">個人事項</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="schedule.aspx">個人事項總覽</a></li>
                                     <li class="divider"></li>
@@ -77,7 +102,7 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">評估表樣式管理 <i class="icon-angle-down"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">評估表樣式</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="assess.aspx">評估表樣式總覽</a></li>
                                     <li class="divider"></li>
