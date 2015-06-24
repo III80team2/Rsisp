@@ -23,10 +23,8 @@ public partial class assess : System.Web.UI.Page
     int schedule_id;
     int assessRecord_id;
 
-    int totalScore = 0;
-    int totalItem = 0;
-    int groupScore = 0;
-    int groupItem = 0;
+    int totalScore = 0;    
+    int groupScore = 0;    
     int rdbtn_id = 0;
     int tb_id = 0;
 
@@ -65,7 +63,7 @@ public partial class assess : System.Web.UI.Page
                     if (isFinished)
                     {
                         Label lblGroupScore = new Label();
-                        lblGroupScore.Text = "分數：" + groupScore.ToString() + "/" + groupItem.ToString();
+                        lblGroupScore.Text = "分數：" + groupScore.ToString();
 
                         PlaceHolder1.Controls.Add(new LiteralControl("<div class='panel-primary panel-footer'><span class='glyphicon glyphicon-ok' aria-hidden='true'></span>"));
                         PlaceHolder1.Controls.Add(lblGroupScore);
@@ -84,8 +82,7 @@ public partial class assess : System.Web.UI.Page
                 PlaceHolder1.Controls.Add(lblGroupName);
                 PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
                 groupCount++;
-                groupScore = 0;
-                groupItem = 0;
+                groupScore = 0;                
             }
             //加入項目
             addItem(item);
@@ -96,7 +93,7 @@ public partial class assess : System.Web.UI.Page
         if (isFinished)
         {
             lbltotalScore.Visible = true;
-            lbltotalScore.Text = "總分：" + totalScore.ToString() + "/" + totalItem.ToString(); ;
+            lbltotalScore.Text = "總分：" + totalScore.ToString();
 
             btnSubmit.Text = "上一頁";
             btnSubmit.Click += btnBack_Click;
@@ -144,10 +141,8 @@ public partial class assess : System.Web.UI.Page
                 if (content.score == itemScore)
                 {
                     rdbtn.Checked = true;
-                    totalScore += content.score;
-                    totalItem++;
+                    totalScore += content.score;                    
                     groupScore += content.score;
-                    groupItem++;
                 }
                 else
                     rdbtn.Checked = false;
