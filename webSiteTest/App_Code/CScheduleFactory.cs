@@ -124,4 +124,27 @@ public class CScheduleFactory
             message = ex.Message;
         }
     }
+
+    public void updateSchedule(CSchedule schedule)
+    {
+        try
+        {
+            SqlDataSource sds = new SqlDataSource();
+            sds.ConnectionString = connectionString;
+            sds.InsertCommand = "dbo.updateSchedule";
+            sds.InsertCommandType = SqlDataSourceCommandType.StoredProcedure;
+            sds.InsertParameters.Add(new Parameter("ID_Schedule", DbType.Int32, schedule.id.ToString()));
+            sds.InsertParameters.Add(new Parameter("ID_User", DbType.String, schedule.user_id));
+            sds.InsertParameters.Add(new Parameter("ID_Patient", DbType.String, schedule.patient_id));
+            sds.InsertParameters.Add(new Parameter("ID_Assess", DbType.Int32, schedule.assess_id.ToString()));
+            sds.InsertParameters.Add(new Parameter("deadLine", DbType.Date, schedule.deadLine.ToShortDateString()));
+            sds.Insert();
+
+            message = "add success";
+        }
+        catch (Exception ex)
+        {
+            message = ex.Message;
+        }
+    }
 }

@@ -30,10 +30,15 @@ public partial class backstage_patient : System.Web.UI.Page
         birthday.HeaderText = "出生日期";
         birthday.DataFormatString = "{0:yyyy/MM/dd}";
 
+        BoundField photoPath = new BoundField();
+        photoPath.DataField = "photoPath";
+        photoPath.HeaderText = "個人照片路徑";
+
         gvPatients.Columns.Add(id);
         gvPatients.Columns.Add(name);
         gvPatients.Columns.Add(idcard);
         gvPatients.Columns.Add(birthday);
+        gvPatients.Columns.Add(photoPath);
         gvPatients.DataBind();
     }
 }

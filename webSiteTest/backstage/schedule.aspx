@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="CPH1" runat="Server">
     <div class="container">
         <div class="page-header">
-            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 個人事項總覽
+            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 個人計畫總覽
         </div>
         <form id="fomr1" runat="server">
             <asp:GridView ID="gvSchedules" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="False">

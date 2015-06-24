@@ -15,6 +15,7 @@
             <br />
             出生日期：<asp:TextBox ID="tbPatientBirthday" runat="server" CssClass="form-control"></asp:TextBox>
             <br />
+            <br />
             個人照片：<asp:FileUpload ID="fuPatientPhoto2" runat="server" />
             <br />
             <asp:Button ID="btnUpdatePatient" runat="server" OnClick="btnUpdatePatient_Click" Text="更新" CssClass="btn btn-warning" />
