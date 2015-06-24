@@ -187,30 +187,7 @@ public class ActMain extends Activity {
     };
 
 
-    View.OnClickListener btnWWW_click = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
 
-
-            Toast.makeText(ActMain.this,"此圖只供觀賞 請勿觸摸!!",Toast.LENGTH_SHORT).show();
-
-
-
-        }
-    };
-
-
-    View.OnClickListener btnNews_click = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-
-
-            Toast.makeText(ActMain.this,"請先登入  謝謝您 :D",Toast.LENGTH_SHORT).show();
-
-
-
-        }
-    };
 
     //QRCode後續動作
     public void onActivityResult(int requestCode, int resultCode, Intent intent){
@@ -220,7 +197,7 @@ public class ActMain extends Activity {
             //String scanFormat=scanningResult.getFormatName();
 
             AlertDialog.Builder build=new AlertDialog.Builder(ActMain.this);
-            build.setTitle("注意!!!");
+            build.setTitle("--院民資料如下--");
            // build.setMessage("掃描到帥哥在附近").create().show();
             //build出來
             build.setMessage(scanContent).create().show();
@@ -290,14 +267,6 @@ public class ActMain extends Activity {
         btnq.setOnClickListener(btnq_click);
         this.mainactivity=this;
 
-        btnWWW = (ImageButton) findViewById(R.id.btnWWW);
-        btnWWW.setOnClickListener(btnWWW_click);
-
-        btnWWW = (ImageButton) findViewById(R.id.btnWWW);
-        btnWWW.setOnClickListener(btnWWW_click);
-
-        btnNews = (ImageButton) findViewById(R.id.btnNews);
-        btnNews.setOnClickListener(btnNews_click);
 
         textTime1 = (EditText)findViewById(R.id.txtId);
 
@@ -311,7 +280,5 @@ public class ActMain extends Activity {
     ImageButton btnMap;
     ImageButton btnlogin;
     ImageButton btnq;
-    ImageButton btnWWW;
-    ImageButton btnNews;
 
 }

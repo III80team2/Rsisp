@@ -82,10 +82,6 @@ public class LoginMain extends Activity {
         public void onClick(View arg0) {
 
 
-
-
-
-
             Uri uri = Uri.parse("http://rsisp-assess.azurewebsites.net/patientSelect.aspx");
 
             Intent intent = new Intent(Intent.ACTION_VIEW,uri);

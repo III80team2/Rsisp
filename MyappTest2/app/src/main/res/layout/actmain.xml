@@ -47,21 +47,11 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/btnWWW"
-            android:src="@drawable/www"
+            android:id="@+id/btnq"
+            android:src="@drawable/qr"
             android:layout_weight="1"
-            android:background="#444444"
+            android:background="#007799"
             />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/btnNews"
-            android:src="@drawable/news"
-            android:layout_weight="1"
-            android:background="#886600"
-            />
-
     </LinearLayout>
 
 
@@ -72,14 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         >
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/btnq"
-            android:src="@drawable/qr"
-            android:layout_weight="1"
-            android:background="#007799"
-            />
+
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

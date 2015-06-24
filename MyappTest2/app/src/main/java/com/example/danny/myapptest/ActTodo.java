@@ -21,6 +21,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -40,31 +42,7 @@ public class ActTodo extends Activity {
         initTextType();
 
 
-        Notification message =new Notification(
-                android.R.drawable.stat_sys_download,
-                "您有3封簡訊未讀取",
-                System.currentTimeMillis());
-
-        PendingIntent pend  = PendingIntent.getActivity(
-                ActTodo.this,
-                0,
-                new Intent(ActTodo.this,ActMain.class),
-                PendingIntent.FLAG_UPDATE_CURRENT);
-
-        message.setLatestEventInfo(
-                ActTodo.this,
-                "下載來自帥哥",
-                "您有高雄周愚民的照片下載中",
-                pend);
-
-        NotificationManager manager=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        manager.notify(0, message);
-
-
     }
-
-
-
 
     private static final int MENU_exit = Menu.FIRST ;
     @Override
@@ -132,7 +110,6 @@ View.OnClickListener btnAdd_click =new View.OnClickListener(){
              String ketD = "D" + String.valueOf(index);
              table.edit().putString(ketT, txtTodo.getText().toString()).commit();
              table.edit().putString(ketD, txtDatePicker.getText().toString()).commit();
-
 
              Toast.makeText(ActTodo.this, "新增資料成功", Toast.LENGTH_SHORT).show();
 
@@ -262,10 +239,6 @@ View.OnClickListener btnList_click=new View.OnClickListener(){
 //                                    table.edit().putString(ketT,)
 
 
-                                
-
-
-
                               //table.edit().remove("T"+Integer.toString(2)).commit();//可刪
                        // Toast.makeText(ActTodo.this,(list.get(deleteNo)).toString(),Toast.LENGTH_SHORT).show();
 
@@ -311,6 +284,9 @@ DatePickerDialog.OnDateSetListener btnDateSetting_click=new DatePickerDialog.OnD
               txtDatePicker.setTextColor(Color.BLACK);
               txtDatePicker.setTypeface(Typeface.DEFAULT);
               txtDatePicker.setTextSize(30);
+
+
+
     }
 };
 
