@@ -37,7 +37,7 @@
                     <div class="login-contents">
                         <span><asp:Button ID="btnSubmit" runat="server" Text="Login" BackColor="#009900" BorderStyle="None" Width="136px" Height="50px" OnClick="btnSubmit_Click"/>
                         </span>
-                        <div style="text-align:center"><asp:HyperLink ID="hLinkRegister" runat="server" Font-Size="X-Large" ForeColor="#220088" NavigateUrl="~/Register.aspx">建立帳戶</asp:HyperLink></div>
+                        <%--<div style="text-align:center"><asp:HyperLink ID="hLinkRegister" runat="server" Font-Size="X-Large" ForeColor="#220088" NavigateUrl="~/Register.aspx">建立帳戶</asp:HyperLink></div>--%>
                     </div>
                     <span class="login-contentsL"><asp:Button ID="btnEnter" runat="server" Text="進入後台" BackColor="#EE7700" Width="136px" Height="50px" BorderStyle="None" OnClick="btnEnter_Click"/></span>
                     
