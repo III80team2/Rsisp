@@ -25,7 +25,7 @@ var S = {
       S.UI.simulate(decodeURI(action).substring(i + 3));
     }
     else {
-      S.UI.simulate('Welcome||');
+      S.UI.simulate('Welcome to IAP||');
     }
 
     S.Drawing.loop(function () {
