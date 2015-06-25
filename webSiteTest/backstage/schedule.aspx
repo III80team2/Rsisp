@@ -6,7 +6,7 @@
             <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 個人計畫總覽
         </div>
         <form id="fomr1" runat="server">
-            <asp:GridView ID="gvSchedules" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="False" AllowPaging="True">
+            <asp:GridView ID="gvSchedules" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="gvSchedules_PageIndexChanging">
                 <HeaderStyle BackColor="#CCFFFF" />
             </asp:GridView>
         </form>

@@ -47,4 +47,11 @@ public partial class backstage_schedule : System.Web.UI.Page
 
         gvSchedules.DataBind();
     }
+
+    protected void gvSchedules_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gvSchedules.PageIndex = e.NewPageIndex;
+        gvSchedules.DataSource = scheduleFactory.getAll();
+        gvSchedules.DataBind();
+    }
 }

@@ -25,4 +25,11 @@ public partial class backstage_role : System.Web.UI.Page
         gvRoles.Columns.Add(name);
         gvRoles.DataBind();
     }
+
+    protected void gvRoles_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gvRoles.PageIndex = e.NewPageIndex;
+        gvRoles.DataSource = roleFactory.getAll();
+        gvRoles.DataBind();
+    }
 }

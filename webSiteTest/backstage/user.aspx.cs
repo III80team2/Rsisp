@@ -40,4 +40,11 @@ public partial class backstage_user : System.Web.UI.Page
         gvUsers.Columns.Add(password);
         gvUsers.DataBind();
     }
+
+    protected void gvUsers_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gvUsers.PageIndex = e.NewPageIndex;
+        gvUsers.DataSource = userFactory.getAll();
+        gvUsers.DataBind();
+    }
 }

@@ -7,6 +7,7 @@
         </div>
         <form id="fomr1" runat="server">
             姓名：<asp:DropDownList ID="ddlPatientName" runat="server" AutoPostBack="True" CssClass="dropdown-header" Font-Size="Small" ForeColor="Black">
+                <asp:ListItem Value="0">請選擇</asp:ListItem>
             </asp:DropDownList>
             <br />
             <asp:Button ID="btndeletePatient" runat="server" OnClick="btndeletePatient_Click" Text="刪除" CssClass="btn btn-danger" />

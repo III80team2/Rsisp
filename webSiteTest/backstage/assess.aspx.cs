@@ -25,4 +25,11 @@ public partial class backstage_assess : System.Web.UI.Page
         gvAssesses.Columns.Add(name);
         gvAssesses.DataBind();
     }
+
+    protected void gvAssesses_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gvAssesses.PageIndex = e.NewPageIndex;
+        gvAssesses.DataSource = assessFactory.getAll();
+        gvAssesses.DataBind();
+    }
 }

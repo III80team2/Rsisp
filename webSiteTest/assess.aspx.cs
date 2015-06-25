@@ -56,33 +56,45 @@ public partial class assess : System.Web.UI.Page
         int groupCount = 0;
         foreach (CItem item in myAssess.items)
         {
-            if (!item.group.id.Equals(group.id))
+            if (item.group != null)
             {
-                if (groupCount > 0)
+                //item有group
+                if (!item.group.id.Equals(group.id))
                 {
-                    if (isFinished)
+                    //不同group
+                    if (groupCount > 0)
                     {
-                        Label lblGroupScore = new Label();
-                        lblGroupScore.Text = "分數：" + groupScore.ToString();
+                        if (isFinished)
+                        {
+                            Label lblGroupScore = new Label();
+                            lblGroupScore.Text = "分數：" + groupScore.ToString();
 
-                        PlaceHolder1.Controls.Add(new LiteralControl("<div class='panel-primary panel-footer'><span class='glyphicon glyphicon-ok' aria-hidden='true'></span>"));
-                        PlaceHolder1.Controls.Add(lblGroupScore);
+                            PlaceHolder1.Controls.Add(new LiteralControl("<div class='panel-primary panel-footer'><span class='glyphicon glyphicon-ok' aria-hidden='true'></span>"));
+                            PlaceHolder1.Controls.Add(lblGroupScore);
+                            PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
+                        }
                         PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
                     }
+
+                    group.id = item.group.id;
+
+                    Label lblGroupName = new Label();
+                    lblGroupName.Text = item.group.name;
+                    lblGroupName.CssClass = "label";
+
+                    PlaceHolder1.Controls.Add(new LiteralControl("<div class='panel panel-primary' style='font-size:X-large'><div class='panel-heading'>"));
+                    PlaceHolder1.Controls.Add(lblGroupName);
                     PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
+                    groupCount++;
+                    groupScore = 0;
                 }
-
-                group.id = item.group.id;
-
-                Label lblGroupName = new Label();
-                lblGroupName.Text = item.group.name;
-                lblGroupName.CssClass = "label";
-
-                PlaceHolder1.Controls.Add(new LiteralControl("<div class='panel panel-primary' style='font-size:X-large'><div class='panel-heading'>"));
-                PlaceHolder1.Controls.Add(lblGroupName);
-                PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
-                groupCount++;
-                groupScore = 0;                
+            }
+            else
+            {
+                //item沒group
+                groupCount = 0;
+                if (groupCount > 0)                          
+                    PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
             }
             //加入項目
             addItem(item);
@@ -117,7 +129,12 @@ public partial class assess : System.Web.UI.Page
         Label lblItemName = new Label();
         lblItemName.Text = item.name;
 
-        PlaceHolder1.Controls.Add(new LiteralControl("<div class='panel-success'><div class='panel-heading'>"));
+        if (item.group != null)
+            PlaceHolder1.Controls.Add(new LiteralControl("<div class='panel-success'>"));
+        else
+            PlaceHolder1.Controls.Add(new LiteralControl("<div class='panel panel-success'>"));
+
+        PlaceHolder1.Controls.Add(new LiteralControl("<div class='panel-heading'>"));
         PlaceHolder1.Controls.Add(lblItemName);
         PlaceHolder1.Controls.Add(new LiteralControl("</div><div class='panel-body'>"));
 

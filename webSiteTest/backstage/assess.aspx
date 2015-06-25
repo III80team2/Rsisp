@@ -6,7 +6,7 @@
             <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 評估表樣式總覽
         </div>
         <form id="fomr1" runat="server">
-            <asp:GridView ID="gvAssesses" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="False" AllowPaging="True">
+            <asp:GridView ID="gvAssesses" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="gvAssesses_PageIndexChanging">
                 <HeaderStyle BackColor="#CCFFFF" />
             </asp:GridView>
         </form>
