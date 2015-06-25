@@ -38,13 +38,21 @@ public partial class index : System.Web.UI.Page
     private void fetchData(string id)
     {
         List<CSchedule> schedules = new List<CSchedule>();
+        List<CSchedule> schedules_finished = new List<CSchedule>();
+
         foreach (CSchedule schedule in scheduleFactory.getByPatientId(id))
         {
-            if (schedule.user_id == user.id && schedule.deadLine >= DateTime.Now)
-                schedules.Add(schedule);
+            if (schedule.user_id == user.id)
+            {
+                if (!schedule.isFinished)
+                    schedules.Add(schedule);
+                else
+                    schedules_finished.Add(schedule);
+            }
         }
 
-        GridView1.DataSource = schedules;
+        GridView1.DataSource = schedules.OrderBy(schedule => schedule.deadLine).ToList();
+        GridView2.DataSource = schedules_finished.OrderByDescending(schedule => schedule.deadLine).ToList();
 
         BoundField user_id = new BoundField();
         user_id.DataField = "user_id";
@@ -84,7 +92,17 @@ public partial class index : System.Web.UI.Page
         GridView1.Columns.Add(editAssess);
         GridView1.Columns.Add(schedule_id);
         GridView1.DataBind();
-        GridView1.Columns[6].Visible = false;
+        //GridView1.Columns[6].Visible = false;
+
+        GridView2.Columns.Add(user_id);
+        GridView2.Columns.Add(patient_id);
+        GridView2.Columns.Add(assessName);
+        GridView2.Columns.Add(deadLine);
+        GridView2.Columns.Add(isFinished);
+        GridView2.Columns.Add(editAssess);
+        GridView2.Columns.Add(schedule_id);
+        GridView2.DataBind();
+        GridView2.Columns[6].Visible = false;
     }
 
     protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)

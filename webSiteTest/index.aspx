@@ -27,8 +27,12 @@
                             <asp:QueryStringParameter Name="ID_Patient" QueryStringField="pid" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource>
-                    
+                    <span style="font-size:large">尚未完成之評估表<//span>
                     <asp:GridView ID="GridView1" runat="server" CssClass="gvStyle" AlternatingRowStyle-CssClass="alt" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
+                    </asp:GridView>
+                    <br />
+                    <span style="font-size:large">已完成之評估表<//span>
+                    <asp:GridView ID="GridView2" runat="server" CssClass="gvStyle" AlternatingRowStyle-CssClass="alt" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
                     </asp:GridView>
                     <div id="loadingIMG" style="display:none;text-align:center"><img src="pics/runningMan.GIF" height="50"/>資料處理中，請稍後。</div>
                 </td>

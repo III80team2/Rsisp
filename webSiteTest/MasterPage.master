@@ -23,7 +23,7 @@
         }
             /*Header 標題*/
             .gvStyle th {
-                background-color: #00ffff;
+                background-color: #1bbc9b;
                 font-weight: 700;
                 font-size: large;
                 font-family: 微軟正黑體;

@@ -44,7 +44,7 @@ public partial class assess : System.Web.UI.Page
             schedule_id = Convert.ToInt32(Request.QueryString["sid"]);
         }
         else
-            Response.Redirect("login.aspx");
+            Response.Redirect("index.aspx?pid=" + patient_id);
 
         myAssess = assessFactory.getById(assess_id);
         isFinished = scheduleFactory.getById(schedule_id).isFinished;
@@ -91,13 +91,13 @@ public partial class assess : System.Web.UI.Page
             }
             else
             {
-                //item沒group
+                //item沒group          
                 groupCount = 0;
-                if (groupCount > 0)                          
-                    PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
+                if (groupCount > 0)
+                    PlaceHolder1.Controls.Add(new LiteralControl("</div>"));                
             }
             //加入項目
-            addItem(item);
+            addItem(item);            
         }
         PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
 
