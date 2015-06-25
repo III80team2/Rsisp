@@ -11,7 +11,7 @@ public partial class backstage_schedule : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        gvSchedules.DataSource = scheduleFactory.getAll();
+        gvSchedules.DataSource = scheduleFactory.getAll().OrderByDescending(schedule => schedule.id).ToList();
 
         BoundField id = new BoundField();
         id.DataField = "id";
@@ -51,7 +51,7 @@ public partial class backstage_schedule : System.Web.UI.Page
     protected void gvSchedules_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         gvSchedules.PageIndex = e.NewPageIndex;
-        gvSchedules.DataSource = scheduleFactory.getAll();
+        gvSchedules.DataSource = scheduleFactory.getAll().OrderByDescending(schedule => schedule.id).ToList();
         gvSchedules.DataBind();
     }
 }

@@ -8,7 +8,7 @@
         function addGroup() {
             var group_id = $('#newAssessStyle').children('div').length;
             $('#newAssessStyle').append('<div id="group' + group_id + '" class="panel panel-primary"></div>');
-            $('#group' + group_id).append('<div class="panel-heading">' + group_id + '. 群組名稱：</div>');
+            $('#group' + group_id).append('<div class="panel-heading">群組名稱：</div>');
             $('#group' + group_id).append('<div id="groupFooter' + group_id + '" class="panel-footer"></div>');
             $('#group' + group_id + ' .panel-heading').append('<input type="text" id="groupName' + group_id + '" name="groupName' + group_id + '"/>');
             $('#group' + group_id + ' .panel-footer').append('<button class="btn btn-default" onclick="addItemInGroup(' + group_id + ')">新增評估項目</button>');
@@ -19,7 +19,7 @@
             var id = $('#group' + group_id).children('div').length - 1;
             var item_id = group_id + '-' + id;
             $('#groupFooter' + group_id).before('<div id="item' + item_id + '" class="panel-body panel-success"></div>');
-            $('#item' + item_id).append('<div class="panel-heading">' + item_id + '. 評估項目名稱：</div>');
+            $('#item' + item_id).append('<div class="panel-heading">評估項目名稱：</div>');
             $('#item' + item_id).append('<div id="itemFooter' + item_id + '" class="panel-footer"></div>');
             $('#item' + item_id + ' .panel-heading').append('<input type="text" id="itemName' + item_id + '" name="itemName' + item_id + '"/>');
             $('#item' + item_id + ' .panel-footer').append('<button class="btn btn-default" onclick="addContentInItemGroup(' + group_id + ',' + id + ')">新增選項</button>');
@@ -28,7 +28,7 @@
         function addTextInGroup(group_id) {
             var id = $('#group' + group_id).children('div').length - 1;
             var text_id = group_id + '-' + id;
-            $('#groupFooter' + group_id).before('<div id="text' + text_id + '" class="panel-body">' + text_id + '. 文字項目名稱：</div>');
+            $('#groupFooter' + group_id).before('<div id="text' + text_id + '" class="panel-body">文字項目名稱：</div>');
             $('#text' + text_id).append('<input type="text" id="textName' + text_id + '" name="textName' + text_id + '"/>');
         }
         function addContentInItemGroup(group_id, id) {
@@ -36,7 +36,7 @@
             var id = $('#item' + item_id).children('div').length - 1;
             var content_id = item_id + '-' + id;
             $('#itemFooter' + item_id).before('<div id="content' + content_id + '" class="panel-body"></div>');
-            $('#content' + content_id).append(content_id + '. 選項內容：<input type="text" id="contentName' + content_id + '" name="contentName' + content_id + '"/>');
+            $('#content' + content_id).append('選項內容：<input type="text" id="contentName' + content_id + '" name="contentName' + content_id + '"/>');
             $('#content' + content_id).append(' 選項分數：<input type="text" id="contentScore' + content_id + '" name="contentScore' + content_id + '"/>');
         }
         function clearAllInGroup(group_id) {
@@ -49,7 +49,7 @@
         function addItem() {
             var item_id = $('#newAssessStyle').children('div').length;
             $('#newAssessStyle').append('<div id="item' + item_id + '" class="panel panel-success"></div>');
-            $('#item' + item_id).append('<div class="panel-heading">' + item_id + '. 評估項目名稱：</div>');
+            $('#item' + item_id).append('<div class="panel-heading">評估項目名稱：</div>');
             $('#item' + item_id).append('<div id="itemFooter' + item_id + '" class="panel-footer"></div>');
             $('#item' + item_id + ' .panel-heading').append('<input type="text" id="itemName' + item_id + '" name="itemName' + item_id + '"/>');
             $('#item' + item_id + ' .panel-footer').append('<button class="btn btn-default" onclick="addContentInItem(' + item_id + ')">新增選項</button>');
@@ -59,7 +59,7 @@
             var id = $('#item' + item_id).children('div').length - 1;
             var content_id = item_id + '-' + id;
             $('#itemFooter' + item_id).before('<div id="content' + content_id + '" class="panel-body"></div>');
-            $('#content' + content_id).append(content_id + '. 選項內容：<input type="text" id="contentName' + content_id + '" name="contentName' + content_id + '"/>');
+            $('#content' + content_id).append('選項內容：<input type="text" id="contentName' + content_id + '" name="contentName' + content_id + '"/>');
             $('#content' + content_id).append(' 選項分數：<input type="text" id="contentScore' + content_id + '" name="contentScore' + content_id + '"/>');
         }
         function clearAllInItem(item_id) {
@@ -67,7 +67,7 @@
         }
         function addText() {
             var text_id = $('#newAssessStyle').children('div').length;
-            $('#newAssessStyle').append('<div id="text' + text_id + '" class="panel">' + text_id + '. 文字項目名稱：</div>');
+            $('#newAssessStyle').append('<div id="text' + text_id + '" class="panel">文字項目名稱：</div>');
             $('#text' + text_id).append('<input type="text" id="textName' + text_id + '" name="textName' + text_id + '"/>');
         }
         function clearAll() {

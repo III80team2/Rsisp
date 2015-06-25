@@ -11,7 +11,7 @@ public partial class backstage_assess : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        gvAssesses.DataSource = assessFactory.getAll();
+        gvAssesses.DataSource = assessFactory.getAll().OrderByDescending(assess => assess.id).ToList();
 
         BoundField id = new BoundField();
         id.DataField = "id";
@@ -29,7 +29,7 @@ public partial class backstage_assess : System.Web.UI.Page
     protected void gvAssesses_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         gvAssesses.PageIndex = e.NewPageIndex;
-        gvAssesses.DataSource = assessFactory.getAll();
+        gvAssesses.DataSource = assessFactory.getAll().OrderByDescending(assess => assess.id).ToList();
         gvAssesses.DataBind();
     }
 }

@@ -11,7 +11,7 @@ public partial class backstage_user : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        gvUsers.DataSource = userFactory.getAll();
+        gvUsers.DataSource = userFactory.getAll().OrderByDescending(user => user.id).ToList();
 
         BoundField id = new BoundField();
         id.DataField = "id";
@@ -44,7 +44,7 @@ public partial class backstage_user : System.Web.UI.Page
     protected void gvUsers_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         gvUsers.PageIndex = e.NewPageIndex;
-        gvUsers.DataSource = userFactory.getAll();
+        gvUsers.DataSource = userFactory.getAll().OrderByDescending(user => user.id).ToList();
         gvUsers.DataBind();
     }
 }

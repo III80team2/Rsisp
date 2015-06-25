@@ -13,7 +13,7 @@ public partial class backstage_patient : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            gvPatients.DataSource = patientFactory.getAll();
+            gvPatients.DataSource = patientFactory.getAll().OrderByDescending(patient => patient.id).ToList();
 
             BoundField id = new BoundField();
             id.DataField = "id";
@@ -48,7 +48,7 @@ public partial class backstage_patient : System.Web.UI.Page
     protected void gvPatients_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         gvPatients.PageIndex = e.NewPageIndex;
-        gvPatients.DataSource = patientFactory.getAll();
+        gvPatients.DataSource = patientFactory.getAll().OrderByDescending(patient => patient.id).ToList();
         gvPatients.DataBind();
     }
 }
