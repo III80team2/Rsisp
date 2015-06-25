@@ -11,19 +11,22 @@ public partial class backstage_assess : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        gvAssesses.DataSource = assessFactory.getAll().OrderByDescending(assess => assess.id).ToList();
+        if (!IsPostBack)
+        {
+            gvAssesses.DataSource = assessFactory.getAll().OrderByDescending(assess => assess.id).ToList();
 
-        BoundField id = new BoundField();
-        id.DataField = "id";
-        id.HeaderText = "評估表編號";
+            BoundField id = new BoundField();
+            id.DataField = "id";
+            id.HeaderText = "評估表編號";
 
-        BoundField name = new BoundField();
-        name.DataField = "name";
-        name.HeaderText = "評估表名稱";
+            BoundField name = new BoundField();
+            name.DataField = "name";
+            name.HeaderText = "評估表名稱";
 
-        gvAssesses.Columns.Add(id);
-        gvAssesses.Columns.Add(name);
-        gvAssesses.DataBind();
+            gvAssesses.Columns.Add(id);
+            gvAssesses.Columns.Add(name);
+            gvAssesses.DataBind();
+        }
     }
 
     protected void gvAssesses_PageIndexChanging(object sender, GridViewPageEventArgs e)

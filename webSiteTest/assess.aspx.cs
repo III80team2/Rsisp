@@ -91,15 +91,40 @@ public partial class assess : System.Web.UI.Page
             }
             else
             {
-                //item沒group          
-                groupCount = 0;
+                //item沒group                          
                 if (groupCount > 0)
-                    PlaceHolder1.Controls.Add(new LiteralControl("</div>"));                
+                {
+                    if (isFinished)
+                    {
+                        Label lblGroupScore = new Label();
+                        lblGroupScore.Text = "分數：" + groupScore.ToString();
+
+                        PlaceHolder1.Controls.Add(new LiteralControl("<div class='panel-primary panel-footer'><span class='glyphicon glyphicon-ok' aria-hidden='true'></span>"));
+                        PlaceHolder1.Controls.Add(lblGroupScore);
+                        PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
+                    }
+                    PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
+                }
+                groupCount = 0;
             }
             //加入項目
             addItem(item);            
         }
-        PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
+
+        if (groupCount > 0)
+        {
+            if (isFinished)
+            {
+                Label lblGroupScore = new Label();
+                lblGroupScore.Text = "分數：" + groupScore.ToString();
+
+                PlaceHolder1.Controls.Add(new LiteralControl("<div class='panel-primary panel-footer'><span class='glyphicon glyphicon-ok' aria-hidden='true'></span>"));
+                PlaceHolder1.Controls.Add(lblGroupScore);
+                PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
+            }
+            PlaceHolder1.Controls.Add(new LiteralControl("</div>"));
+        }
+        
 
         Button btnSubmit = new Button();
         if (isFinished)
