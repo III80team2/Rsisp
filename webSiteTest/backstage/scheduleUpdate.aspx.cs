@@ -43,7 +43,7 @@ public partial class backstage_scheduleUpdate : System.Web.UI.Page
         }
     }
 
-    protected void btnAddSchedule_Click(object sender, EventArgs e)
+    protected void btnUpdateSchedule_Click(object sender, EventArgs e)
     {
         if (ddlScheduleID.SelectedIndex != 0 && ddlUserName.SelectedIndex != 0 && ddlPatientName.SelectedIndex != 0 && ddlAssessName.SelectedIndex != 0)
         {

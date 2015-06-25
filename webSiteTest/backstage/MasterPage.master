@@ -103,6 +103,7 @@
                                     <li class="divider"></li>
                                     <li><a href="scheduleAdd.aspx">新增個人計畫</a></li>
                                     <li><a href="scheduleUpdate.aspx">修改個人計畫</a></li>
+                                    <li><a href="scheduleDelete.aspx">刪除個人計畫</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -111,6 +112,7 @@
                                     <li><a href="assess.aspx">評估表樣式總覽</a></li>
                                     <li class="divider"></li>
                                     <li><a href="assessAdd.aspx">新增評估表樣式</a></li>
+                                    <li><a href="assessDelete.aspx">刪除評估表樣式</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">

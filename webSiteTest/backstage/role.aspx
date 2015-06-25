@@ -6,7 +6,7 @@
             <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 身分權限總覽
         </div>
         <form id="fomr1" runat="server">
-            <asp:GridView ID="gvRoles" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="False">
+            <asp:GridView ID="gvRoles" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="False" AllowPaging="True">
                 <HeaderStyle BackColor="#CCFFFF" />
             </asp:GridView>
         </form>

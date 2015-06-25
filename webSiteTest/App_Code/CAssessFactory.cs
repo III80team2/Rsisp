@@ -461,4 +461,22 @@ public class CAssessFactory
 
     //----------------------------------------新增評估表樣式完成----------------------------------------//
 
+    public void deleteAssessStyle(CAssess assess)
+    {
+        try
+        {
+            SqlDataSource sds = new SqlDataSource();
+            sds.ConnectionString = connectionString;
+            sds.DeleteCommand = "dbo.deleteAssessStyle";
+            sds.DeleteCommandType = SqlDataSourceCommandType.StoredProcedure;
+            sds.DeleteParameters.Add(new Parameter("ID_Assess", DbType.Int32, assess.id.ToString()));
+            sds.Delete();
+
+            message = "delete success";
+        }
+        catch (Exception ex)
+        {
+            message = ex.Message;
+        }
+    }
 }

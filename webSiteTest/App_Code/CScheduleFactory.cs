@@ -131,16 +131,35 @@ public class CScheduleFactory
         {
             SqlDataSource sds = new SqlDataSource();
             sds.ConnectionString = connectionString;
-            sds.InsertCommand = "dbo.updateSchedule";
-            sds.InsertCommandType = SqlDataSourceCommandType.StoredProcedure;
-            sds.InsertParameters.Add(new Parameter("ID_Schedule", DbType.Int32, schedule.id.ToString()));
-            sds.InsertParameters.Add(new Parameter("ID_User", DbType.String, schedule.user_id));
-            sds.InsertParameters.Add(new Parameter("ID_Patient", DbType.String, schedule.patient_id));
-            sds.InsertParameters.Add(new Parameter("ID_Assess", DbType.Int32, schedule.assess_id.ToString()));
-            sds.InsertParameters.Add(new Parameter("deadLine", DbType.Date, schedule.deadLine.ToShortDateString()));
-            sds.Insert();
+            sds.UpdateCommand = "dbo.updateSchedule";
+            sds.UpdateCommandType = SqlDataSourceCommandType.StoredProcedure;
+            sds.UpdateParameters.Add(new Parameter("ID_Schedule", DbType.Int32, schedule.id.ToString()));
+            sds.UpdateParameters.Add(new Parameter("ID_User", DbType.String, schedule.user_id));
+            sds.UpdateParameters.Add(new Parameter("ID_Patient", DbType.String, schedule.patient_id));
+            sds.UpdateParameters.Add(new Parameter("ID_Assess", DbType.Int32, schedule.assess_id.ToString()));
+            sds.UpdateParameters.Add(new Parameter("deadLine", DbType.Date, schedule.deadLine.ToShortDateString()));
+            sds.Update();
 
-            message = "add success";
+            message = "update success";
+        }
+        catch (Exception ex)
+        {
+            message = ex.Message;
+        }
+    }
+
+    public void deleteSchedule(CSchedule schedule)
+    {
+        try
+        {
+            SqlDataSource sds = new SqlDataSource();
+            sds.ConnectionString = connectionString;
+            sds.DeleteCommand = "dbo.deleteSchedule";
+            sds.DeleteCommandType = SqlDataSourceCommandType.StoredProcedure;
+            sds.DeleteParameters.Add(new Parameter("ID_Schedule", DbType.Int32, schedule.id.ToString()));
+            sds.Delete();
+
+            message = "delete success";
         }
         catch (Exception ex)
         {

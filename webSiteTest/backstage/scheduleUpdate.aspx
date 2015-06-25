@@ -25,10 +25,10 @@
             期限：<asp:TextBox ID="tbDeadLine" runat="server" CssClass="form-control"></asp:TextBox>
             <br />
             <br />
-            <asp:Button ID="btnAddSchedule" runat="server" OnClick="btnAddSchedule_Click" Text="更新" CssClass="btn btn-warning" />
+            <asp:Button ID="btnUpdateSchedule" runat="server" OnClick="btnUpdateSchedule_Click" Text="更新" CssClass="btn btn-warning" />
         </form>
         <br />
-        <div class="alert alert-warning" role="alert">
+        <div class="alert alert-danger" role="alert">
             <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span>
             注意：只提供尚未完成的計畫可以更新！

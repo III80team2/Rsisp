@@ -6,7 +6,7 @@
             <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 人員資料總覽
         </div>
         <form id="form1" runat="server">
-            <asp:GridView ID="gvUsers" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="False">
+            <asp:GridView ID="gvUsers" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="False" AllowPaging="True">
                 <HeaderStyle BackColor="#CCFFFF" />
             </asp:GridView>
         </form>
