@@ -26,6 +26,7 @@ public class ActTodo extends Activity {
 
     ArrayList<String> list;
     Integer deleteNo;
+    boolean delete = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,7 +174,7 @@ View.OnClickListener btnList_click=new View.OnClickListener(){
                                 String tempketDValue;
                                 int tempDelete = deleteNo+2;
                                 table.edit().remove(ketT).commit();
-                                Toast.makeText(ActTodo.this,"已刪除一筆資料",Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(ActTodo.this,"已刪除一筆資料",Toast.LENGTH_SHORT).show();
                                 //Toast.makeText(ActTodo.this,table.getString("T"+String.valueOf(tempDelete),"沒"),Toast.LENGTH_SHORT).show();
                                  for(int j = deleteNo+1;j<=list.size();j++) {
                                     if (table.contains("T" + String.valueOf(tempDelete))) {
@@ -185,9 +186,15 @@ View.OnClickListener btnList_click=new View.OnClickListener(){
                                         table.edit().remove("D"+String.valueOf(tempDelete)).commit();
                                          tempDelete++;
                                         inttempPut++;
-
+                                        delete = true;
                                     }
                                 }
+                                if(delete){
+                                    table.edit().putInt("COUNT",list.size()-1).commit();
+                                    //Toast.makeText(ActTodo.this,String.valueOf(list.size()-1),Toast.LENGTH_SHORT).show();
+                                    delete = false;
+                                }
+
 
 
 //                                for(int i =1;i<list.size();i++){
