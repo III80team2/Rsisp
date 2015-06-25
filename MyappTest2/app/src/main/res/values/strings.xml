@@ -6,4 +6,6 @@
     <string name="title_activity_login_main">*****歡迎進入本系統*****</string>
     <string name="title_activity_act_map">地圖</string>
     <string name="title_activity_act_todo">*****歡迎進入本系統*****</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_act_assess">ActAssess</string>
 </resources>

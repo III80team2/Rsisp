@@ -185,9 +185,10 @@ public class ActMain extends Activity {
         }
     };
 
-    public String getToDoList(String pid)
+
+    public void getToDoList(String pid)
     {
-        String result = "";
+        //String result = "";
         ArrayList<Integer> indexList = new ArrayList<Integer>();
 
         for(int i=0;i<pIdList.size();i++){
@@ -197,12 +198,18 @@ public class ActMain extends Activity {
         }
         if(indexList.size()>0){
             for(int j=0;j<indexList.size();j++){
-                int index = indexList.get(j);
-                result += aNameList.get(index).toString()+"\n";
+                sIdList2.add(sIdList.get(indexList.get(j)).toString());
+                aNameList2.add(aNameList.get(indexList.get(j)).toString());
+                aIdList2.add(aIdList.get(indexList.get(j)).toString());
+                pIdList2.add(pIdList.get(indexList.get(j)).toString());
+//                result += sIdList2.get(j).toString();
+//                result += aNameList2.get(j).toString();
+//                result += aIdList2.get(j).toString();
+//                result += pIdList2.get(j).toString()+"\n";
             }
         }
-        else {result = "無待寫評估表";}
-        return result;
+        else {Toast.makeText(ActMain.this,"無填寫完畢評估表",Toast.LENGTH_SHORT).show();}
+        //return result;
     }
 
     //QRCode後續動作
@@ -214,11 +221,10 @@ public class ActMain extends Activity {
 
             AlertDialog.Builder build=new AlertDialog.Builder(ActMain.this);
             build.setTitle("--院民資料如下--");
-            //build.setMessage("掃描到帥哥在附近").create().show();
             //build出來
             scanContent +="\n";
-            scanContent += getToDoList(scanningResult.getContents());
-            build.setMessage(scanContent).create().show();
+            getToDoList(scanningResult.getContents());
+            //build.setMessage(scanContent).create().show();
 
             //如果是網頁
 //            Uri uri = Uri.parse(scanContent);
@@ -268,9 +274,6 @@ public class ActMain extends Activity {
 
     }
 
-
-
-
     private void InicialComponent()
     {
 
@@ -289,8 +292,14 @@ public class ActMain extends Activity {
 
         //scheduleJson = new AsyncTaskPatient();
         pIdList = new ArrayList<String>();
+        pIdList2 = new ArrayList<String>();
+        aNameList2 = new ArrayList<String>();
         aNameList = new ArrayList<String>();
+        aIdList = new ArrayList<String>();
+        aIdList2 = new ArrayList<String>();
         isfinishedList = new ArrayList<String>();
+        sIdList = new ArrayList<String>();
+        sIdList2 = new ArrayList<String>();
 
 
         textTime1 = (EditText)findViewById(R.id.txtId);
@@ -300,7 +309,7 @@ public class ActMain extends Activity {
     public class AsyncTaskParseJson extends AsyncTask<String, String, String> {
 
         // set your json string url here
-        String yourJsonStringUrl = "http://rsisp-assess.azurewebsites.net/test.aspx";
+        String yourJsonStringUrl = "http://assessjson.azurewebsites.net/";
 
         // contacts JSONArray
         JSONArray dataJsonArr = null;
@@ -331,9 +340,13 @@ public class ActMain extends Activity {
                     String patient_id = c.getString("patient_id");
                     String assess_name = c.getString("assess_name");
                     String isFinished = c.getString("isFinished");
+                    String assess_id = c.getString("assess_id");
+                    String schedule_id = c.getString("id");
                     pIdList.add(patient_id);
                     aNameList.add(assess_name);
                     isfinishedList.add(isFinished);
+                    aIdList.add(assess_id);
+                    sIdList.add(schedule_id);
 
                 }
 
@@ -352,8 +365,14 @@ public class ActMain extends Activity {
     ImageButton btnlogin;
     ImageButton btnq;
     ArrayList<String> pIdList;
+    ArrayList<String> pIdList2;
     ArrayList<String> aNameList;
+    ArrayList<String> aNameList2;
+    ArrayList<String> aIdList;
+    ArrayList<String> aIdList2;
     ArrayList<String> isfinishedList;
+    ArrayList<String> sIdList;
+    ArrayList<String> sIdList2;
     //AsyncTaskPatient scheduleJson;
 
 

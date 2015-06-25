@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,9 +27,7 @@ public class LoginMain extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loginmain);
         InicialComponent();
-
         new AsyncTaskq().execute();
-
     }
 
     private static final int MENU_exit = Menu.FIRST ;
@@ -147,12 +143,6 @@ public class LoginMain extends Activity {
                     idList.add(account);
                     pwdList.add(password);
 
-
-                    // show the values in our logcat
-//                    Log.e(TAG, "firstname: " + firstname
-//                            + ", lastname: " + lastname
-//                            + ", username: " + username);
-
                 }
 
             } catch (JSONException e) {
@@ -171,6 +161,7 @@ public class LoginMain extends Activity {
         for(int i=0;i<idList.size();i++){
             if((idList.get(i).equals(id))&&(pwdList.get(i).equals(pwd))){
                 Intent intent = new Intent(LoginMain.this,ActMain.class);
+
                 startActivity(intent);
                 break;
             }
