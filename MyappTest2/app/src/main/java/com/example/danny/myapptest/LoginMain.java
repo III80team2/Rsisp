@@ -85,7 +85,6 @@ public class LoginMain extends Activity {
 
             String id = txtId.getText().toString();
             String pwd = txtPwd.getText().toString();
-
             isAccessSuceed(id,pwd);
 
         }
@@ -158,19 +157,16 @@ public class LoginMain extends Activity {
 
     public void isAccessSuceed(String id,String pwd)
     {
+
         for(int i=0;i<idList.size();i++){
             if((idList.get(i).equals(id))&&(pwdList.get(i).equals(pwd))){
                 Intent intent = new Intent(LoginMain.this,ActMain.class);
-
                 startActivity(intent);
-                break;
+                return;
             }
-            else {
-                result = "帳號密碼錯誤!!登入失敗";
-                lblResult.setText(result);
-            }
-
         }
+        result = "帳號密碼錯誤!!登入失敗";
+        lblResult.setText(result);
     }
 
     Button btnSubmit;

@@ -188,11 +188,10 @@ public class ActMain extends Activity {
 
     public void getToDoList(String pid)
     {
-        //String result = "";
         ArrayList<Integer> indexList = new ArrayList<Integer>();
 
         for(int i=0;i<pIdList.size();i++){
-            if((pIdList.get(i).contains(pid))&&(isfinishedList.get(i).equals("false"))){
+            if((pIdList.get(i).contains(pid))&&(isfinishedList.get(i).equals("true"))){
                 indexList.add(i);
             }
         }
@@ -202,37 +201,27 @@ public class ActMain extends Activity {
                 aNameList2.add(aNameList.get(indexList.get(j)).toString());
                 aIdList2.add(aIdList.get(indexList.get(j)).toString());
                 pIdList2.add(pIdList.get(indexList.get(j)).toString());
-//                result += sIdList2.get(j).toString();
-//                result += aNameList2.get(j).toString();
-//                result += aIdList2.get(j).toString();
-//                result += pIdList2.get(j).toString()+"\n";
             }
+            Intent intent = new Intent(ActMain.this,ActAssess.class);
+            Bundle bundle = new Bundle();
+            bundle.putStringArrayList("sId", sIdList2);
+            bundle.putStringArrayList("aName", aNameList2);
+            bundle.putStringArrayList("aId", aIdList2);
+            bundle.putStringArrayList("pId", pIdList2);
+            intent.putExtras(bundle);
+            startActivity(intent);
         }
-        else {Toast.makeText(ActMain.this,"無填寫完畢評估表",Toast.LENGTH_SHORT).show();}
-        //return result;
+        else{
+            Toast.makeText(ActMain.this,"該病患無填寫完畢之評估表",Toast.LENGTH_SHORT).show();
+            return;
+        }
     }
 
     //QRCode後續動作
     public void onActivityResult(int requestCode, int resultCode, Intent intent){
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if(scanningResult!=null){
-            String scanContent="病患編號:"+scanningResult.getContents();
-            //String scanFormat=scanningResult.getFormatName();
-
-            AlertDialog.Builder build=new AlertDialog.Builder(ActMain.this);
-            build.setTitle("--院民資料如下--");
-            //build出來
-            scanContent +="\n";
             getToDoList(scanningResult.getContents());
-            //build.setMessage(scanContent).create().show();
-
-            //如果是網頁
-//            Uri uri = Uri.parse(scanContent);
-//            Intent intentWeb = new Intent(Intent.ACTION_VIEW,uri);
-//            startActivity(intentWeb);
-
-//            scan_content.setText(scanContent);
-//            scan_format.setText(scanFormat);
         }else{
             Toast.makeText(getApplicationContext(), "nothing", Toast.LENGTH_SHORT).show();
         }
@@ -290,7 +279,6 @@ public class ActMain extends Activity {
         btnq.setOnClickListener(btnq_click);
         this.mainactivity=this;
 
-        //scheduleJson = new AsyncTaskPatient();
         pIdList = new ArrayList<String>();
         pIdList2 = new ArrayList<String>();
         aNameList2 = new ArrayList<String>();
@@ -373,7 +361,6 @@ public class ActMain extends Activity {
     ArrayList<String> isfinishedList;
     ArrayList<String> sIdList;
     ArrayList<String> sIdList2;
-    //AsyncTaskPatient scheduleJson;
 
 
 

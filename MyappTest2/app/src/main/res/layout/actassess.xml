@@ -9,18 +9,22 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="assess"
+        android:text="觀看評估表"
+        android:id="@+id/lblTitle"
         android:background="#4682b4"
         android:textColor="#ffffff"
         android:textSize="35dp"
         android:paddingLeft="100dp"
         />
 
-    <Button
-        android:layout_width="wrap_content"
+
+    <TableLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/assess_list"
+        >
+
+        </TableLayout>
+
 
 </LinearLayout>
