@@ -3,7 +3,6 @@ package com.example.danny.myapptest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -101,9 +100,12 @@ public class ActAssess extends Activity {
             String url = "http://assessjson.azurewebsites.net/assessment.aspx?pid="+qstring_p+
                     "&aid="+qstring_a+"&sid="+qstring_s;
 
-            Uri uri = Uri.parse(url);
-            Intent intentWeb = new Intent(Intent.ACTION_VIEW,uri);
-            startActivity(intentWeb);
+            //Uri uri = Uri.parse(url);
+            Intent intent = new Intent(ActAssess.this,ActBrowser.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("url", url);
+            intent.putExtras(bundle);
+            startActivity(intent);
 
         }
     };
@@ -122,5 +124,6 @@ public class ActAssess extends Activity {
     ArrayList<String> aId;
     ArrayList<String> pId;
     ArrayList<String> aName;
+
 
 }

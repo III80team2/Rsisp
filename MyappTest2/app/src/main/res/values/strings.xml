@@ -8,4 +8,5 @@
     <string name="title_activity_act_todo">*****歡迎進入本系統*****</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_act_assess">ActAssess</string>
+    <string name="title_activity_act_browser">ActBrowser</string>
 </resources>

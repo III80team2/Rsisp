@@ -74,6 +74,10 @@
             android:name=".ActAssess"
             android:label="@string/title_activity_act_assess" >
         </activity>
+        <activity
+            android:name=".ActBrowser"
+            android:label="@string/title_activity_act_browser" >
+        </activity>
     </application>
 
 </manifest>
