@@ -23,7 +23,7 @@ public partial class backstage_assessDelete : System.Web.UI.Page
             CAssess assess = assessFactory.getByName(ddlAssessName.SelectedItem.Text);
 
             assessFactory.deleteAssessStyle(assess);
-            Response.Redirect("patient.aspx");
+            Response.Redirect("assess.aspx");
         }
     }
 }
