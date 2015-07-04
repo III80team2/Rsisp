@@ -5,13 +5,21 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 
 public class LoginMain extends Activity {
@@ -22,6 +30,7 @@ public class LoginMain extends Activity {
         setContentView(R.layout.loginmain);
         InicialComponent();
 
+        new AsyncTaskq().execute();
 
     }
 
@@ -75,16 +84,13 @@ public class LoginMain extends Activity {
 
 
 
-   View.OnClickListener btnSubmit_click = new View.OnClickListener() {
+    View.OnClickListener btnSubmit_click = new View.OnClickListener() {
         public void onClick(View arg0) {
 
+            String id = txtId.getText().toString();
+            String pwd = txtPwd.getText().toString();
 
-            Uri uri = Uri.parse("http://rsisp-assess.azurewebsites.net/patientSelect.aspx");
-
-            Intent intent = new Intent(Intent.ACTION_VIEW,uri);
-            startActivity(intent);
-
-            Toast.makeText(LoginMain.this ,"登入成功" , Toast.LENGTH_SHORT);
+            isAccessSuceed(id,pwd);
 
         }
     };
@@ -93,12 +99,95 @@ public class LoginMain extends Activity {
     private void InicialComponent() {
 
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
-        aa = (TextView) findViewById(R.id.txtId);
+        txtId = (EditText) findViewById(R.id.txtId);
+        txtPwd = (EditText) findViewById(R.id.txtPassword);
+        lblResult = (TextView) findViewById(R.id.lblResult);
+        idList = new ArrayList<String>();
+        pwdList = new ArrayList<String>();
         btnSubmit.setOnClickListener(btnSubmit_click);
+        result = "";
 
     }
 
+    public class AsyncTaskq extends AsyncTask<String, String, String> {
+
+        final String TAG = "AsyncTaskParseJson.java";
+
+        // set your json string url here
+        String yourJsonStringUrl = "http://rsisp-assess.azurewebsites.net/test2.aspx";
+
+        // contacts JSONArray
+        JSONArray dataJsonArr = null;
+
+        @Override
+        protected void onPreExecute() {}
+
+        @Override
+        protected String doInBackground(String... arg0) {
+
+            try {
+
+                // instantiate our json parser
+                JsonParser jParser = new JsonParser();
+
+                // get json string from url
+                //JSONObject json = jParser.getJSONFromUrl(yourJsonStringUrl);
+
+                // get the array of users
+                dataJsonArr = jParser.getJSONFromUrl(yourJsonStringUrl);//json.getJSONArray("Users");
+
+                // loop through all users
+                for (int i = 0; i < dataJsonArr.length(); i++) {
+
+                    JSONObject c = dataJsonArr.getJSONObject(i);
+
+                    // Storing each json item in variable
+                    String account = c.getString("account");
+                    String password = c.getString("password");
+                    idList.add(account);
+                    pwdList.add(password);
+
+
+                    // show the values in our logcat
+//                    Log.e(TAG, "firstname: " + firstname
+//                            + ", lastname: " + lastname
+//                            + ", username: " + username);
+
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String strFromDoInBg) {}
+    }
+
+    public void isAccessSuceed(String id,String pwd)
+    {
+        for(int i=0;i<idList.size();i++){
+            if((idList.get(i).equals(id))&&(pwdList.get(i).equals(pwd))){
+                Intent intent = new Intent(LoginMain.this,ActMain.class);
+                startActivity(intent);
+                break;
+            }
+            else {
+                result = "帳號密碼錯誤!!登入失敗";
+                lblResult.setText(result);
+            }
+
+        }
+    }
+
     Button btnSubmit;
-    TextView aa;
+    EditText txtId,txtPwd;
+    ArrayList<String> idList;
+    ArrayList<String> pwdList;
+    TextView lblResult;
+    String result;
+
 
 }

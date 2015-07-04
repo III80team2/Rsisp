@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:text="玫瑰園資訊登入系統"
         android:textSize="30dp"
+        android:id="@+id/lblResult"
         android:textColor="#000000"
         android:gravity="center"
         android:layout_weight="0.25"

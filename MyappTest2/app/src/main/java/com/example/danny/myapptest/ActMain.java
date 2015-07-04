@@ -5,12 +5,9 @@ import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.Movie;
-import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -23,14 +20,16 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
 public class ActMain extends Activity {
-
-
-
 
     private Activity mainactivity;
     @Override
@@ -38,7 +37,7 @@ public class ActMain extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actmain);
         InicialComponent();
-
+        new AsyncTaskParseJson().execute();
 
         new Thread(new Runnable(){
             @Override
@@ -186,20 +185,39 @@ public class ActMain extends Activity {
         }
     };
 
+    public String getToDoList(String pid)
+    {
+        String result = "";
+        ArrayList<Integer> indexList = new ArrayList<Integer>();
 
-
+        for(int i=0;i<pIdList.size();i++){
+            if((pIdList.get(i).contains(pid))&&(isfinishedList.get(i).equals("false"))){
+                indexList.add(i);
+            }
+        }
+        if(indexList.size()>0){
+            for(int j=0;j<indexList.size();j++){
+                int index = indexList.get(j);
+                result += aNameList.get(index).toString()+"\n";
+            }
+        }
+        else {result = "無待寫評估表";}
+        return result;
+    }
 
     //QRCode後續動作
     public void onActivityResult(int requestCode, int resultCode, Intent intent){
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if(scanningResult!=null){
-            String scanContent=scanningResult.getContents();
+            String scanContent="病患編號:"+scanningResult.getContents();
             //String scanFormat=scanningResult.getFormatName();
 
             AlertDialog.Builder build=new AlertDialog.Builder(ActMain.this);
             build.setTitle("--院民資料如下--");
-           // build.setMessage("掃描到帥哥在附近").create().show();
+            //build.setMessage("掃描到帥哥在附近").create().show();
             //build出來
+            scanContent +="\n";
+            scanContent += getToDoList(scanningResult.getContents());
             build.setMessage(scanContent).create().show();
 
             //如果是網頁
@@ -251,6 +269,8 @@ public class ActMain extends Activity {
     }
 
 
+
+
     private void InicialComponent()
     {
 
@@ -267,18 +287,75 @@ public class ActMain extends Activity {
         btnq.setOnClickListener(btnq_click);
         this.mainactivity=this;
 
+        //scheduleJson = new AsyncTaskPatient();
+        pIdList = new ArrayList<String>();
+        aNameList = new ArrayList<String>();
+        isfinishedList = new ArrayList<String>();
+
 
         textTime1 = (EditText)findViewById(R.id.txtId);
 
     }
 
+    public class AsyncTaskParseJson extends AsyncTask<String, String, String> {
+
+        // set your json string url here
+        String yourJsonStringUrl = "http://rsisp-assess.azurewebsites.net/test.aspx";
+
+        // contacts JSONArray
+        JSONArray dataJsonArr = null;
+
+        @Override
+        protected void onPreExecute() {}
+
+        @Override
+        protected String doInBackground(String... arg0) {
+
+            try {
+
+                // instantiate our json parser
+                JsonParser jParser = new JsonParser();
+
+                // get json string from url
+                //JSONObject json = jParser.getJSONFromUrl(yourJsonStringUrl);
+
+                // get the array of users
+                dataJsonArr = jParser.getJSONFromUrl(yourJsonStringUrl);
+
+                // loop through all users
+                for (int i = 0; i < dataJsonArr.length(); i++) {
+
+                    JSONObject c = dataJsonArr.getJSONObject(i);
+
+                    // Storing each json item in variable
+                    String patient_id = c.getString("patient_id");
+                    String assess_name = c.getString("assess_name");
+                    String isFinished = c.getString("isFinished");
+                    pIdList.add(patient_id);
+                    aNameList.add(assess_name);
+                    isfinishedList.add(isFinished);
+
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+    }
 
     EditText textTime1;
-
-
     ImageButton btnSc;
     ImageButton btnMap;
     ImageButton btnlogin;
     ImageButton btnq;
+    ArrayList<String> pIdList;
+    ArrayList<String> aNameList;
+    ArrayList<String> isfinishedList;
+    //AsyncTaskPatient scheduleJson;
+
+
 
 }
